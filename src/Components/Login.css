@@ -1,18 +1,26 @@
+@font-face {
+  font-family: 'KingHwa-OldSong'; 
+  src: url('../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
 .mainContainer {
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background: #38515F;
   }
   
   .titleContainer {
     display: flex;
     flex-direction: column;
     font-size: 64px;
-    font-weight: bolder;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-family: 'KingHwa-OldSong';
+    letter-spacing: 10px;
   }
   
   .resultContainer,
@@ -46,6 +54,21 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+
+  .inputLabel {
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    letter-spacing: 6px;
+  }
+
+  .inputWrapper {
+    position: relative;
+    width: 100%;
   }
   
   .inputContainer > .errorLabel {
