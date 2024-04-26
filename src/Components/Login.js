@@ -72,7 +72,7 @@ const Login = (props) => {
           <input className='inputButton' type="button" onClick={onButtonClick} value={'登入'} />
         </div>
       <br />
-       <Link to="/register">還不是會員? 註冊新帳號</Link>
+       <Link className='textWrapper' to="/register">還不是會員? 註冊新帳號</Link>
      </div>
   )
 }
