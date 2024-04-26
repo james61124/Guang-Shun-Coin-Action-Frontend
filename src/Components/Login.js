@@ -68,14 +68,12 @@ const Login = (props) => {
         <label className="errorLabel">{passwordError}</label>
       </div>
       <br />
-      <div className={'inputContainer'}>
         <div className={'loginBox'}>
-          <input className={'inputButton'} type="button" onClick={onButtonClick} value={'登入'} />
+          <input className='inputButton' type="button" onClick={onButtonClick} value={'登入'} />
         </div>
-      </div>
       <br />
        <Link to="/register">還不是會員? 註冊新帳號</Link>
-    </div>
+     </div>
   )
 }
 
