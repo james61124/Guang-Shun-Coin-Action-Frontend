@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -20,4 +25,13 @@ li a {
 
 li a:hover {
     background-color: #111;
+}
+
+li link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
 }

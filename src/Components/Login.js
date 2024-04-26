@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Login.css';
 import Navbar from './Navbar';
+import Register from './Register';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -50,8 +52,10 @@ const Login = (props) => {
         <div className={'loginBox'}>
           <input className={'inputButton'} type="button" onClick={onButtonClick} value={'登入'} />
         </div>
+      <br />
+       <Link to="/register">還不是會員? 註冊新帳號</Link>
       </div>
-    </div>
+
   )
 }
 
