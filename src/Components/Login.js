@@ -21,26 +21,35 @@ const Login = (props) => {
       <div className={'inputContainer'}>
         <div class="inputWrapper">
           <label className={'inputLabel'}>帳號</label>
-          <input
-            value={email}
-            onChange={(ev) => setEmail(ev.target.value)}
-            className={'inputBox'}
-          />
+          <div className={'inputBox'}>
+            <input
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+              className={'input'}
+            />
+          </div>
         </div>
         <label className="errorLabel">{emailError}</label>
       </div>
       <br />
       <div className={'inputContainer'}>
-        <input
-          value={password}
-          onChange={(ev) => setPassword(ev.target.value)}
-          className={'inputBox'}
-        />
+        <div class="inputWrapper">
+          <label className={'inputLabel'}>密碼</label>
+          <div className={'inputBox'}>
+            <input
+              value={email}
+              onChange={(ev) => setPassword(ev.target.value)}
+              className={'input'}
+            />
+          </div>
+        </div>
         <label className="errorLabel">{passwordError}</label>
       </div>
       <br />
       <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
+        <div className={'loginBox'}>
+          <input className={'inputButton'} type="button" onClick={onButtonClick} value={'登入'} />
+        </div>
       </div>
     </div>
   )
