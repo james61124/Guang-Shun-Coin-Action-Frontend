@@ -83,5 +83,41 @@
     border-radius: 8px;
     border: 1px solid grey;
     padding-left: 8px;
+    background: white;
   }
 
+  .loginBox {
+    height: 48px;
+    width: 100px;
+    font-size: large;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding-left: 8px;
+    background: #AB8849;
+  }
+
+  .input {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    width: 300px;
+    font-size: large;
+    padding-left: 8px;
+    background: transparent;
+    border: none;
+    outline: 1px solid transparent; 
+  }
+
+  .inputButton {
+    position: relative;
+    top: 50%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    color: white;
+  }

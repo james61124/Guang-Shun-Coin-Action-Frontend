@@ -15,40 +15,45 @@ const Login = (props) => {
   }
 
   return (
-      <div className={'mainContainer'}>
-        <div className={'titleContainer'}>
-          <div>會員登入</div>
-        </div>
-        <br />
-        <div className={'inputContainer'}>
-          <div class="inputWrapper">
-            <label className={'inputLabel'}>帳號</label>
+    <div className={'mainContainer'}>
+      <div className={'titleContainer'}>
+        <div>會員登入</div>
+      </div>
+      <br />
+      <div className={'inputContainer'}>
+        <div class="inputWrapper">
+          <label className={'inputLabel'}>帳號</label>
+          <div className={'inputBox'}>
             <input
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
-              className={'inputBox'}
+              className={'input'}
             />
           </div>
-          <label className="errorLabel">{emailError}</label>
         </div>
-        <br />
-        <div className={'inputContainer'}>
-          <div class="inputWrapper">
+        <label className="errorLabel">{emailError}</label>
+      </div>
+      <br />
+      <div className={'inputContainer'}>
+        <div class="inputWrapper">
           <label className={'inputLabel'}>密碼</label>
-          <input
-            value={password}
-            onChange={(ev) => setPassword(ev.target.value)}
-            className={'inputBox'}
-          />
+          <div className={'inputBox'}>
+            <input
+              value={email}
+              onChange={(ev) => setPassword(ev.target.value)}
+              className={'input'}
+            />
           </div>
-          <label className="errorLabel">{passwordError}</label>
         </div>
-        <br />
-        <div className={'buttonWrapper'}>
+        <label className="errorLabel">{passwordError}</label>
+      </div>
+      <br />
+      <div className={'inputContainer'}>
+        <div className={'loginBox'}>
           <input className={'inputButton'} type="button" onClick={onButtonClick} value={'登入'} />
         </div>
-        <br />
-        <Link to="/register">還不是會員? 註冊新帳號</Link>
+      <br />
+       <Link to="/register">還不是會員? 註冊新帳號</Link>
       </div>
 
   )
