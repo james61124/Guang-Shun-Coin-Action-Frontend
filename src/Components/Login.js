@@ -55,7 +55,7 @@ const Login = (props) => {
       <br />
        <Link to="/register">還不是會員? 註冊新帳號</Link>
       </div>
-
+    </div>
   )
 }
 
