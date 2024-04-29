@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import './Login.css';
-import Navbar from './Navbar';
-import Register from './Register';
+import styles from './Login.module.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -35,44 +33,44 @@ const Login = (props) => {
   };
 
   return (
-    <div className={'mainContainer'}>
-      <div className={'titleContainer'}>
+    <div className={styles.mainContainer}>
+      <div className={styles.titleContainer}>
         <div>會員登入</div>
       </div>
       <br />
-      <div className={'inputContainer'}>
-        <div class="inputWrapper">
-          <label className={'inputLabel'}>帳號</label>
-          <div className={'inputBox'}>
+      <div className={styles.inputContainer}>
+        <div className={styles.inputWrapper}>
+          <label className={styles.inputLabel}>帳號</label>
+          <div className={styles.inputBox}>
             <input
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
-              className={'input'}
+              className={styles.input}
             />
           </div>
         </div>
-        <label className="errorLabel">{emailError}</label>
+        <label className={styles.errorLabel}>{emailError}</label>
       </div>
       <br />
-      <div className={'inputContainer'}>
-        <div class="inputWrapper">
-          <label className={'inputLabel'}>密碼</label>
-          <div className={'inputBox'}>
+      <div className={styles.inputContainer}>
+        <div class={styles.inputWrapper}>
+          <label className={styles.inputLabel}>密碼</label>
+          <div className={styles.inputBox}>
             <input
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
-              className={'input'}
+              className={styles.input}
             />
           </div>
         </div>
-        <label className="errorLabel">{passwordError}</label>
+        <label className={styles.errorLabel}>{passwordError}</label>
       </div>
       <br />
-        <div className={'loginBox'}>
-          <input className='inputButton' type="button" onClick={onButtonClick} value={'登入'} />
+        <div className={styles.loginBox}>
+          <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'登入'} />
         </div>
       <br />
-       <Link className='textWrapper' to="/register">還不是會員? 註冊新帳號</Link>
+       <Link className={styles.textWrapper} to="/register">還不是會員? 註冊新帳號</Link>
      </div>
   )
 }
