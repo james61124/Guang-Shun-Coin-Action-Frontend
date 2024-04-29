@@ -85,6 +85,7 @@
     padding-left: 8px;
     background-color: white;
   }
+  
 
   .input {
     position: absolute;
@@ -118,5 +119,15 @@
     border: none;
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
+    color: white;
+  }
+
+  .input[type='4w'] {
+    left: 65%;
+    width: 260px;
+  }
+
+  .textContainer {
+    font-family: 'KingHwa-OldSong';
     color: white;
   }

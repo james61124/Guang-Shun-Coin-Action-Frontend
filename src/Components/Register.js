@@ -22,7 +22,7 @@ const Register = (props) => {
         <div>註冊帳號</div>
       </div>
       <div className={styles.textContainer}>
-        <p>◎ 帳號、手機、臉書帳號不可重複</p>
+        <p >◎ 帳號、手機、臉書帳號不可重複</p>
       </div>
       <div className={styles.inputContainer}>
         <div className={styles.inputWrapper}>
@@ -54,7 +54,8 @@ const Register = (props) => {
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>臉書帳號</label>
           <div className={styles.inputBox}>
-            <input
+            <input  
+              type='4w'
               value={fbAccount}
               onChange={(ev) => setfbAccount(ev.target.value)}
               className={styles.input}
@@ -67,7 +68,8 @@ const Register = (props) => {
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>電子郵件</label>
           <div className={styles.inputBox}>
-            <input
+            <input  
+              type='4w'
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
               className={styles.input}
@@ -80,7 +82,8 @@ const Register = (props) => {
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>收貨地址</label>
           <div className={styles.inputBox}>
-            <input
+            <input  
+              type='4w'
               value={shippingAddr}
               onChange={(ev) => setShippingAddr(ev.target.value)}
               className={styles.input}
@@ -93,7 +96,8 @@ const Register = (props) => {
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>郵遞區號</label>
           <div className={styles.inputBox}>
-            <input
+            <input  
+              type='4w'
               value={postcode}
               onChange={(ev) => setPostcode(ev.target.value)}
               className={styles.input}
@@ -106,7 +110,7 @@ const Register = (props) => {
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>帳號</label>
           <div className={styles.inputBox}>
-            <input
+            <input 
               value={account}
               onChange={(ev) => setAccount(ev.target.value)}
               className={styles.input}
@@ -132,7 +136,8 @@ const Register = (props) => {
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>確認密碼</label>
           <div className={styles.inputBox}>
-            <input
+            <input  
+              type='4w'
               value={confirmPasswd}
               onChange={(ev) => setconfirmPasswd(ev.target.value)}
               className={styles.input}
