@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 130vh;
+    height: 160vh;
     background: #38515F;
   }
   
@@ -100,6 +100,20 @@
     outline: 1px solid transparent; 
   }
 
+  .input4w {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    width: 250px;
+    font-size: large;
+    /* padding-left: 8px; */
+    background: transparent;
+    border: none;
+    outline: 1px solid transparent; 
+  }
+  
   .loginBox {
     height: 48px;
     width: 100px;
@@ -118,5 +132,20 @@
     border: none;
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
+    color: white;
+  }
+
+
+
+
+
+
+
+  ::placeholder {
+    font-family: 'KingHwa-OldSong';
+  }
+
+  .textContainer {
+    font-family: 'KingHwa-OldSong';
     color: white;
   }

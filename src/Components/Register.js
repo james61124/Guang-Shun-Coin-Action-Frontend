@@ -23,7 +23,7 @@ const Register = (props) => {
         <div>註冊帳號</div>
       </div>
       <div className={styles.textContainer}>
-        <p>◎ 帳號、手機、臉書帳號不可重複</p>
+        <p >◎ 帳號、手機、臉書帳號不可重複</p>
       </div>
       <div className={styles.inputContainer}>
         <div className={styles.inputWrapper}>
@@ -58,7 +58,7 @@ const Register = (props) => {
             <input
               value={fbAccount}
               onChange={(ev) => setfbAccount(ev.target.value)}
-              className={styles.input}
+              className={styles.input4w}
             />
           </div>
         </div>
@@ -71,7 +71,7 @@ const Register = (props) => {
             <input
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
-              className={styles.input}
+              className={styles.input4w}
             />
           </div>
         </div>
@@ -84,7 +84,7 @@ const Register = (props) => {
             <input
               value={shippingAddr}
               onChange={(ev) => setShippingAddr(ev.target.value)}
-              className={styles.input}
+              className={styles.input4w}
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ const Register = (props) => {
             <input
               value={postcode}
               onChange={(ev) => setPostcode(ev.target.value)}
-              className={styles.input}
+              className={styles.input4w}
             />
           </div>
         </div>
@@ -124,6 +124,7 @@ const Register = (props) => {
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
               className={styles.input}
+              placeholder='需含大小寫字母與數字'
             />
           </div>
         </div>
@@ -136,7 +137,7 @@ const Register = (props) => {
             <input
               value={confirmPasswd}
               onChange={(ev) => setconfirmPasswd(ev.target.value)}
-              className={styles.input}
+              className={styles.input4w}
             />
           </div>
         </div>

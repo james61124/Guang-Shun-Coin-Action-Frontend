@@ -65,7 +65,7 @@ const Login = (props) => {
         </div>
         <label className={styles.errorLabel}>{passwordError}</label>
       </div>
-      <br />
+      <br/>
         <div className={styles.loginBox}>
           <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'登入'} />
         </div>
