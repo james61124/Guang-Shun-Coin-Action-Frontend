@@ -37,7 +37,6 @@ const Login = (props) => {
       <div className={styles.titleContainer}>
         <div>會員登入</div>
       </div>
-      <br />
       <div className={styles.inputContainer}>
         <div className={styles.inputWrapper}>
           <label className={styles.inputLabel}>帳號</label>
@@ -51,7 +50,6 @@ const Login = (props) => {
         </div>
         <label className={styles.errorLabel}>{emailError}</label>
       </div>
-      <br />
       <div className={styles.inputContainer}>
         <div class={styles.inputWrapper}>
           <label className={styles.inputLabel}>密碼</label>
@@ -65,11 +63,9 @@ const Login = (props) => {
         </div>
         <label className={styles.errorLabel}>{passwordError}</label>
       </div>
-      <br/>
         <div className={styles.loginBox}>
           <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'登入'} />
         </div>
-      <br />
        <Link className={styles.textWrapper} to="/register">還不是會員? 註冊新帳號</Link>
      </div>
   )

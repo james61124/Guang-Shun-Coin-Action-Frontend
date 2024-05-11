@@ -21,18 +21,19 @@
     color: white;
     font-family: 'KingHwa-OldSong';
     letter-spacing: 10px;
+    padding-bottom: 3%;
   }
   
-  .resultContainer,
+  /* .resultContainer,
   .historyItem {
     flex-direction: row;
     display: flex;
     width: 400px;
     align-items: center;
     justify-content: space-between;
-  }
+  } */
   
-  .historyContainer {
+  /* .historyContainer {
     flex-direction: column;
     display: flex;
     height: 200px;
@@ -40,7 +41,7 @@
     flex-grow: 5;
     justify-content: flex-start;
   }
-  
+   */
   .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -74,6 +75,7 @@
   .inputContainer > .errorLabel {
     color: red;
     font-size: 12px;
+    padding-bottom: 5%;
   }
   
   .inputBox {
@@ -109,6 +111,7 @@
     border-radius: 8px;
     border: 1px solid grey;
     background: #AB8849;
+    margin-bottom: 1%;
   }
 
   .inputButton {
