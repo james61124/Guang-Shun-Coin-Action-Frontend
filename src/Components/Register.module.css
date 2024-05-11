@@ -85,6 +85,7 @@
     padding-left: 8px;
     background-color: white;
   }
+  
 
   .input {
     position: absolute;
@@ -135,15 +136,10 @@
     color: white;
   }
 
-
-
-
-
-
-
   ::placeholder {
     font-family: 'KingHwa-OldSong';
   }
+
 
   .textContainer {
     font-family: 'KingHwa-OldSong';
