@@ -24,6 +24,8 @@
     color: white;
     font-family: 'KingHwa-OldSong';
     letter-spacing: 10px;
+    margin-left:10px;
+
     
 }
 .subtitle {
@@ -35,6 +37,7 @@
     font-family: 'KingHwa-OldSong';
     font-size: 20px;
     letter-spacing: 1px;
+    margin-left:1px;
     padding-bottom: 10%;
 }
 
@@ -45,7 +48,7 @@
     font-size: 36px;
     letter-spacing: 30px;
     margin-left:30px;
-    margin-bottom: 30%;
+    margin-bottom: 10%;
 }
 
 
@@ -66,6 +69,7 @@
 .column{
     display: grid;
     grid-template-columns: 1fr 6fr;
+    align-items: start; 
     /* gap: 20px; */
 }
   
@@ -93,11 +97,39 @@
     font-size: large;
     font-family: 'KingHwa-OldSong'; 
     /* align-items: ; */
-    border: none;
+    border: 2px solid #38515F;
     border-radius: 20px;
-
+    transition: .3s;
+}
+.sidebarContainer :hover {
+    /* background: #1d39c4 */
 }
 
+
+.productCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: space-between;
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    /* background-color: #fff; */
+}
+.productCard h3 {
+    /* font-size: 48px; */
+    /* color: red; */
+}
+.productCard {
+    flex: 0 0 calc(33.33% - 20px);
+    max-width: 0 0 calc(33.33% - 20px);
+    width: 100%;
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    
+}
 
  /* 設置圓角半徑，可以調整為您想要的大小 */ 
     /* padding: 10px 20px */

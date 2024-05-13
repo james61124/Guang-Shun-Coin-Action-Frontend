@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 160vh;
+    /* height: 100vh; */
     background: #38515F;
   }
   
@@ -21,9 +21,22 @@
     color: white;
     font-family: 'KingHwa-OldSong';
     letter-spacing: 10px;
+    margin-top: 4%;
+    margin-bottom: 1%;
   }
   
-  .resultContainer,
+  .reminderContainer {
+    font-family: 'KingHwa-OldSong';
+    color: white;
+    margin-right: 150px;
+    color: #E6D9C6;
+  }
+
+  .contentContainer{
+    margin-bottom: 1%;
+  }
+
+  /* .resultContainer,
   .historyItem {
     flex-direction: row;
     display: flex;
@@ -39,7 +52,7 @@
     align-items: center;
     flex-grow: 5;
     justify-content: flex-start;
-  }
+  } */
   
   .buttonContainer {
     display: flex;
@@ -84,6 +97,7 @@
     border: 1px solid grey;
     padding-left: 8px;
     background-color: white;
+    margin-bottom: 1.5%;
   }
   
 
@@ -122,6 +136,7 @@
     border-radius: 8px;
     border: 1px solid grey;
     background: #AB8849;
+    margin-bottom: 3%;
   }
 
   .inputButton {
@@ -141,7 +156,3 @@
   }
 
 
-  .textContainer {
-    font-family: 'KingHwa-OldSong';
-    color: white;
-  }

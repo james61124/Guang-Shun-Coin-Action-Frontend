@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import styles from './Product.module.css';
 // import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 // import axios from 'axios';
-// import {Grid, Card, Typography, CardMedia, Button, CardActions, CardContent} from '@mui/material';
-
+// import {Grid, Card, Typography, CardMedia, Button, CardActions, CardContent, Paper} from '@mui/material';
+import data from './data.json';
+import { cardClasses } from '@mui/material';
+// import { styled } from '@mui/material/styles';
 
 const MainTitle = () => {
   return (
@@ -25,6 +27,54 @@ const ContentTitle = () => {
     </div>
   );
 }
+
+
+function ProductCard() {
+  const [cards] = useState([
+    {
+      id: "1",
+      title: "product-1",
+      alternativeText: "Alternate Text for Image"
+    },
+    {
+      id: "2",
+      title: "product-2",
+      alternativeText: "Alternate Text for Image"
+    },
+    {
+      id: "3",
+      title: "product-3",
+      alternativeText: "Alternate Text for Image"
+    },
+    {
+      id: "4",
+      title: "product-4",
+      alternativeText: "Alternate Text for Image"
+    },
+    {
+      id: "5",
+      title: "product-5",
+      alternativeText: "Alternate Text for Image"
+    },
+    {
+      id: "6",
+      title: "product-6",
+      alternativeText: "Alternate Text for Image"
+    },
+  ])
+
+  return (
+    <div className={styles.productCards}>
+      {cards.map((productCard, i) => (
+        <div key={i} className={styles.productCard}>
+          <h3>{productCard.title}</h3>
+          <p>{productCard.alternativeText}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 
 function SideBar () {
   return (
@@ -50,7 +100,8 @@ const Product = (props) => {
       <div className={styles.contentContainer}>
         <ContentTitle />
         <div className={styles.column}>
-          <SideBar />
+          <SideBar /> 
+          <ProductCard />
         </div>
       </div>
     </div>
