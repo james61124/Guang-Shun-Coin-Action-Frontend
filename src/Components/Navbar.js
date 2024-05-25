@@ -3,6 +3,7 @@ import './Navbar.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
+import Member from './Member';
 
 const Navbar = () => {
     // Example state usage with useState hook
@@ -14,7 +15,7 @@ const Navbar = () => {
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/login">會員專區</Link>
+                            <Link to="/member">會員專區</Link>
                         </li>
                         <li>
                             <Link to="/login">客服中心</Link>
@@ -30,6 +31,7 @@ const Navbar = () => {
                 <Routes>
                     <Route path="/login" element={<Login/>} />
                     <Route path="/Register" element={<Register/>} />
+                    <Route path="/member" element={<Member/>} />
                 </Routes>
                 
             </div>

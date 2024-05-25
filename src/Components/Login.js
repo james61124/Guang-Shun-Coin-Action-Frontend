@@ -30,7 +30,7 @@ const Login = (props) => {
               className={'input'}
             />
           </div>
-        </div>
+        </div> 
         <label className="errorLabel">{emailError}</label>
       </div>
       <br />

@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../Font/KingHwa-OldSong.ttf') format('truetype'); 
+  }
+
+.mainContainer {
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    background: #38515F;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    font-size: 64px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-family: 'KingHwa-OldSong';
+    letter-spacing: 10px;
+}
+
+
+
+.sortingContainer {
+    height: 50px;
+    width: 830px;
+    padding: 10px;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.sortingButtom {
+    display: flex; 
+    width: 155px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    background-color: #7992A0;
+    border-radius: 20px;
+}
+
+.sortingList {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-family: 'KingHwa-OldSong';
+}
+
+.infoBody {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+
+.indexContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: calc((100vw - 830px) / 2);
+    margin-right: 30px;
+}
+
+.indexList {
+    display: flex;
+    flex-direction: column;
+    width: 128px;
+    height: 297px;
+    background-color: #7992A0;
+    border-radius: 20px;
+    font-family: 'KingHwa-OldSong';
+}
+
+.infoContainer {
+    width: 830px;
+    height: 500px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.infoContainerWrapper {
+    padding: 30px;
+}
+
+.product {
+    flex-direction: row;
+    display: flex;
+}
+
+.productWrapper {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    padding: 5px;
+}
+
+.productImage {
+    width: 80px;
+    height: 80px;
+    background-color: #3E6F8A;
+}
+
+.productInfo {
+    background-color: transparent;
+    flex: 1;
+}
+
+.productInfoWrapper {
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+}
+
+.productName {
+    flex-direction: row;
+    display: flex;
+    font-family: 'KingHwa-OldSong';
+    color: black;
+    text-align: left;
+}
+
+.productStatus {
+    width: 72px;
+    height: 24px;
+    text-align: center;
+    background-color: #DECBB9;
+    border-radius: 20px;
+}
+
+.arrivedTime {
+    font-family: 'KingHwa-OldSong';
+    color: #3E6F8A;
+    text-align: left;
+}
+
+.price {
+    font-family: 'KingHwa-OldSong';
+    color: #A82800;
+    text-align: left;
+}
