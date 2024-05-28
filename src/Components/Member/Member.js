@@ -13,6 +13,12 @@ const Member = (props) => {
     console.log(`Current page is ${pageNumber}`);
   };
 
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const handleChange = (event) => {
+      setSelectedValue(event.target.value);
+  };
+
   const onButtonClick = () => {
     // You'll update this function later...
   }
@@ -22,14 +28,18 @@ const Member = (props) => {
   return (
     <div class="mainContainer">
         <div className={'titleContainer'}>
-            <div>配送進度</div>
+            <div>歷史出價</div>
         </div>
         
         <div className={'sortingContainer'}>
             <div className={'sortingButtom'}>
-                <div className={'sortingList'}>
-                    <div>商品排序</div>
-                    <img src={downSelect} />
+                <div className={'sortingList'} >
+                    <select id="sorting" value={selectedValue} onChange={handleChange}>
+                        <option value="">請選擇</option>
+                        <option value="option1">熱門程度</option>
+                        <option value="option2">追蹤清單</option>
+                        <option value="option3">選項3</option>
+                    </select>
                 </div>
             </div>
         </div>

@@ -60,6 +60,34 @@
     gap: 10px;
 }
 
+select {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+    appearance: none;
+    background: url('../../Images/down-select.png') no-repeat right center; 
+    padding-right: 30px;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+select option {
+    background: #7992A0;
+    color: white;
+    cursor: pointer;
+}
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: white;
+}
+
 .infoBody {
     width: 100%;
     flex-direction: row;
@@ -117,3 +145,4 @@
     width: 100%;
     height: 1px;
 }
+
