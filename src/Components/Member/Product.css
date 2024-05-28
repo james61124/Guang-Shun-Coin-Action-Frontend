@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
+.product {
+    flex-direction: row;
+    display: flex;
+}
+
+.productWrapper {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    padding: 5px;
+}
+
+.productImage {
+    width: 80px;
+    height: 80px;
+    background-color: #3E6F8A;
+}
+
+.productInfo {
+    height: 80px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.productInfoWrapper {
+    flex-direction: column;
+    margin-left: 15px;
+    width: 100%;
+}
+
+.productNameAndStatus {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.productName {
+    font-family: 'KingHwa-OldSong';
+    color: black;
+    font-size: 20px;
+    text-align: left;
+}
+
+.productStatus {
+    width: 72px;
+    height: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DECBB9;
+    font-size:15px;
+    border-radius: 20px;
+}
+
+.arrivedTime {
+    font-family: 'KingHwa-OldSong';
+    color: #3E6F8A;
+    font-size:14px;
+    text-align: left;
+}
+
+.price {
+    font-family: 'KingHwa-OldSong';
+    color: #A82800;
+    font-size:18px;
+    text-align: left;
+}

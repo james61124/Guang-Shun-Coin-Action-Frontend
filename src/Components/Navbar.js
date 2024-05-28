@@ -3,7 +3,7 @@ import './Navbar.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
-import Member from './Member';
+import Member from './Member/Member';
 
 const Navbar = () => {
     // Example state usage with useState hook
