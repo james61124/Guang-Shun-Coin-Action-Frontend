@@ -71,12 +71,13 @@
 
   .inputLabel {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 3%;
     transform: translateY(-50%);
     font-family: 'KingHwa-OldSong';
     font-size: 20px;
     letter-spacing: 6px;
+    color: black;
   }
 
   .inputWrapper {
@@ -148,7 +149,7 @@
     border: none;
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
-    color: white;
+    color: black;
   }
 
   ::placeholder {

@@ -1,0 +1,227 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
+.mainContainer {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #38515F;
+    padding:30px;
+    /* padding-top: 2%;
+    padding-bottom:10%; */
+
+    overflow: hidden;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(224, 236, 242, 0.75);
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-bottom: 20px;
+    height: 70%;
+    width: 80%;
+    overflow: hidden; 
+    
+}
+
+.TextContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.TextContainer a{
+    font-size: 18px;
+    font-family: 'KingHwa-OldSong'; 
+    text-decoration: underline;
+    color: black;
+}
+
+.productInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    /* margin-bottom: 20px; */
+}
+
+.picContainter {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    width: 450px;
+    /* background: url('../../Images/default-product.png') no-repeat top center;
+     */
+    /* background-color: #3E6F8A; */
+    /* padding: 15px;  */
+}
+.primaryPic {
+    height: 300px;
+    width: 300px;
+    background-color: #3E6F8A;
+    margin-bottom: 2px;
+}
+.secondaryPics {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+}
+.secondaryPic {
+    display: flex;
+    height: 60px;
+    width: 60px;
+    /* margin-right: 10px; */
+    background-color: #7992A0;
+}
+
+.detailContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 60px;
+
+    /* padding-left: 20px; */
+
+}
+.productTitle {
+    font-size: 28px;
+    font-family: 'KingHwa-OldSong';
+    line-height: 1px;
+}
+
+
+/* price */
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+.priceContainer p {
+    font-size: 16px;
+    font-family: 'KingHwa-OldSong';
+    text-align: left; 
+    line-height: 0px;
+}
+.currentPrice {
+    font-size: 18px;
+    color: #A82800;
+}
+
+/* bid button */
+.bidBox {
+    height: 48px;
+    width: 100px;
+    font-size: large;
+    border-radius: 27px;
+    border: 1px solid grey;
+    padding-left: 8px;
+    background: black;
+    margin-top:10px;
+}
+
+.bidButton {
+    position: relative;
+    top: 24px;
+    left: 40px;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px; 
+    color: white;
+  }
+
+
+/* tag */
+.tagContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+.tagBox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 5px; /* 根据需要调整内边距，上下2px，左右5px */
+    border: 1px solid grey; 
+    background: #EBDCCB;
+    border-radius: 8px; 
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tag {
+    background: transparent;
+    border: none;
+    font-family: 'KingHwa-OldSong';
+    font-size: 16px; 
+    color: black;
+    line-height: 1; 
+    padding: 0; 
+    margin: 0; 
+}
+
+
+/* history */
+.subTitleContainer {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #886830;
+    width: 140px;
+    height: 40px;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.subTitle {
+    position: absolute;
+    font-size: 20px;
+    font-family: 'KingHwa-OldSong';
+    color: white;
+    top: 8px;
+    left: 5px;
+}
+/* history container */
+.historyContainer {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    /* height: 400px; */
+
+    border-radius: 10px;
+    background-color: #EBDCCB;
+    margin-bottom: 10px;
+}
+.historyContainer p{
+    font-family: 'KingHwa-OldSong';
+    
+}
+.descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    /* width: 1100px;
+    height: 400px; */
+
+    border-radius: 10px;
+    background-color: #EBDCCB;
+}
+.descriptionContainer p{
+    font-family: 'KingHwa-OldSong';
+    
+}
+
+.precautions {
+    text-align: left;
+    font-family: 'KingHwa-OldSong';
+    color: black;
+}
