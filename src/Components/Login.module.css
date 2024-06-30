@@ -65,6 +65,7 @@
     font-family: 'KingHwa-OldSong';
     font-size: 20px;
     letter-spacing: 6px;
+    color: black;
   }
 
   .inputWrapper {
@@ -74,8 +75,10 @@
   
   .inputContainer > .errorLabel {
     color: red;
+    font-family: 'KingHwa-OldSong';
     font-size: 12px;
-    padding-bottom: 5%;
+    padding-top: 2%;
+    padding-bottom: 3%;
   }
   
   .inputBox {
@@ -112,6 +115,7 @@
     border: 1px solid grey;
     background: #AB8849;
     margin-bottom: 1%;
+    
   }
 
   .inputButton {
@@ -124,6 +128,7 @@
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
     color: white;
+    cursor: pointer;
   }
 
   .textWrapper {

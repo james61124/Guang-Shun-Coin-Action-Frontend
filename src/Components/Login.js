@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import styles from './Login.module.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-
-
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const onButtonClick = async (e) => {
     e.preventDefault();
@@ -20,21 +19,25 @@ const Login = (props) => {
   
     try {
       const response = await axios.post('http://127.0.0.1:81/user/login', data);
-      if (response.status === 200) {
-        console.log('Login successful!');
+      if (response.data.Status === true) {
+        setShowError(false);
+        navigate('/product');
       } else {
-        console.error('Login failed!');
+        setShowError(true);
+        setErrorMessage('帳號或密碼錯誤');
       }
     } catch (error) {
-      console.error('An error occurred during login: ', error);
+      console.log('An error occurred during login: ', error);
+      setShowError(true);
+      setErrorMessage('資料庫連線錯誤');
     }
   };
 
   return (
     <div className={styles.mainContainer}>
       <Title />
-      <Username email={email} setEmail={setEmail} emailError={emailError} />
-      <Password password={password} setPassword={setPassword} passwordError={passwordError} />
+      <InputField label="帳號" value={email} onChange={setEmail} inputType="text" />
+      <InputField label="密碼" value={password} onChange={setPassword} error={errorMessage} showError={showError} inputType="text" />
       <Submit onButtonClick={onButtonClick} />
       <Link className={styles.textWrapper} to="/register">還不是會員? 註冊新帳號</Link>
     </div>
@@ -49,30 +52,21 @@ const Title = () => {
   )
 }
 
-const Username = ({ email, setEmail, emailError }) => {
+const InputField = ({ label, value, onChange, inputType, placeholder = '', error = '', showError = false }) => {
   return (
     <div className={styles.inputContainer}>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>帳號</label>
+        <label className={styles.inputLabel}>{label}</label>
         <div className={styles.inputBox}>
-          <input value={email} onChange={(ev) => setEmail(ev.target.value)} className={styles.input} />
+          <input
+            value={value}
+            onChange={(ev) => onChange(ev.target.value)}
+            className={inputType === '4w' ? styles.input4w : styles.input}
+            placeholder={placeholder}
+          />
         </div>
       </div>
-      <label className={styles.errorLabel}>{emailError}</label>
-    </div>
-  )
-}
-
-const Password = ({ password, setPassword, passwordError }) => {
-  return (
-    <div className={styles.inputContainer}>
-      <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>密碼</label>
-        <div className={styles.inputBox}>
-          <input value={password} onChange={(ev) => setPassword(ev.target.value)} className={styles.input} />
-        </div>
-      </div>
-      <label className={styles.errorLabel}>{passwordError}</label>
+      <label className={styles.errorLabel} style={{ visibility: showError ? 'visible' : 'hidden' }}>{error}</label>
     </div>
   )
 }
@@ -80,7 +74,7 @@ const Password = ({ password, setPassword, passwordError }) => {
 const Submit = ({ onButtonClick }) => {
   return (
     <div className={styles.loginBox}>
-      <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'登入'} />
+      <input className={styles.inputButton} type="submit" onClick={onButtonClick} value={'登入'} />
     </div>
   )
 }
