@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import './Product.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React from 'react'
+import styles from './Product.module.css';
 
 const Product = () => {
     return (
-        <div className={'product'}>
-            <div className={'productWrapper'}>
-                <div className={'productImage'}></div>
-                <div className={'productInfo'}>
-                    <div className={'productInfoWrapper'}>
-                        <div className={'productNameAndStatus'}>
-                            <div className="productName">商品名稱</div>
-                            <div className="productStatus">寄送中</div>
+        <div className={styles.product}>
+            <div className={styles.productWrapper}>
+                <div className={styles.productImage}></div>
+                <div className={styles.productInfo}>
+                    <div className={styles.productInfoWrapper}>
+                        <div className={styles.productNameAndStatus}>
+                            <div className={styles.productName}>商品名稱</div>
+                            <div className={styles.productStatus}>寄送中</div>
                         </div>
-                        <div className={'arrivedTime'}>
+                        <div className={styles.arrivedTime}>
                             <div>預計抵達: 2024-04-01~2024-04-02</div>
                         </div>
-                        <div className={'price'}>
+                        <div className={styles.price}>
                             <div>NTD 15000元</div>
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import './Pagination.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import styles from './Pagination.module.css';
 
 const Pagination = ({ totalPages, pageRangeDisplayed, onPageChange }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -33,10 +32,10 @@ const Pagination = ({ totalPages, pageRangeDisplayed, onPageChange }) => {
   
     return (
       <div>
-        <button class="pageChange" onClick={handlePreviousClick} disabled={currentPage === 1}>{'<'}</button>
+        <button class={styles.pageChange} onClick={handlePreviousClick} disabled={currentPage === 1}>{'<'}</button>
         {getPageNumbers().map((page) => (
           <button
-            class="page"
+            class={styles.page}
             key={page}
             onClick={() => {
               setCurrentPage(page);
@@ -47,7 +46,7 @@ const Pagination = ({ totalPages, pageRangeDisplayed, onPageChange }) => {
             {page}
           </button>
         ))}
-        <button class="pageChange" onClick={handleNextClick} disabled={currentPage + pageRangeDisplayed - 1 >= totalPages}>{'>'}</button>
+        <button class={styles.pageChange} onClick={handleNextClick} disabled={currentPage + pageRangeDisplayed - 1 >= totalPages}>{'>'}</button>
       </div>
     );
   };

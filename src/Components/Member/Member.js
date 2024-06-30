@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
-import './Member.css';
-import downSelect from '../../Images/down-select.png';
+import styles from './Member.module.css';
 import Product from './Product';
 import Pagination from './Pagination';
-import AddProduct from '../AddProduct/AddProduct';
-import Login from '../Login';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const Member = (props) => {
-  const [email, setEmail] = useState('')
   const totalPages = 100;
   const pageRangeDisplayed = 5;
   const handlePageChange = (pageNumber) => {
@@ -28,14 +24,14 @@ const Member = (props) => {
   const items = Array.from({ length: 4 }, (_, index) => index);
 
   return (
-    <div class="mainContainer">
-        <div className={'titleContainer'}>
+    <div class={styles.mainContainer}>
+        <div className={styles.titleContainer}>
             <div>歷史出價</div>
         </div>
         
-        <div className="sortingContainer">
-            <div className="sortingButtom">
-                <div className="sortingList" >
+        <div className={styles.sortingContainer}>
+            <div className={styles.sortingButtom}>
+                <div className={styles.sortingList}>
                     <select id="sorting" value={selectedValue} onChange={handleChange}>
                         <option value="">請選擇</option>
                         <option value="option1">熱門程度</option>
@@ -46,22 +42,21 @@ const Member = (props) => {
             </div>
         </div>
 
-        <div class="infoBody">
-            <div className={'indexContainer'}>
-                <div class="indexList">
-                    <div class="indexItemWrapper">
-                        <Link class="indexItem" to="/addProduct">新增商品</Link>
-                        <Link class="indexItem" to="/login">我的貼文</Link>
-                        <Link class="indexItem" to="/member">歷史出價</Link>
+        <div class={styles.infoBody}>
+            <div className={styles.indexContainer}>
+                <div class={styles.indexList}>
+                    <div class={styles.indexItemWrapper}>
+                        <Link class={styles.indexItem} to="/login">我的貼文</Link>
+                        <Link class={styles.indexItem} to="/member">歷史出價</Link>
                     </div>
                 </div>
             </div>
-            <div class="infoContainer">
-                <div class="infoContainerWrapper">
+            <div class={styles.infoContainer}>
+                <div class={styles.infoContainerWrapper}>
                     {items.map((item, index) => (
                         <div>
                             <Product key={index} />
-                            <div class="productGap"></div>
+                            <div class={styles.productGap}></div>
                         </div>
                         
                     ))}
@@ -72,10 +67,9 @@ const Member = (props) => {
                     />
                 </div>
             </div>
-            <div className={'indexContainer'}></div>
+            <div className={styles.indexContainer}></div>
         </div>
         <Routes>
-            <Route path="/addProduct" element={<AddProduct/>} />
             <Route path="/member" element={<Member/>} />
         </Routes>
     </div>

@@ -7,6 +7,7 @@
     flex-direction: column;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     height: 100vh;
     background: #38515F;
 }
@@ -20,7 +21,7 @@
     flex-direction: column;
     height: 20vh;
     font-size: 64px;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
     color: white;
     font-family: 'KingHwa-OldSong';
@@ -31,10 +32,10 @@
 
 .sortingContainer {
     height: 50px;
-    width: 773.4px;
+    width: 800px;
     padding: 10px;
     display: flex; 
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
 }
 
