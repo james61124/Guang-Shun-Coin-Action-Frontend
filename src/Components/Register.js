@@ -3,6 +3,7 @@ import styles from './Register.module.css';
 import { useState } from 'react';
 import axios from 'axios';
 import config from '../config/config';
+import { useNavigate } from 'react-router-dom';
 
 
 const Register = (props) => {
@@ -16,7 +17,10 @@ const Register = (props) => {
   const [nickName, setNickName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPasswd, setconfirmPasswd] = useState('')
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { backendUrl } = config;
+  const navigate = useNavigate();
 
   const onButtonClick = async (e) => {
     e.preventDefault();
@@ -24,6 +28,7 @@ const Register = (props) => {
       "Username": account, 
       "Nickname": nickName,
       "Password": password,
+      "PasswordConfirm": confirmPasswd,
       "Cellphone": phoneNumber,
       "FbAccount": fbAccount,
       "Email": email,
@@ -31,16 +36,51 @@ const Register = (props) => {
       "Postcode": postcode,
       "RealName": realName
     };
-  
+
     try {
       const response = await axios.post(`${backendUrl}/user/register`, data);
-      if (response.status === 200) {
-        console.log('Registration successful');
+      console.log(response.data)
+      if (response.data.Status === true) {
+        setShowError(false);
+        navigate('/login');
+      } else if (response.data.Message === 'username is empty') {
+        setShowError(true);
+        setErrorMessage('請輸入帳號');
+      } else if (response.data.Message === 'password is empty') {
+        setShowError(true);
+        setErrorMessage('請輸入密碼');
+      } else if (response.data.Message === 'passwordConfirm is empty') {
+        setShowError(true);
+        setErrorMessage('請輸入確認密碼');
+      } else if (response.data.Message === 'address is empty') {
+        setShowError(true);
+        setErrorMessage('請輸入地址');
+      } else if (response.data.Message === 'cellphone is empty') {
+        setShowError(true);
+        setErrorMessage('請輸入手機號碼');
+      } else if (response.data.Message === 'username already exists') {
+        setShowError(true);
+        setErrorMessage('帳號名稱已存在');
+      } else if (response.data.Message === 'invalid email address') {
+        setShowError(true);
+        setErrorMessage('信箱格式錯誤');
+      } else if (response.data.Message === 'invalid phone number format') {
+        setShowError(true);
+        setErrorMessage('手機號碼格式錯誤');
+      } else if (response.data.Message === 'password and passwordConfirm is different') {
+        setShowError(true);
+        setErrorMessage('密碼與二次密碼不符');
+      } else if (response.data.Message === 'invalid password format') {
+        setShowError(true);
+        setErrorMessage('密碼須包含大小寫及數字');
       } else {
-        console.error('Registration failed');
+        setShowError(true);
+        setErrorMessage('訊息錯誤');
       }
     } catch (error) {
-        console.error('An error occured during registration: ', error);
+      console.log('An error occurred during login: ', error);
+      setShowError(true);
+      setErrorMessage('資料庫連線錯誤');
     }
   };
 
@@ -50,7 +90,7 @@ const Register = (props) => {
       <Reminder />
       <div className={styles.contentContainer} >
         <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
-        <InputField label="匿名" value={nickName} onChange={setNickName} inputType="text" />
+        <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" />
         <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" />
         <InputField label="臉書帳號" value={fbAccount} onChange={setfbAccount} inputType="4w" />
         <InputField label="電子郵件" value={email} onChange={setEmail} inputType="4w" />
@@ -58,7 +98,7 @@ const Register = (props) => {
         <InputField label="郵遞區號" value={postcode} onChange={setPostcode} inputType="4w" />
         <InputField label="帳號" value={account} onChange={setAccount} inputType="text" />
         <InputField label="密碼" value={password} onChange={setPassword} inputType="text" placeholder="需含大小寫字母與數字" />
-        <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} inputType="4w" />
+        <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} error={errorMessage} showError={showError} inputType="4w" />
       </div>
       <SubmitButton onButtonClick={onButtonClick} />
     </div>
@@ -81,7 +121,7 @@ const Reminder = () => {
   )
 }
 
-const InputField = ({ label, value, onChange, inputType, placeholder = '' }) => {
+const InputField = ({ label, value, onChange, inputType, placeholder = '', error = '', showError = false }) => {
   return (
     <div className={styles.inputContainer}>
       <div className={styles.inputWrapper}>
@@ -95,6 +135,7 @@ const InputField = ({ label, value, onChange, inputType, placeholder = '' }) => 
           />
         </div>
       </div>
+      <label className={styles.errorLabel} style={{ visibility: showError ? 'visible' : 'hidden' }}>{error}</label>
     </div>
   )
 }

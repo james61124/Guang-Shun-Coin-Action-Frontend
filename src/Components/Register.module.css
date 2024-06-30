@@ -87,7 +87,10 @@
   
   .inputContainer > .errorLabel {
     color: red;
+    font-family: 'KingHwa-OldSong';
     font-size: 12px;
+    padding-top: 2%;
+    padding-bottom: 3%;
   }
   
   .inputBox {
@@ -138,6 +141,7 @@
     border: 1px solid grey;
     background: #AB8849;
     margin-bottom: 3%;
+    
   }
 
   .inputButton {
@@ -150,6 +154,7 @@
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
     color: black;
+    cursor: pointer;
   }
 
   ::placeholder {
