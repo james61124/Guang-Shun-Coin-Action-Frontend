@@ -6,6 +6,7 @@ import Register from './Register';
 import MainPage from './Shop/MainPage';
 import ProductPage from './Shop/ProductPage';
 import Member from './Member/Member';
+import NewProduct from './Member/NewProduct';
 
 const Navbar = () => {
     // Example state usage with useState hook
@@ -24,7 +25,7 @@ const Navbar = () => {
                                 <Link to="/detail">商品細節</Link>
                             </li>
                             <li>
-                                <Link to="/login">登入</Link>
+                                <Link to="/newproduct">新增商品</Link>
                             </li>
                             <li>
                                 <Link to="/product">商品總覽</Link>
@@ -41,6 +42,8 @@ const Navbar = () => {
                     <Route path="/product" element={<MainPage/>} />
                     <Route path="/detail" element={<ProductPage/>} />
                     <Route path="/member" element={<Member/>} />
+                    <Route path="/newproduct" element={<NewProduct/>} />
+
                 </Routes>
                 
             </div>
