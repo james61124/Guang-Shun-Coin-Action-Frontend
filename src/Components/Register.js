@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Register.module.css';
 import { useState } from 'react';
 import axios from 'axios';
+import config from '../config/config';
 
 
 const Register = (props) => {
@@ -12,13 +13,16 @@ const Register = (props) => {
   const [shippingAddr, setShippingAddr] = useState('')
   const [postcode, setPostcode] = useState('')
   const [account, setAccount] = useState('')
+  const [nickName, setNickName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPasswd, setconfirmPasswd] = useState('')
+  const { backendUrl } = config;
 
   const onButtonClick = async (e) => {
     e.preventDefault();
     const data = {
       "Username": account, 
+      "Nickname": nickName,
       "Password": password,
       "Cellphone": phoneNumber,
       "FbAccount": fbAccount,
@@ -29,7 +33,7 @@ const Register = (props) => {
     };
   
     try {
-      const response = await axios.post('http://127.0.0.1:81/user/register', data);
+      const response = await axios.post(`${backendUrl}/user/register`, data);
       if (response.status === 200) {
         console.log('Registration successful');
       } else {
@@ -46,6 +50,7 @@ const Register = (props) => {
       <Reminder />
       <div className={styles.contentContainer} >
         <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
+        <InputField label="匿名" value={nickName} onChange={setNickName} inputType="text" />
         <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" />
         <InputField label="臉書帳號" value={fbAccount} onChange={setfbAccount} inputType="4w" />
         <InputField label="電子郵件" value={email} onChange={setEmail} inputType="4w" />

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../config/config';
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -9,6 +10,7 @@ const Login = (props) => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const { backendUrl } = config;
 
   const onButtonClick = async (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ const Login = (props) => {
     };
   
     try {
-      const response = await axios.post('http://127.0.0.1:81/user/login', data);
+      const response = await axios.post(`${backendUrl}/user/login`, data);
       if (response.data.Status === true) {
         setShowError(false);
         navigate('/product');
