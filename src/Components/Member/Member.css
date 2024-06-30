@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+  }
+
+.mainContainer {
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    background: #38515F;
+}
+
+.background-container::before {
+    background: url('../../Images/background.png') center center / cover no-repeat;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    font-size: 64px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-family: 'KingHwa-OldSong';
+    letter-spacing: 10px;
+}
+
+
+
+.sortingContainer {
+    height: 50px;
+    width: 773.4px;
+    padding: 10px;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.sortingButtom {
+    display: flex; 
+    width: 155px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    background-color: #7992A0;
+    border-radius: 20px;
+}
+
+.sortingList {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    color: white;
+    gap: 10px;
+}
+
+select {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+    appearance: none;
+    background: url('../../Images/down-select.png') no-repeat right center; 
+    padding-right: 30px;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+select option {
+    background: #7992A0;
+    color: white;
+    cursor: pointer;
+}
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: white;
+}
+
+.infoBody {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+
+.indexContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: calc((100vw - 830px) / 2);
+    margin-right: 30px;
+}
+
+.indexList {
+    display: flex;
+    flex-direction: column;
+    width: 128px;
+    height: 297px;
+    background-color: #7992A0;
+    border-radius: 20px;
+}
+
+.indexItemWrapper {
+    margin-top: 20px;
+}
+
+.indexItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    color: white;
+    padding: 7px;
+    text-decoration: none;
+}
+
+.indexItem:hover {
+    color: #E6D9C6;
+}
+
+.infoContainer {
+    width: 830px;
+    height: 500px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.infoContainerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 55px;
+}
+
+.productGap {
+    background-color: #D2B9A3;
+    width: 100%;
+    height: 1px;
+}
+

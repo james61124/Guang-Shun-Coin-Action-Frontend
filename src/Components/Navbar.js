@@ -5,6 +5,8 @@ import Login from './Login';
 import Register from './Register';
 import MainPage from './Shop/MainPage';
 import ProductPage from './Shop/ProductPage';
+import Member from './Member/Member';
+import AddProduct from './AddProduct/AddProduct';
 
 const Navbar = () => {
     // Example state usage with useState hook

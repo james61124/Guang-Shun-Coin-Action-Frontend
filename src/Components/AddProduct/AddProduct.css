@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+  }
+
+.mainContainer {
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    background: #38515F;
+        
+    
+}
+
+.background-container::before {
+    background: url('../../Images/background.png') center center / cover no-repeat;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    font-size: 64px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-family: 'KingHwa-OldSong';
+    letter-spacing: 10px;
+}
+
+.infoBody {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+

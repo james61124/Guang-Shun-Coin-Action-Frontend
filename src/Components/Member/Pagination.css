@@ -1,0 +1,10 @@
+.pageChange {
+    border: none;
+    cursor: pointer;
+}
+
+.page {
+    border: none;
+    cursor: pointer;
+    color: black;
+}
