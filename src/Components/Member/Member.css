@@ -9,8 +9,6 @@
     justify-content: flex-start;
     height: 100vh;
     background: #38515F;
-        
-    
 }
 
 .background-container::before {
@@ -124,6 +122,11 @@ label {
     font-size: 20px;
     color: white;
     padding: 7px;
+    text-decoration: none;
+}
+
+.indexItem:hover {
+    color: #E6D9C6;
 }
 
 .infoContainer {

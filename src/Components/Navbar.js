@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import Member from './Member/Member';
+import AddProduct from './AddProduct/AddProduct';
 
 const Navbar = () => {
     // Example state usage with useState hook
@@ -32,6 +33,7 @@ const Navbar = () => {
                     <Route path="/login" element={<Login/>} />
                     <Route path="/Register" element={<Register/>} />
                     <Route path="/member" element={<Member/>} />
+                    <Route path="/addProduct" element={<AddProduct/>} />
                 </Routes>
                 
             </div>
