@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './NewProduct.module.css';
 import { Link } from 'react-router-dom';
+import RenderPictures from './RenderPictures';
 
 
 const NewProduct = (props) => {
@@ -40,7 +41,7 @@ const NewProduct = (props) => {
 
 const BackLink = () => (
   <div className={styles.TextContainer}>
-    <Link to="/product">回上頁</Link>
+    <Link to="/member">回上頁</Link>
   </div>
 );
 
@@ -53,17 +54,17 @@ const Title = () => {
   )
 }
 
-const RenderPictures = () => (
-  <div className={styles.picContainter}>
-    <div className={styles.primaryPic}></div>
-    <div className={styles.secondaryPics}>
-      <div className={styles.secondaryPic}></div>
-      <div className={styles.secondaryPic}></div>
-      <div className={styles.secondaryPic}></div>
-      <div className={styles.secondaryPic}></div>
-    </div>
-  </div>
-);
+// const RenderPictures = () => (
+//   <div className={styles.picContainter}>
+//     <div className={styles.primaryPic}></div>
+//     <div className={styles.secondaryPics}>
+//       <div className={styles.secondaryPic}></div>
+//       <div className={styles.secondaryPic}></div>
+//       <div className={styles.secondaryPic}></div>
+//       <div className={styles.secondaryPic}></div>
+//     </div>
+//   </div>
+// );
 
 
 

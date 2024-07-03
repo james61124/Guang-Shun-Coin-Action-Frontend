@@ -50,7 +50,7 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
 
 
 /* picture */
-.picContainter {
+/* .picContainter {
     display: flex;
     flex-direction: column;
     height: 450px;
@@ -73,7 +73,7 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     height: 60px;
     width: 60px;
     background-color: #7992A0;
-}
+} */
 
 /* input */
 .inputContainer {
