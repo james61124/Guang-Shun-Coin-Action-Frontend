@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Member.module.css';
 import Product from './Product';
 import Pagination from './Pagination';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Route, Routes, Link } from 'react-router-dom';
 
 const Member = (props) => {
   const totalPages = 100;
@@ -17,9 +17,9 @@ const Member = (props) => {
       setSelectedValue(event.target.value);
   };
 
-  const onButtonClick = () => {
-    // You'll update this function later...
-  }
+//   const onButtonClick = () => {
+//     // You'll update this function later...
+//   }
 
   const items = Array.from({ length: 4 }, (_, index) => index);
 
@@ -46,8 +46,14 @@ const Member = (props) => {
             <div className={styles.indexContainer}>
                 <div class={styles.indexList}>
                     <div class={styles.indexItemWrapper}>
-                        <Link class={styles.indexItem} to="/login">我的貼文</Link>
-                        <Link class={styles.indexItem} to="/member">歷史出價</Link>
+                        <Link class={styles.indexItem} to="/member">追蹤商品</Link>
+                        <Link class={styles.indexItem} to="/member">我的貼文</Link>
+                        <Link class={styles.indexItem} to="/member">/歷史出價/</Link>
+                        <Link class={styles.indexItem} to="/member">得標商品</Link>
+                        <Link class={styles.indexItem} to="/member">配送進度</Link>
+                        <Link class={styles.indexItem} to="/editMember">/編輯資訊/</Link>
+                        {/* newproduct link for testing */}
+                        <Link class={styles.indexItem} to="/newProduct">/新增商品/</Link> 
                     </div>
                 </div>
             </div>
@@ -69,9 +75,6 @@ const Member = (props) => {
             </div>
             <div className={styles.indexContainer}></div>
         </div>
-        <Routes>
-            <Route path="/member" element={<Member/>} />
-        </Routes>
     </div>
   )
 }

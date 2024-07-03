@@ -36,24 +36,7 @@
     margin-bottom: 1%;
   }
 
-  /* .resultContainer,
-  .historyItem {
-    flex-direction: row;
-    display: flex;
-    width: 400px;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .historyContainer {
-    flex-direction: column;
-    display: flex;
-    height: 200px;
-    align-items: center;
-    flex-grow: 5;
-    justify-content: flex-start;
-  } */
-  
+
   .buttonContainer {
     display: flex;
     flex-direction: column;
