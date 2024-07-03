@@ -5,7 +5,7 @@
 .productContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -64,5 +64,6 @@
     height: 30px;
     /* background-color: red; */
     border: none;
+    cursor: pointer;
     /* background: url('../../Images/track.png') no-repeat right center;  */
 }

@@ -21,7 +21,7 @@ const MainTitle = () => {
 const ContentTitle = () => {
   return (
     <div className={styles.contentTitle}>
-      <h1>全部商品</h1>
+      <h1>全站商品</h1>
     </div>
   );
 }
@@ -30,8 +30,8 @@ const ContentTitle = () => {
 
 const MainPage = (props) => {
 
-    const [selectedSorting, setSelectedSorting] = useState('商品排序');
-    const [selectedCategory, setSelectedCategory] = useState('世界錢幣');
+    const [selectedSorting, setSelectedSorting] = useState('Sorting');
+    const [selectedCategory, setSelectedCategory] = useState('World');
   
     console.log('Selected Sorting:', selectedSorting);
     console.log('Selected Category:', selectedCategory);
@@ -43,10 +43,6 @@ const MainPage = (props) => {
       setSelectedCategory(event.target.value);
     }
   
-    // const onButtonClick = () => {
-    //   // You'll update this function later...
-    // }
-  
     return (
       <div className={styles.mainContainer}>
         <MainTitle />
@@ -56,10 +52,10 @@ const MainPage = (props) => {
               <div className={styles.sortingButton}>
                   <div className={styles.sortingList} >
                       <select id="sorting" value={selectedSorting} onChange={handleSorting}>
-                          <option value="商品排序">商品排序</option>
-                          <option value="熱門程度">熱門程度</option>
-                          <option value="由新到舊">由新到舊</option>
-                          <option value="由舊到新">由舊到新</option>
+                          <option value="Sorting">商品排序</option>
+                          <option value="Popular">熱門程度</option>
+                          <option value="NewFirst">由新到舊</option>
+                          <option value="OldFirst">由舊到新</option>
                       </select>
                   </div>
               </div>
@@ -67,14 +63,14 @@ const MainPage = (props) => {
           <div className={styles.infoContainer}>
             <div className={styles.sidebarContainer}>
               <ul>
-                <li><button className={styles.sidebarLabel} value="世界錢幣" onClick={handleCategory}>世界錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="美國錢幣" onClick={handleCategory}>美國錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="歐洲錢幣" onClick={handleCategory}>歐洲錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="亞洲錢幣" onClick={handleCategory}>亞洲錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="非洲錢幣" onClick={handleCategory}>非洲錢幣</button></li>
+                <li><button className={styles.sidebarLabel} value="World" onClick={handleCategory}>世界錢幣</button></li>
+                <li><button className={styles.sidebarLabel} value="America" onClick={handleCategory}>美國錢幣</button></li>
+                <li><button className={styles.sidebarLabel} value="Europe" onClick={handleCategory}>歐洲錢幣</button></li>
+                <li><button className={styles.sidebarLabel} value="Asia" onClick={handleCategory}>亞洲錢幣</button></li>
+                <li><button className={styles.sidebarLabel} value="Africa" onClick={handleCategory}>非洲錢幣</button></li>
               </ul>
             </div>
-            <ProductCard />
+            <ProductCard page={1} sort={"famous"} category={"europe coin"}/>
           </div>
 
         </div>

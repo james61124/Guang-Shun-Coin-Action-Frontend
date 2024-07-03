@@ -1,72 +1,75 @@
 import styles from './ProductCard.module.css';
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import config from '../../config/config';
 
-function ProductCard() {
-  // const [cards, setCards] = useState([]);
-  const [cards ] = useState([
-    {
-      id: "1",
-      product: "商品名稱商品名稱商品名稱1",
-      imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJJUgfDtA4d_ahP54YDMr8WlrO50FdIK6pg&s',
-    },
-    {
-      id: "2",
-      product: "商品名稱商品名稱商品名稱2",
-      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJJUgfDtA4d_ahP54YDMr8WlrO50FdIK6pg&s",
-    },
-    {
-      id: "3",
-      product: "商品名稱商品名稱商品名稱3",
-      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJJUgfDtA4d_ahP54YDMr8WlrO50FdIK6pg&s",
+const ProductCard = ({page, sort, category}) => {
 
-    },
-    {
-      id: "3",
-      product: "商品名稱商品名稱商品名稱3",
-      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJJUgfDtA4d_ahP54YDMr8WlrO50FdIK6pg&s",
+  const { backendUrl } = config;
+  const [cards, setCards] = useState([])
 
-    },
-    {
-      id: "3",
-      product: "商品名稱商品名稱商品名稱3",
-      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJJUgfDtA4d_ahP54YDMr8WlrO50FdIK6pg&s",
+  useEffect(() => {
+    const data = {
+      "page": page,
+      "sort": sort,
+      "category": category
+    };
 
-    },
-    {
-      id: "3",
-      product: "商品名稱商品名稱商品名稱3",
-      imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJJUgfDtA4d_ahP54YDMr8WlrO50FdIK6pg&s",
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.post(`${backendUrl}/shop/product`, data);
+        const productData = response.data.Data.map(product => ({
+          product: product.productName,
+          imgUrl: `${backendUrl}/assets/coin.jpg`
+        }));
+        console.log(productData)
+        setCards(productData);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
 
-    },
-  ])
-  const [trackingImage, setTrackingImage] = useState("../../Images/track.png");
-
-  const handleClick = () => {
-    setTrackingImage(trackingImage === "../../Images/track.png" ? "../../Images/track.png" : "../../Images/untrack.png");
-  };
+    fetchProducts();
+  }, [backendUrl, page, sort, category]);
 
   return (
       <div className={styles.productContainer}>
         {cards.map((productCard, i) => (
-          <div key={i} className={styles.productCard}>
-            <div className={styles.productInfo} >
-              <div className={styles.productPic}>
-                <img src={productCard.imgUrl} alt={productCard.product} className={styles.image}></img>
-                <p>{productCard.product}</p>
-              </div>
-              <div className={styles.productTime}></div>
-              <div >
-                {/* <button onClick={handleClick} className={styles.productTracking}></button> */}
-                <button onClick={handleClick} className={styles.productTracking}>
-                <img src={trackingImage} alt="" />
-                </button>
-              </div>
-            </div>
-          </div>
+          <Card
+            key={i}
+            product={productCard.product}
+            imgUrl={productCard.imgUrl}
+          />
         ))}
       </div>
 
   );
+}
+
+const Card = ({key, product, imgUrl}) => {
+  const { backendUrl } = config;
+  const [trackingImage, setTrackingImage] = useState(`${backendUrl}/assets/untrack.png`);
+  const handleClick = () => {
+    setTrackingImage(trackingImage === `${backendUrl}/assets/untrack.png` ? `${backendUrl}/assets/track.png` : `${backendUrl}/assets/untrack.png`);
+  };
+  
+  return (
+    <div key={key} className={styles.productCard}>
+      <div className={styles.productInfo} >
+        <div className={styles.productPic}>
+          <img src={imgUrl} alt={product} className={styles.image}></img>
+          <p>{product}</p>
+        </div>
+        <div className={styles.productTime}></div>
+        <div >
+          {/* <button onClick={handleClick} className={styles.productTracking}></button> */}
+          <button onClick={handleClick} className={styles.productTracking}>
+          <img src={trackingImage} alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default ProductCard
