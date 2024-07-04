@@ -132,7 +132,7 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     position: relative;
     margin-bottom: 20px;
     margin-top: 10px;
-    margin-left: 275px;
+    margin-left: 230px;
 }
 .subTitle {
     position: absolute;
@@ -147,8 +147,8 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-left: 275px;
-    width: 865px;
+    margin-left: 230px;
+    width: 770px;
     border-radius: 10px;
     background-color: #7992A0;
     padding-left: 10px;
