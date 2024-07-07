@@ -1,43 +1,52 @@
 import React, { useState } from 'react';
 import styles from './RenderPictures.module.css';
+import CropImageModal from './CropImageModal';
+import Modal from 'react-modal';
+import uploadImage from '../../assets/upload-image.png'; 
 
 const MAX_PICTURES = 5;
 
+// Modal.setAppElement('#root'); // 设置你的应用的根元素，防止屏幕阅读器的内容显示
+
 const RenderPictures = () => {
   const [pictures, setPictures] = useState([]);
-  
+  const [imageToCrop, setImageToCrop] = useState(null);
+  const [showCropModal, setShowCropModal] = useState(false);
 
   const handleUpload = (ev) => {
-    const files = Array.from(ev.target.files);
-    const newPictures = files.slice(0, MAX_PICTURES - pictures.length);
-    
-    Promise.all(newPictures.map(readFileAsDataURL))
-      .then(results => {
-        setPictures(prevPictures => [...prevPictures, ...results].slice(0, MAX_PICTURES));
-      });
+    setShowCropModal(true);
+    // const files = Array.from(ev.target.files);
+    // if (files.length > 0) {
+    //   const file = files[0];
+    //   const reader = new FileReader();
+    //   reader.onload = (e) => {
+    //     setImageToCrop(e.target.result);
+    //     setShowCropModal(true);
+    //   };
+    //   reader.readAsDataURL(file);
+    // }
   };
 
-  const readFileAsDataURL = (file) => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (ev) => resolve(ev.target.result);
-      reader.readAsDataURL(file);
-    });
+  const handleCrop = (croppedImage) => {
+    setPictures(prevPictures => croppedImage.slice(0, MAX_PICTURES));
+    setShowCropModal(false);
+    setImageToCrop(null);
   };
 
   const renderPrimaryPicture = () => (
     <label htmlFor="fileUpload" className={styles.primaryPic}>
       {pictures[0] ? 
-        (<img src={pictures[0]} alt="Primary" className={styles.uploadedPrimaryPic} />) : 
-        (<div className={styles.primaryPic}></div>)}
-      <input
+        (<img src={pictures[0]} alt="Primary" className={styles.uploadedPrimaryPic} onClick={handleUpload}/>) : 
+         (<div className={styles.primaryPic} onClick={handleUpload}>
+             <img src={uploadImage}/>
+          </div>)}
+      {/* <input
         id="fileUpload"
         type="file"
         accept="image/*"
-        multiple
         onChange={handleUpload}
         style={{ display: 'none' }}
-      />
+      /> */}
     </label>
   );
 
@@ -59,8 +68,18 @@ const RenderPictures = () => {
         {renderPrimaryPicture()}
         {renderSecondaryPictures()}
       </div>
+      {showCropModal && (
+        <Modal
+          isOpen={showCropModal}
+          shouldCloseOnOverlayClick={false} 
+        >
+          <CropImageModal
+            images={pictures}
+            onClose={handleCrop}
+          />
+        </Modal>
+      )}
     </div>
-
   );
 };
 

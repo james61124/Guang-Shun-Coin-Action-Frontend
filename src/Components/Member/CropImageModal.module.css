@@ -1,0 +1,40 @@
+/* CropImageModal.module.css
+
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:active {
+    background-color: #003d7a;
+  }
+  
+  .img-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+  
+  input[type="file"] {
+    display: block;
+    margin: 0 auto;
+  }
+   */

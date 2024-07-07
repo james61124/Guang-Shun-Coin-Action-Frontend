@@ -150,7 +150,7 @@ select {
     color: white;
     outline: none;
     appearance: none;
-    background: url('../../Images/down-select.png') no-repeat right center; 
+    background: url('../../assets/down-select.png') no-repeat right center; 
     padding-right: 30px;
     font-family: 'KingHwa-OldSong';
     font-size: 20px;

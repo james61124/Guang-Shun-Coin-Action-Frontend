@@ -16,7 +16,8 @@
 .primaryPic {
   height: 300px;
   width: 300px;
-  background-color: #3E6F8A;
+  background-color: #7992A0;
+  cursor: pointer;
 }
 
 .uploadedPrimaryPic {

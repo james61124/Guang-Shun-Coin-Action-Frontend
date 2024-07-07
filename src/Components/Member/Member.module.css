@@ -13,7 +13,7 @@
 }
 
 .background-container::before {
-    background: url('../../Images/background.png') center center / cover no-repeat;
+    background: url('../../assets/background.png') center center / cover no-repeat;
 }
 
 .titleContainer {
@@ -67,7 +67,7 @@ select {
     color: white;
     outline: none;
     appearance: none;
-    background: url('../../Images/down-select.png') no-repeat right center; 
+    background: url('../../assets/down-select.png') no-repeat right center; 
     padding-right: 30px;
     font-family: 'KingHwa-OldSong';
     font-size: 20px;
