@@ -3,15 +3,30 @@ import styles from './NewProduct.module.css';
 import { Link } from 'react-router-dom';
 import RenderPictures from './RenderPictures';
 
+import DateTime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
+import moment from 'moment';
+
+import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
+import dayjs from 'dayjs';
+import { TextField } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
 
 const NewProduct = (props) => {
   const [productName, setProductName] = useState('')
   const [category, setCategory] = useState('')
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+  };
   const [reservePrice, setReservePrice] = useState('')
   const [bidIncrement, setBidIncrement] = useState()
-  const [startTime, setStartTime] = useState('')
+  // const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [description, setDescription] = useState('')
+
+  const [startTime, setStartTime] = useState(dayjs('2022-04-17T15:30'));
 
 
 
@@ -26,11 +41,11 @@ const NewProduct = (props) => {
         <RenderPictures />
         <div className={styles.basicInfoContainer}>
           <InputField label="商品名稱" value={productName} onChange={setProductName} />
-          <InputField label="商品類別" value={category} onChange={setCategory} />
           <InputField label="商品底價" value={reservePrice} onChange={setReservePrice} />
           <InputField label="出價增額" value={bidIncrement} onChange={setBidIncrement} />
-          <InputField label="起標時間" value={startTime} onChange={setStartTime} />
-          <InputField label="截標時間" value={endTime} onChange={setEndTime} />
+          <CategoryField label="商品類型" value={category} onChange={handleCategory} />
+          <DateField label="起標時間" value={startTime} onChange={setStartTime} />
+          <DateField label="截標時間" value={endTime} onChange={setEndTime} />
         </div>
       </div>
       <DescriptionSection label="商品細節" value={description} setDescription={setDescription}/>
@@ -54,18 +69,43 @@ const Title = () => {
   )
 }
 
-// const RenderPictures = () => (
-//   <div className={styles.picContainter}>
-//     <div className={styles.primaryPic}></div>
-//     <div className={styles.secondaryPics}>
-//       <div className={styles.secondaryPic}></div>
-//       <div className={styles.secondaryPic}></div>
-//       <div className={styles.secondaryPic}></div>
-//       <div className={styles.secondaryPic}></div>
-//     </div>
-//   </div>
-// );
+const DateField = ({ label, value, onChange }) => {
+  return (
+    <div className={styles.inputContainer}>
+      <div className={styles.inputWrapper}>
+        <div className={styles.inputLabel}>{label}</div>
+        <div className={styles.inputBox}>
+            <DateTime
+            value={moment(value)}
+            onChange={(date) => onChange(date.toISOString())}
+            dateFormat="YYYY-MM-DD"
+            timeFormat="HH:mm:ss"
+            inputProps={{ className: styles.input4w }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
+const CategoryField = ({ label, value, onChange }) => {
+  return (
+    <div className={styles.inputContainer}>
+      <div className={styles.inputWrapper}>
+        <div className={styles.inputLabel}>{label}</div>
+        <div className={styles.inputBox}>
+          <select id="category" value={value} onChange={onChange} className={styles.input4w}>
+            <option value="World">世界錢幣</option>
+            <option value="America">美國錢幣</option>
+            <option value="Europe">歐洲錢幣</option>
+            <option value="Asia">亞洲錢幣</option>
+            <option value="Africa">非洲錢幣</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 
 const InputField = ({ label, value, onChange, inputType, placeholder = '' }) => {

@@ -67,7 +67,7 @@ const MainPage = (props) => {
                 <li><button className={styles.sidebarLabel} value="America" onClick={handleCategory}>美國錢幣</button></li>
                 <li><button className={styles.sidebarLabel} value="Europe" onClick={handleCategory}>歐洲錢幣</button></li>
                 <li><button className={styles.sidebarLabel} value="Asia" onClick={handleCategory}>亞洲錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="Africa" onClick={handleCategory}>非洲錢幣</button></li>
+                <li><button className={styles.sidebarLabel} value="" onClick={handleCategory}>非洲錢幣</button></li>
               </ul>
             </div>
             <ProductCard page={1} sort={"famous"} category={"europe coin"}/>

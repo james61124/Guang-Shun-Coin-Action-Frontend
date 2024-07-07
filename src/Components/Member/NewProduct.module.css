@@ -119,6 +119,7 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     background: transparent;
     border: none;
     outline: 1px solid transparent; 
+    color: black;
 }
 
 /* subtitle */
@@ -200,3 +201,24 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     font-size: 20px; 
     color: white;
 }
+
+/* DateField.module.css */
+
+.dateFieldContainer {
+    display: flex;
+    align-items: center; /* Vertically centers the label and input */
+    margin-bottom: 16px; /* Adds space below each DateField */
+  }
+  
+  .dateFieldLabel {
+    width: 150px; /* Fixed width for the label */
+    font-weight: bold; /* Makes the label text bold */
+    margin-right: 16px; /* Adds space between the label and the input */
+    display: flex;
+    align-items: center; /* Centers the label text vertically */
+  }
+  
+  .dateFieldInput {
+    width: 300px; /* Sets the width of the input box */
+    padding: 8px; /* Adds padding inside the input box */
+  }
