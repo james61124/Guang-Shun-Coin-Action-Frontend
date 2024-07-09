@@ -1,36 +1,128 @@
 import React, { useState } from 'react'
 import styles from './NewProduct.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RenderPictures from './RenderPictures';
-
 import DateTime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
-
-import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 import dayjs from 'dayjs';
-import { TextField } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import axios from 'axios';
+import config from '../../config/config';
 
 
 const NewProduct = (props) => {
   const [productName, setProductName] = useState('')
   const [category, setCategory] = useState('')
+  const [reservePrice, setReservePrice] = useState(0)
+  const [bidIncrement, setBidIncrement] = useState(0)
+  const [startTime, setStartTime] = useState(dayjs())
+  const [endTime, setEndTime] = useState(dayjs())
+  const [description, setDescription] = useState('')
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [pictures, setPictures] = useState([]);
+  const { backendUrl } = config;
+  const navigate = useNavigate();
+
   const handleCategory = (event) => {
     setCategory(event.target.value);
   };
-  const [reservePrice, setReservePrice] = useState('')
-  const [bidIncrement, setBidIncrement] = useState()
-  // const [startTime, setStartTime] = useState('')
-  const [endTime, setEndTime] = useState('')
-  const [description, setDescription] = useState('')
 
-  const [startTime, setStartTime] = useState(dayjs('2022-04-17T15:30'));
+  const handleReservePriceChange = (value) => {
+    const intValue = parseInt(value, 10);
+    setReservePrice(isNaN(intValue) ? 0 : intValue);
+  };
 
+  const handleBidIncrementPriceChange = (value) => {
+    const intValue = parseInt(value, 10);
+    setBidIncrement(isNaN(intValue) ? 0 : intValue);
+  };
 
+  function base64ToBlob(base64, contentType = '', sliceSize = 512) {
+    const byteCharacters = atob(base64);
+    const byteArrays = [];
+  
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+  
+    return new Blob(byteArrays, { type: contentType });
+  }
 
   const onButtonClick = async (e) => {
+    e.preventDefault();
+    const data = {
+      "name": productName,
+      "category": category,
+      "price": reservePrice,  
+      "minBidPrice": bidIncrement,
+      "startDate": startTime,
+      "endDate": endTime,
+      "productDescription": description 
+    };
+  
+    try {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      const response = await axios.post(`${backendUrl}/member/addProduct`, data, config);
+      if (response.data.Status === true) {
+        const productID = response.data.Data.productId;
+        const formData = new FormData();
+        formData.append('productID', productID);
+
+        pictures.forEach((file, index) => {
+          const base64Data = file.split(',')[1]; // get base64 data
+          const blob = base64ToBlob(base64Data, 'image/png');
+          formData.append('files', blob, `image${index}.png`);
+        });
+
+        try {
+          const uploadResponse = await axios.post(`${backendUrl}/member/addImage`, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': `Bearer ${token}`
+            },
+          });
+          if (uploadResponse.data.Status === true) {
+            navigate('/product');
+          } else if (uploadResponse.data.Message === "File exceeds 10MB") {
+            setShowError(true);
+            setErrorMessage('檔案大小超過10M');
+          }
+        } catch (uploadError) {
+          setShowError(true);
+          setErrorMessage('資料庫連線錯誤');
+        }
+
+      } else if (response.data.Message === "Authorization header is missing") {
+        navigate('/login');
+      } else if (response.data.Message === "productName is empty") {
+        setShowError(true);
+        setErrorMessage('請輸入商品名稱');
+      } else if (response.data.Message === "endDate earlier than startDate") {
+        setShowError(true);
+        setErrorMessage('結標時間不能早於起標時間');
+      } else {
+        setShowError(true);
+        setErrorMessage('資料庫連線錯誤');
+      }
+
+    } catch (error) {
+      console.log('An error occurred during addProduct: ', error);
+      setShowError(true);
+      setErrorMessage('資料庫連線錯誤');
+    }
+
   };
 
   return (
@@ -38,14 +130,15 @@ const NewProduct = (props) => {
       <BackLink />
       <Title />
       <div className={styles.rowContainer}>
-        <RenderPictures />
+        <RenderPictures images={pictures} setImages={setPictures} />
         <div className={styles.basicInfoContainer}>
           <InputField label="商品名稱" value={productName} onChange={setProductName} />
-          <InputField label="商品底價" value={reservePrice} onChange={setReservePrice} />
-          <InputField label="出價增額" value={bidIncrement} onChange={setBidIncrement} />
           <CategoryField label="商品類型" value={category} onChange={handleCategory} />
+          <InputField label="商品底價" value={reservePrice} onChange={handleReservePriceChange} />
+          <InputField label="出價增額" value={bidIncrement} onChange={handleBidIncrementPriceChange} />
           <DateField label="起標時間" value={startTime} onChange={setStartTime} />
           <DateField label="截標時間" value={endTime} onChange={setEndTime} />
+          <label className={styles.errorLabel} style={{ visibility: showError ? 'visible' : 'hidden' }}>{errorMessage}</label>
         </div>
       </div>
       <DescriptionSection label="商品細節" value={description} setDescription={setDescription}/>

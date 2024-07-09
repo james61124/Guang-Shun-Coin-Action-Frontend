@@ -23,6 +23,7 @@ const Login = (props) => {
       const response = await axios.post(`${backendUrl}/user/login`, data);
       if (response.data.Status === true) {
         setShowError(false);
+        localStorage.setItem('token', response.data.Data.Token);
         navigate('/product');
       } else {
         setShowError(true);

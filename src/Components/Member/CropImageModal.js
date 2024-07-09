@@ -5,12 +5,12 @@ import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './CropImageModal.module.css';
 
-// Drag item type
+// 拖拽项的类型
 const ItemType = {
   IMAGE: 'image'
 };
 
-// Draggable image component
+// 拖拽图片组件
 const DraggableImage = ({ index, image, moveImage, handleEdit, handleDelete }) => {
   const [, ref] = useDrag({
     type: ItemType.IMAGE,
@@ -33,7 +33,7 @@ const DraggableImage = ({ index, image, moveImage, handleEdit, handleDelete }) =
         src={image}
         alt={`Cropped ${index}`}
         style={{ width: '100px', height: '100px', objectFit: 'cover', cursor: 'pointer' }}
-        onClick={() => handleEdit(index)}  // Call handleEdit when the image is clicked
+        onClick={() => handleEdit(index)}  // 点击图片时调用 handleEdit
       />
       <button
         onClick={() => handleDelete(index)}
@@ -54,29 +54,29 @@ const DraggableImage = ({ index, image, moveImage, handleEdit, handleDelete }) =
   );
 };
 
-const CropImageModal = ({ onClose, images }) => {
-  const [image, setImage] = useState(null);  // Current uploaded image
-  const [originalImage, setOriginalImage] = useState(null);  // Original image
+const CropImageModal = ( {onClose, images} ) => {
+  const [image, setImage] = useState(null);  // 当前上传的图片
+  const [originalImage, setOriginalImage] = useState(null);  // 原图
   const [originalImages, setOriginalImages] = useState(images); 
-  const [croppedImages, setCroppedImages] = useState(images);  // Store cropped images
-  const [currentIndex, setCurrentIndex] = useState(null);  // Current index of the image to be edited
-  const cropperRef = useRef(null);  // Reference to Cropper instance
-  const fileInputRef = useRef(null);  // Reference to file input
+  const [croppedImages, setCroppedImages] = useState(images);  // 存储裁剪后的图片
+  const [currentIndex, setCurrentIndex] = useState(null);  // 当前要修改的图片索引
+  const cropperRef = useRef(null);  // Cropper 实例引用
+  const fileInputRef = useRef(null);  // 文件输入框的引用
 
-  // Handle file upload
+  // 处理文件上传
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
         setOriginalImage(reader.result);
-        setImage(reader.result);  // Set original image as the current image
+        setImage(reader.result);  // 将原图设置为当前图像
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Crop image and update the image list
+  // 裁剪图片并更新图片列表
   const handleCrop = () => {
     if (cropperRef.current) {
       const cropper = cropperRef.current.cropper;
@@ -90,7 +90,7 @@ const CropImageModal = ({ onClose, images }) => {
             updatedImages.push(croppedImage);
           }
         }
-        return updatedImages.slice(0, 5);  // Limit to 5 images
+        return updatedImages.slice(0, 5);  // 限制最多 5 张图片
       });
       setOriginalImages(prevImages => {
         const updatedImages = [...prevImages];
@@ -101,32 +101,33 @@ const CropImageModal = ({ onClose, images }) => {
             updatedImages.push(image);
           }
         }
-        return updatedImages.slice(0, 5);  // Limit to 5 images
+        return updatedImages.slice(0, 5);  // 限制最多 5 张图片
       });
-      setImage(null);  // Clear current image
-      setCurrentIndex(null);  // Reset current index
+      setImage(null);  // 清除当前图片
+      setCurrentIndex(null);  // 重置当前索引
+      
     }
   };
 
-  // Handle cancel action
+  // 处理取消操作
   const handleClose = () => {
-    setImage(null);  // Clear current image
-    setCurrentIndex(null);  // Reset current index
+    setImage(null);  // 清除当前图片
+    setCurrentIndex(null);  // 重置当前索引
   };
 
-  // Handle edit action
+  // 处理修改操作
   const handleEdit = (index) => {
     setCurrentIndex(index);
     setImage(originalImages[index]);
   };
 
-  // Handle delete action
+  // 处理删除操作
   const handleDelete = (index) => {
     setCroppedImages(prevImages => prevImages.filter((_, i) => i !== index));
     setOriginalImages(prevImages => prevImages.filter((_, i) => i !== index));
   };
 
-  // Handle image reordering
+  // 处理图片重新排序
   const moveImage = (fromIndex, toIndex) => {
     const updatedImages = [...croppedImages];
     const [movedImage] = updatedImages.splice(fromIndex, 1);
@@ -170,10 +171,11 @@ const CropImageModal = ({ onClose, images }) => {
               background={false}
               responsive={true}
               checkOrientation={false}
-              dragMode="move"  // Allow dragging the crop box
+              dragMode="move"  // 允许拖曳裁剪框
             />
             <button onClick={handleCrop}>Crop</button>
             <button onClick={handleClose}>Cancel</button>
+            
           </div>
         )}
         <div>

@@ -187,7 +187,8 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    display: block; /* 確保元素是塊級的 */
+    display: block;
+    cursor: pointer;
 }
 
 .inputButton {
@@ -200,7 +201,16 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
     color: white;
+    cursor: pointer;
 }
+
+.errorLabel {
+    color: red;
+    font-family: 'KingHwa-OldSong';
+    font-size: 12px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+  }
 
 /* DateField.module.css */
 
