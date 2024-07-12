@@ -22,13 +22,10 @@ const Navbar = () => {
                             <Link to="/login">登入</Link>
                         </li>
                         <li>
-                            <Link to="/newproduct">新增商品</Link>
-                        </li>
-                        <li>
-                            <Link to="/detail">商品細節</Link>
-                        </li>
-                        <li>
                             <Link to="/product">商品總覽</Link>
+                        </li>
+                        <li>
+                            <Link to="/newproduct">新增商品</Link>
                         </li>
                         <li>
                             <Link to="/member">會員專區</Link>
@@ -39,7 +36,7 @@ const Navbar = () => {
                     <Route path="/login" element={<Login/>} />
                     <Route path="/register" element={<Register/>} />
                     <Route path="/product" element={<MainPage/>} />
-                    <Route path="/detail" element={<ProductPage/>} />
+                    <Route path="/detail/:productID" element={<ProductPage />} />
                     <Route path="/member" element={<Member/>} />
                     <Route path="/newproduct" element={<NewProduct/>} />
                     <Route path="/editMember" element={<EditMember/>} />

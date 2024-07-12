@@ -12,11 +12,11 @@ import config from '../../config/config';
 
 const NewProduct = (props) => {
   const [productName, setProductName] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('World')
   const [reservePrice, setReservePrice] = useState(0)
   const [bidIncrement, setBidIncrement] = useState(0)
-  const [startTime, setStartTime] = useState(dayjs())
-  const [endTime, setEndTime] = useState(dayjs())
+  const [startTime, setStartTime] = useState(dayjs().toISOString())
+  const [endTime, setEndTime] = useState(dayjs().toISOString())
   const [description, setDescription] = useState('')
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -55,8 +55,29 @@ const NewProduct = (props) => {
     return new Blob(byteArrays, { type: contentType });
   }
 
-  const onButtonClick = async (e) => {
-    e.preventDefault();
+  const uploadImage = async (formData) => {
+    try {
+      const token = localStorage.getItem('token');
+      const uploadResponse = await axios.post(`${backendUrl}/member/addImage`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      console.log(uploadResponse.data)
+      if (uploadResponse.data.Status === true) {
+        navigate('/product');
+      } else if (uploadResponse.data.Message === "File exceeds 10MB") {
+        setShowError(true);
+        setErrorMessage('檔案大小超過10M');
+      }
+    } catch (uploadError) {
+      setShowError(true);
+      setErrorMessage('資料庫連線錯誤');
+    }
+  }
+
+  const uploadProductInfo = async () => {
     const data = {
       "name": productName,
       "category": category,
@@ -86,23 +107,7 @@ const NewProduct = (props) => {
           formData.append('files', blob, `image${index}.png`);
         });
 
-        try {
-          const uploadResponse = await axios.post(`${backendUrl}/member/addImage`, formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `Bearer ${token}`
-            },
-          });
-          if (uploadResponse.data.Status === true) {
-            navigate('/product');
-          } else if (uploadResponse.data.Message === "File exceeds 10MB") {
-            setShowError(true);
-            setErrorMessage('檔案大小超過10M');
-          }
-        } catch (uploadError) {
-          setShowError(true);
-          setErrorMessage('資料庫連線錯誤');
-        }
+        uploadImage(formData);
 
       } else if (response.data.Message === "Authorization header is missing") {
         navigate('/login');
@@ -122,7 +127,11 @@ const NewProduct = (props) => {
       setShowError(true);
       setErrorMessage('資料庫連線錯誤');
     }
+  }
 
+  const onButtonClick = async (e) => {
+    e.preventDefault();
+    uploadProductInfo();
   };
 
   return (

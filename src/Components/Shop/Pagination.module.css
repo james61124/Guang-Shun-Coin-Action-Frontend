@@ -1,0 +1,12 @@
+.pageChange {
+    border: none;
+    cursor: pointer;
+    background: rgba(224, 236, 242, 0.75);
+}
+
+.page {
+    border: none;
+    cursor: pointer;
+    color: black;
+    background: rgba(224, 236, 242, 0.75);
+}

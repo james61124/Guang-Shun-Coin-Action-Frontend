@@ -29,7 +29,9 @@ const RenderPictures = ({ images, setImages }) => {
       {pictures[0] ? 
         (<img src={pictures[0]} alt="Primary" className={styles.uploadedPrimaryPic} onClick={handleUpload}/>) : 
          (<div className={styles.primaryPic} onClick={handleUpload}>
-             <img src={uploadImage}/>
+            <div>
+              <img src={uploadImage} className={styles.uploadIcon}/>
+            </div>
           </div>)}
     </label>
   );

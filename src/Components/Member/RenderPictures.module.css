@@ -20,13 +20,25 @@
   cursor: pointer;
 }
 
+/* .uploadIcon {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
 .uploadedPrimaryPic {
   height: 300px;
   width: 300px;
+
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+
   background-color: transparent;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 
 .secondaryPics {

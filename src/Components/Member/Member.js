@@ -47,13 +47,11 @@ const Member = (props) => {
                 <div class={styles.indexList}>
                     <div class={styles.indexItemWrapper}>
                         <Link class={styles.indexItem} to="/member">追蹤商品</Link>
-                        <Link class={styles.indexItem} to="/member">我的貼文</Link>
-                        <Link class={styles.indexItem} to="/member">/歷史出價/</Link>
+                        <Link class={styles.indexItem} to="/member">歷史出價</Link>
                         <Link class={styles.indexItem} to="/member">得標商品</Link>
-                        <Link class={styles.indexItem} to="/member">配送進度</Link>
-                        <Link class={styles.indexItem} to="/editMember">/編輯資訊/</Link>
-                        {/* newproduct link for testing */}
-                        <Link class={styles.indexItem} to="/newProduct">/新增商品/</Link> 
+                        <Link class={styles.indexItem} to="/member">編輯商品</Link>
+                        {/* <Link class={styles.indexItem} to="/member">配送進度</Link> */}
+                        <Link class={styles.indexItem} to="/editMember">編輯資訊</Link>
                     </div>
                 </div>
             </div>

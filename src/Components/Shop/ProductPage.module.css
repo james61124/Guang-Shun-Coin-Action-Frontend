@@ -119,6 +119,11 @@
     padding-left: 8px;
     background: black;
     margin-top:10px;
+    cursor: pointer;
+}
+
+.bidBox:hover {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .bidButton {
@@ -131,6 +136,7 @@
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
     color: white;
+    cursor: pointer;
   }
 
 
@@ -184,21 +190,59 @@
     top: 8px;
     left: 5px;
 }
-/* history container */
+
+/* History Container */
 .historyContainer {
     display: flex;
     flex-direction: column;
-    /* width: 1100px; */
-    /* height: 400px; */
-
     border-radius: 10px;
     background-color: #EBDCCB;
     margin-bottom: 10px;
-}
-.historyContainer p{
     font-family: 'KingHwa-OldSong';
-    
-}
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 1000px; /* Set a max-width for better responsiveness */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Title */
+  .historyTitle {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d5a77b;
+    margin-bottom: 10px;
+  }
+  
+  /* History Info */
+  .historyInfo {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #d5a77b;
+  }
+  
+  /* Username */
+  .historyUsername {
+    flex: 1; /* Takes up space in the front */
+    text-align: center;
+  }
+  
+  /* Bid Price */
+  .historyBidPrice {
+    flex: 1; /* Takes up space in the center */
+    text-align: center;
+  }
+  
+  /* Bid Time */
+  .historyBidTime {
+    flex: 1; /* Takes up space in the end */
+    text-align: center;
+  }
+
+
 .descriptionContainer {
     display: flex;
     flex-direction: column;

@@ -120,6 +120,15 @@
 
 }
 
+.sidebarContainer button:hover {
+    background: #B89E80;
+    cursor: pointer;
+}
+
+.sidebarContainer button.selected {
+    background: #AB8849;
+}
+
 /* sorting setting */
 .sortingContainer {
     height: 50px;

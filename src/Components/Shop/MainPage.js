@@ -1,7 +1,10 @@
 // import React, { useState, useEffect } from 'react'
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './MainPage.module.css';
 import ProductCard from './ProductCard';
+import config from '../../config/config';
+import axios from 'axios';
+import Pagination from './Pagination';
 // import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 // import axios from 'axios';
 
@@ -32,16 +35,84 @@ const MainPage = (props) => {
 
     const [selectedSorting, setSelectedSorting] = useState('Sorting');
     const [selectedCategory, setSelectedCategory] = useState('World');
-  
-    console.log('Selected Sorting:', selectedSorting);
-    console.log('Selected Category:', selectedCategory);
+    const [selectedPage, setSelectedPage] = useState(1);
+    const [activeButton, setActiveButton] = useState(null);
+    const [cards, setCards] = useState([])
+    const { backendUrl } = config;
+    const [totalPages, setTotalPages] = useState(1);
+
+    const pageRangeDisplayed = 5;
+    const handlePageChange = (pageNumber) => {
+      setSelectedPage(pageNumber);
+    };
   
     const handleSorting = (event) => {
       setSelectedSorting(event.target.value);
     };
     const handleCategory = (event) => {
       setSelectedCategory(event.target.value);
+      setActiveButton(event.target.value);
+      fetchProducts(selectedPage, selectedCategory, selectedSorting);
     }
+
+    const fetchProducts = async (page, category, sorting) => {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      const data = {
+        "page": page,
+        "sort": sorting,
+        "category": category
+      };
+  
+      try {
+        const response = await axios.post(`${backendUrl}/shop/product`, data, config);
+        if (response && response.data && response.data.Data) {
+          const productData = response.data.Data.map(product => ({
+            productID: product.productId,
+            product: product.productName,
+            imgUrl: `${backendUrl}${product.imgUrl}`
+          }));
+          setCards(productData);
+        } else {
+          setCards([]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+
+    const fetchTotalProducts = async (category) => {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      const data = {
+        "category": category
+      };
+  
+      try {
+        const response = await axios.post(`${backendUrl}/shop/totalProduct`, data, config);
+        if (response.data.Status === true) {
+          console.log(response.data.Data.total)
+          setTotalPages(response.data.Data.total);
+        } else {
+          setTotalPages(1);
+        }
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+
+    useEffect(() => {
+      fetchProducts(selectedPage, selectedCategory, selectedSorting);
+      fetchTotalProducts(selectedCategory);
+    }, [selectedPage, selectedCategory, selectedSorting]);
   
     return (
       <div className={styles.mainContainer}>
@@ -63,17 +134,62 @@ const MainPage = (props) => {
           <div className={styles.infoContainer}>
             <div className={styles.sidebarContainer}>
               <ul>
-                <li><button className={styles.sidebarLabel} value="World" onClick={handleCategory}>世界錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="America" onClick={handleCategory}>美國錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="Europe" onClick={handleCategory}>歐洲錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="Asia" onClick={handleCategory}>亞洲錢幣</button></li>
-                <li><button className={styles.sidebarLabel} value="" onClick={handleCategory}>非洲錢幣</button></li>
+              <li>
+                    <button
+                        className={`${styles.sidebarLabel} ${activeButton === "World" ? styles.selected : ''}`}
+                        value="World"
+                        onClick={handleCategory}
+                    >
+                        世界錢幣
+                    </button>
+                </li>
+                <li>
+                    <button
+                        className={`${styles.sidebarLabel} ${activeButton === "America" ? styles.selected : ''}`}
+                        value="America"
+                        onClick={handleCategory}
+                    >
+                        美國錢幣
+                    </button>
+                </li>
+                <li>
+                    <button
+                        className={`${styles.sidebarLabel} ${activeButton === "Europe" ? styles.selected : ''}`}
+                        value="Europe"
+                        onClick={handleCategory}
+                    >
+                        歐洲錢幣
+                    </button>
+                </li>
+                <li>
+                    <button
+                        className={`${styles.sidebarLabel} ${activeButton === "Asia" ? styles.selected : ''}`}
+                        value="Asia"
+                        onClick={handleCategory}
+                    >
+                        亞洲錢幣
+                    </button>
+                </li>
+                <li>
+                    <button
+                        className={`${styles.sidebarLabel} ${activeButton === "Africa" ? styles.selected : ''}`}
+                        value="Africa"
+                        onClick={handleCategory}
+                    >
+                        非洲錢幣
+                    </button>
+                </li>
               </ul>
             </div>
-            <ProductCard page={1} sort={"famous"} category={"europe coin"}/>
+            <ProductCard cards={cards}/>
           </div>
-
+          <Pagination
+            totalPages={totalPages}
+            pageRangeDisplayed={pageRangeDisplayed}
+            onPageChange={handlePageChange}
+          />
         </div>
+        
       </div>
   
   
