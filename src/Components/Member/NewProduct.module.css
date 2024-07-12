@@ -9,7 +9,7 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     /* align-items: center;
     justify-content: center; */
     background: #38515F;
-    padding:50px;
+    padding: 50px;
     overflow: hidden;
 }
 

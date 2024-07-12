@@ -22,11 +22,11 @@ const ProductCard = ({cards}) => {
 
 const Card = ({key, product, imgUrl, productID}) => {
   const { backendUrl } = config;
-  const [trackingImage, setTrackingImage] = useState(`${backendUrl}/assets/untrack.png`);
+  const [trackingImage, setTrackingImage] = useState(`/assets/untrack.png`);
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setTrackingImage(trackingImage === `${backendUrl}/assets/untrack.png` ? `${backendUrl}/assets/track.png` : `${backendUrl}/assets/untrack.png`);
+    setTrackingImage(trackingImage === `/assets/untrack.png` ? `/assets/track.png` : `/assets/untrack.png`);
   };
 
   const handleProduct = (id) => {
@@ -38,16 +38,15 @@ const Card = ({key, product, imgUrl, productID}) => {
       <div className={styles.productInfo} >
         <div className={styles.productPic} onClick={() => handleProduct(productID)}>
           <img src={imgUrl} alt={product} className={styles.image}></img>
-          <p>{product}</p>
         </div>
-        <div className={styles.productTime}></div>
-        <div >
-          {/* <button onClick={handleClick} className={styles.productTracking}></button> */}
+        {/* <div className={styles.productTime}></div> */}
+        <div>
           <button onClick={handleClick} className={styles.productTracking}>
-          <img src={trackingImage} alt="" />
+            <img src={trackingImage} alt="" />
           </button>
         </div>
       </div>
+      <div className={styles.productTitle}>{product}</div>
     </div>
   )
 }

@@ -8,13 +8,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    padding: 50px;
     background: #38515F;
 }
 
-.background-container::before {
+/* .background-container::before {
     background: url('../../assets/background.png') center center / cover no-repeat;
-}
+} */
 
 .titleContainer {
     display: flex;
@@ -67,7 +67,7 @@ select {
     color: white;
     outline: none;
     appearance: none;
-    background: url('../../assets/down-select.png') no-repeat right center; 
+    background: url('../../../public/assets/down-select.png') no-repeat right center; 
     padding-right: 30px;
     font-family: 'KingHwa-OldSong';
     font-size: 20px;

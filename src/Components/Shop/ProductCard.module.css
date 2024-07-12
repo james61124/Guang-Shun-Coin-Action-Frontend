@@ -22,7 +22,7 @@
     /* color: red; */
 }
 .productCard {
-    height: 300px;
+    height: 260px;
     width: 260px;
     margin-left: 10px;
     margin-right: 10px;
@@ -33,17 +33,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 280px;
     width: 280px;
     position: relative;
 }
 
 
 .image {
-    width: 100%;  
-    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover; 
-    /* border-radius: 10px; */
+}
+
+.productTitle {
+    color: black;
+    font-size: 20px;
+    font-family: 'KingHwa-OldSong'; 
+    margin-top: 8px; /* 可根据需要调整 */
+    font-size: 24px; /* 可根据需要调整 */
+    text-align: center; /* 居中对齐 */
 }
 
 .productPic {
@@ -60,11 +71,11 @@
 }
 .productTracking{
     position: absolute;
-    top: 12px;
-    left: 218px;
+    top: 10px;
+    right: 10px;
     width: 30px;
     height: 30px;
-    /* background-color: red; */
+    background-color: transparent;
     border: none;
     cursor: pointer;
 }

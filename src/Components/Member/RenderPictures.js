@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './RenderPictures.module.css';
 import CropImageModal from './CropImageModal';
 import Modal from 'react-modal';
-import uploadImage from '../../assets/upload-image.png'; 
+// import uploadImage from '/assets/upload-image.png'; 
 
 const MAX_PICTURES = 5;
 
@@ -29,8 +29,8 @@ const RenderPictures = ({ images, setImages }) => {
       {pictures[0] ? 
         (<img src={pictures[0]} alt="Primary" className={styles.uploadedPrimaryPic} onClick={handleUpload}/>) : 
          (<div className={styles.primaryPic} onClick={handleUpload}>
-            <div>
-              <img src={uploadImage} className={styles.uploadIcon}/>
+            <div className={styles.uploadPlaceholder}>
+              <img src={`/assets/upload-image.png`} className={styles.uploadIcon}/>
             </div>
           </div>)}
     </label>

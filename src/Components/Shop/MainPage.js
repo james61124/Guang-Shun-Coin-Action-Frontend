@@ -97,7 +97,7 @@ const MainPage = (props) => {
       };
   
       try {
-        const response = await axios.post(`${backendUrl}/shop/totalProduct`, data, config);
+        const response = await axios.post(`${backendUrl}/shop/totalPagesOfProduct`, data, config);
         if (response.data.Status === true) {
           console.log(response.data.Data.total)
           setTotalPages(response.data.Data.total);
