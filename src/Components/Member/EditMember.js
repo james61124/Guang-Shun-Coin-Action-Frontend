@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './EditMember.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import config from '../../config/config';
 
 
 const EditMember = (props) => {
   const [realName, setRealName] = useState('')
+  const [nickName, setNickName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [fbAccount, setfbAccount] = useState('')
   const [email, setEmail] = useState('')
@@ -13,9 +16,42 @@ const EditMember = (props) => {
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPasswd, setconfirmPasswd] = useState('')
+  const { backendUrl } = config;
 
-  const onButtonClick = async (e) => {
+  
+  const handleSubmit = async (e) => {
   };
+
+  const getUserInfo = async (e) => {
+    const token = localStorage.getItem('token');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    };
+    const data = {};
+
+    try {
+        const response = await axios.post(`${backendUrl}/member/getUserInfo`, data, config);
+        if (response && response.data && response.data.Data) {
+          setRealName(response.data.Data.realName);
+          setNickName(response.data.Data.nickName);
+          setPhoneNumber(response.data.Data.cellphone);
+          setfbAccount(response.data.Data.fbAccount);
+          setEmail(response.data.Data.email);
+          setShippingAddr(response.data.Data.shippingAddr);
+          setPostcode(response.data.Data.postcode);
+          setAccount(response.data.Data.username);
+        }
+    } catch (error) {
+        // console.error('Failed to fetch products:', error);
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo();
+  }, []); 
+
 
   return (
     <div className={styles.mainContainer}>
@@ -23,16 +59,15 @@ const EditMember = (props) => {
       <Reminder />
       <div className={styles.contentContainer} >
         <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
+        <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" />
         <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" />
         <InputField label="臉書帳號" value={fbAccount} onChange={setfbAccount} inputType="4w" />
         <InputField label="電子郵件" value={email} onChange={setEmail} inputType="4w" />
         <InputField label="收貨地址" value={shippingAddr} onChange={setShippingAddr} inputType="4w" />
         <InputField label="郵遞區號" value={postcode} onChange={setPostcode} inputType="4w" />
         <InputField label="帳號" value={account} onChange={setAccount} inputType="text" />
-        <InputField label="密碼" value={password} onChange={setPassword} inputType="text" placeholder="需含大小寫字母與數字" />
-        <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} inputType="4w" />
       </div>
-      <SubmitButton onButtonClick={onButtonClick} />
+      <SubmitButton onButtonClick={handleSubmit} />
     </div>
   )
 }

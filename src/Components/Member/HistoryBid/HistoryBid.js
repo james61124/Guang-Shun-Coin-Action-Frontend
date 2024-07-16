@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import styles from './Member.module.css';
+import styles from './HistoryBid.module.css';
 import Product from './Product';
 import Pagination from './Pagination';
 import { BrowserRouter as Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
-import config from '../../config/config';
+import config from '../../../config/config';
 
-const Member = (props) => {
+const HistoryBid = (props) => {
 
     const pageRangeDisplayed = 5;
     const [selectedValue, setSelectedValue] = useState('');
@@ -32,6 +32,7 @@ const Member = (props) => {
         if (response && response.data && response.data.Data) {
             console.log(response)
             const historyData = response.data.Data.map(history => ({
+                productID: history.productID,
                 productName: history.productName,
                 bidPrice: history.bidPrice,
                 bidTime: history.bidTime,
@@ -109,10 +110,10 @@ const Member = (props) => {
                 <div className={styles.indexContainer}>
                     <div class={styles.indexList}>
                         <div class={styles.indexItemWrapper}>
-                            <Link class={styles.indexItem} to="/member">追蹤商品</Link>
-                            <Link class={styles.indexItem} to="/member">歷史出價</Link>
-                            <Link class={styles.indexItem} to="/member">得標商品</Link>
-                            <Link class={styles.indexItem} to="/member">我的商品</Link>
+                            <Link class={styles.indexItem} to="/historyBid">追蹤商品</Link>
+                            <Link class={styles.indexItem} to="/historyBid">歷史出價</Link>
+                            <Link class={styles.indexItem} to="/historyBid">得標商品</Link>
+                            <Link class={styles.indexItem} to="/historyBid">我的商品</Link>
                             {/* <Link class={styles.indexItem} to="/member">配送進度</Link> */}
                             <Link class={styles.indexItem} to="/editMember">編輯資訊</Link>
                         </div>
@@ -123,6 +124,7 @@ const Member = (props) => {
                         {history.map((product, i) => (
                             <div key={i}>
                                 <Product 
+                                    id={product.productID}
                                     name={product.productName} 
                                     status={product.status}
                                     bidTime={product.bidTime} 
@@ -146,4 +148,4 @@ const Member = (props) => {
 }
 
 
-export default Member
+export default HistoryBid

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'KingHwa-OldSong'; 
-    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+    src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
 }
 
 .product {
@@ -19,6 +19,7 @@
     width: 80px;
     height: 80px;
     background-color: #3E6F8A;
+    cursor: pointer;
 }
 
 .productInfo {

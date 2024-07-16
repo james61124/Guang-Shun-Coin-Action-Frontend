@@ -123,7 +123,6 @@ const MainPage = (props) => {
               <div className={styles.sortingButton}>
                   <div className={styles.sortingList} >
                       <select id="sorting" value={selectedSorting} onChange={handleSorting}>
-                          <option value="Sorting">商品排序</option>
                           <option value="Popular">熱門程度</option>
                           <option value="NewFirst">由新到舊</option>
                           <option value="OldFirst">由舊到新</option>

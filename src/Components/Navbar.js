@@ -5,13 +5,20 @@ import Login from './Login';
 import Register from './Register';
 import MainPage from './Shop/MainPage';
 import ProductPage from './Shop/ProductPage';
-import Member from './Member/Member';
+import HistoryBid from './Member/HistoryBid/HistoryBid';
 import NewProduct from './Member/NewProduct';
 import EditMember from './Member/EditMember';
 
 const Navbar = () => {
     // Example state usage with useState hook
     const [isActive, setIsActive] = useState(false);
+    const handleLogout = () => {
+        // // 这里放置登出的逻辑
+        // localStorage.removeItem('token');
+        // localStorage.removeItem('username');
+        // setIsLoggedIn(false);
+        // setUsername('');
+      };
 
     return (
         <Router>
@@ -28,7 +35,7 @@ const Navbar = () => {
                             <Link to="/newproduct">新增商品</Link>
                         </li>
                         <li>
-                            <Link to="/member">會員專區</Link>
+                            <Link to="/historyBid">會員專區</Link>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +44,7 @@ const Navbar = () => {
                     <Route path="/register" element={<Register/>} />
                     <Route path="/product" element={<MainPage/>} />
                     <Route path="/detail/:productID" element={<ProductPage />} />
-                    <Route path="/member" element={<Member/>} />
+                    <Route path="/historyBid" element={<HistoryBid/>} />
                     <Route path="/newproduct" element={<NewProduct/>} />
                     <Route path="/editMember" element={<EditMember/>} />
                 </Routes>

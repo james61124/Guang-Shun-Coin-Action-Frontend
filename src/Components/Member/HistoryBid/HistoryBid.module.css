@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'KingHwa-OldSong'; 
-    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+    src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
   }
 
 .mainContainer {
@@ -67,7 +67,7 @@ select {
     color: white;
     outline: none;
     appearance: none;
-    background: url('../../../public/assets/down-select.png') no-repeat right center; 
+    background: url('../../../../public/assets/down-select.png') no-repeat right center; 
     padding-right: 30px;
     font-family: 'KingHwa-OldSong';
     font-size: 20px;

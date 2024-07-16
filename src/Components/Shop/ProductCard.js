@@ -25,7 +25,37 @@ const Card = ({key, product, imgUrl, productID}) => {
   const [trackingImage, setTrackingImage] = useState(`/assets/untrack.png`);
   const navigate = useNavigate();
 
+  const sendStarInfo = async () => {
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    };
+    var data;
+
+    if (trackingImage === `/assets/untrack.png`) {
+      data = {
+        "productID": productID,
+        "isStar": true
+      };
+    } else {
+      data = {
+        "productID": productID,
+        "isStar": false
+      };
+    }
+
+    try {
+      console.log(data)
+      const response = await axios.post(`${backendUrl}/shop/star`, data, config);
+    } catch (error) {
+      console.error('Failed to give star info:', error);
+    }
+  };
+
   const handleClick = () => {
+    sendStarInfo();
     setTrackingImage(trackingImage === `/assets/untrack.png` ? `/assets/track.png` : `/assets/untrack.png`);
   };
 
