@@ -63,17 +63,24 @@
     color: black;
   }
 
+  .inputNecessary {
+    color: red;
+    position: absolute;
+    top: 0px;
+  }
+
   .inputWrapper {
     position: relative;
     width: 100%;
   }
   
   .inputContainer > .errorLabel {
-    color: red;
+    color: rgb(255, 159, 34);
     font-family: 'KingHwa-OldSong';
-    font-size: 12px;
-    padding-top: 2%;
-    padding-bottom: 3%;
+    font-size: 17px;
+    /* font-weight: 500; */
+    /* padding-top: 2%;
+    padding-bottom: 3%; */
   }
   
   .inputBox {

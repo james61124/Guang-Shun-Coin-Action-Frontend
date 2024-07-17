@@ -39,7 +39,6 @@ const Register = (props) => {
 
     try {
       const response = await axios.post(`${backendUrl}/user/register`, data);
-      console.log(response.data)
       if (response.data.Status === true) {
         setShowError(false);
         navigate('/login');
@@ -67,12 +66,15 @@ const Register = (props) => {
       } else if (response.data.Message === 'invalid phone number format') {
         setShowError(true);
         setErrorMessage('手機號碼格式錯誤');
+      } else if (response.data.Message === 'cellphone already exists') {
+        setShowError(true);
+        setErrorMessage('該手機號碼已註冊過');
       } else if (response.data.Message === 'password and passwordConfirm is different') {
         setShowError(true);
         setErrorMessage('密碼與二次密碼不符');
       } else if (response.data.Message === 'invalid password format') {
         setShowError(true);
-        setErrorMessage('密碼須包含大小寫及數字');
+        setErrorMessage('密碼須包含大小寫英文及數字');
       } else {
         setShowError(true);
         setErrorMessage('訊息錯誤');
@@ -91,14 +93,14 @@ const Register = (props) => {
       <div className={styles.contentContainer} >
         <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
         <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" />
-        <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" />
+        <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" necessary={true}/>
         <InputField label="臉書帳號" value={fbAccount} onChange={setfbAccount} inputType="4w" />
         <InputField label="電子郵件" value={email} onChange={setEmail} inputType="4w" />
-        <InputField label="收貨地址" value={shippingAddr} onChange={setShippingAddr} inputType="4w" />
+        <InputField label="收貨地址" value={shippingAddr} onChange={setShippingAddr} inputType="4w" necessary={true}/>
         <InputField label="郵遞區號" value={postcode} onChange={setPostcode} inputType="4w" />
-        <InputField label="帳號" value={account} onChange={setAccount} inputType="text" />
-        <InputField label="密碼" value={password} onChange={setPassword} inputType="text" placeholder="需含大小寫字母與數字" />
-        <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} error={errorMessage} showError={showError} inputType="4w" />
+        <InputField label="帳號" value={account} onChange={setAccount} inputType="text" necessary={true}/>
+        <InputField label="密碼" value={password} onChange={setPassword} inputType="text" placeholder="需含大小寫字母與數字" necessary={true}/>
+        <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} error={errorMessage} showError={showError} inputType="4w" necessary={true}/>
       </div>
       <SubmitButton onButtonClick={onButtonClick} />
     </div>
@@ -116,16 +118,19 @@ const Title = () => {
 const Reminder = () => {
   return (
     <div className={styles.reminderContainer}>
-      <p>◎ 帳號、手機、臉書帳號不可重複</p>
+      <p>◎ 帳號、手機不可重複</p>
     </div>
   )
 }
 
-const InputField = ({ label, value, onChange, inputType, placeholder = '', error = '', showError = false }) => {
+const InputField = ({ label, value, onChange, inputType, placeholder = '', error = '', showError = false, necessary = false }) => {
   return (
     <div className={styles.inputContainer}>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>{label}</label>
+        <label className={styles.inputLabel}>
+          {label}
+          <label className={styles.inputNecessary} style={{ visibility: necessary ? 'visible' : 'hidden'}}>*</label>
+        </label>
         <div className={styles.inputBox}>
           <input
             value={value}

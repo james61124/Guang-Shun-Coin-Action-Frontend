@@ -116,6 +116,7 @@ const HistoryBid = (props) => {
                             <Link class={styles.indexItem} to="/historyBid">我的商品</Link>
                             {/* <Link class={styles.indexItem} to="/member">配送進度</Link> */}
                             <Link class={styles.indexItem} to="/editMember">編輯資訊</Link>
+                            <Link class={styles.indexItem} to="/editPassword">修改密碼</Link>
                         </div>
                     </div>
                 </div>

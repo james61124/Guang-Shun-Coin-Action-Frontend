@@ -7,7 +7,8 @@ import MainPage from './Shop/MainPage';
 import ProductPage from './Shop/ProductPage';
 import HistoryBid from './Member/HistoryBid/HistoryBid';
 import NewProduct from './Member/NewProduct';
-import EditMember from './Member/EditMember';
+import EditMember from './Member/EditMember/EditMember';
+import EditPassword from './Member/EditPassword/EditPassword';
 
 const Navbar = () => {
     // Example state usage with useState hook
@@ -47,6 +48,7 @@ const Navbar = () => {
                     <Route path="/historyBid" element={<HistoryBid/>} />
                     <Route path="/newproduct" element={<NewProduct/>} />
                     <Route path="/editMember" element={<EditMember/>} />
+                    <Route path="/editPassword" element={<EditPassword/>} />
                 </Routes>
                 
             </div>

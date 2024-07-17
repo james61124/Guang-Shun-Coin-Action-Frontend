@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'KingHwa-OldSong'; 
-    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+    src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
   }
   
   .mainContainer {
@@ -69,8 +69,9 @@
     }
     
     .inputContainer > .errorLabel {
-      color: red;
-      font-size: 12px;
+      color: rgb(255, 159, 34);
+      font-family: 'KingHwa-OldSong';
+      font-size: 17px;
     }
     
     .inputBox {
@@ -121,6 +122,12 @@
       border: 1px solid grey;
       background: #AB8849;
       margin-bottom: 3%;
+      cursor: pointer;
+      transition: background 0.2s ease; /* 添加过渡效果 */
+    }
+    
+    .loginBox:hover {
+      background: rgba(212, 181, 124, 0.7); /* 使用 rgba 使背景颜色变淡 */
     }
   
     .inputButton {
@@ -133,6 +140,7 @@
       font-family: 'KingHwa-OldSong';
       font-size: 20px; 
       color: white;
+      cursor: pointer;
     }
   
     ::placeholder {
