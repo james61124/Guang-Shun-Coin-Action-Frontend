@@ -91,7 +91,7 @@ const HistoryBid = (props) => {
                 <div>歷史出價</div>
             </div>
             
-            <div className={styles.sortingContainer}>
+            {/* <div className={styles.sortingContainer}>
                 <div className={styles.sortingButtom}>
                     <div className={styles.sortingList}>
                         <select id="sorting" value={selectedValue} onChange={handleChange}>
@@ -104,22 +104,21 @@ const HistoryBid = (props) => {
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div class={styles.infoBody}>
-                <div className={styles.indexContainer}>
+                {/* <div className={styles.indexContainer}>
                     <div class={styles.indexList}>
                         <div class={styles.indexItemWrapper}>
-                            <Link class={styles.indexItem} to="/historyBid">追蹤商品</Link>
                             <Link class={styles.indexItem} to="/historyBid">歷史出價</Link>
                             <Link class={styles.indexItem} to="/historyBid">得標商品</Link>
                             <Link class={styles.indexItem} to="/historyBid">我的商品</Link>
-                            {/* <Link class={styles.indexItem} to="/member">配送進度</Link> */}
                             <Link class={styles.indexItem} to="/editMember">編輯資訊</Link>
                             <Link class={styles.indexItem} to="/editPassword">修改密碼</Link>
                         </div>
                     </div>
-                </div>
+                </div> */}
+                
                 <div class={styles.infoContainer}>
                     <div class={styles.infoContainerWrapper}>
                         {history.map((product, i) => (

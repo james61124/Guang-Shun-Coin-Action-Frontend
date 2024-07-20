@@ -7,8 +7,8 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-left: 5px;
+    padding-right: 5px; */
     padding-bottom: 100px;
     align-items: center;
     flex: 1;
@@ -22,53 +22,94 @@
     /* color: red; */
 }
 .productCard {
-    height: 260px;
-    width: 260px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 30px;
+    border: 2px solid rgb(158, 150, 150); 
+    
+    
+}
+
+.productCard:hover {
+    border: 2px solid brown; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .productInfo {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 280px;
-    width: 280px;
+    align-items: flex-end;
+    height: 200px;
+    width: 200px;
     position: relative;
-}
-
-
-.image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
-
-.productTitle {
-    color: black;
-    font-size: 20px;
-    font-family: 'KingHwa-OldSong'; 
-    margin-top: 8px; /* 可根据需要调整 */
-    font-size: 24px; /* 可根据需要调整 */
-    text-align: center; /* 居中对齐 */
+    
 }
 
 .productPic {
     cursor: pointer;
+    width: 200px;
+    height: 200px;
 }
+
+.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; 
+}
+
+.productTitleWrapper {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productTitle {
+    color: black;
+    font-family: 'KingHwa-OldSong'; 
+    margin-top: 0px; 
+    font-size: 24px;
+    text-align: center;
+}
+
+.currentPriceWrapper {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.currentPrice {
+    color: brown;
+    font-family: 'KingHwa-OldSong'; 
+    margin-top: 0px; 
+    font-size: 15px;
+    text-align: center;
+    /* font-weight: 600; */
+}
+
+
 
 .productTime {
     position: absolute;
     height: 30px;
     width: 140px;
     top: 12px;
-    left: 30px;
+    left: 0px;
     background-color: white;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+
 }
+
+.productTimeIcon {
+    position: absolute;
+    top: 7px;
+    left: 5px;
+}
+
 .productTracking{
     position: absolute;
     top: 10px;
@@ -79,3 +120,4 @@
     border: none;
     cursor: pointer;
 }
+

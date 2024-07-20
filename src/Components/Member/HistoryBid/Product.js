@@ -21,11 +21,13 @@ const Product = ({id, name, status, bidTime, bidPrice, imageUrl}) => {
                             <div className={styles.productName}>{name}</div>
                             <div className={styles.productStatus}>{status}</div>
                         </div>
-                        <div className={styles.arrivedTime}>
-                            <div>{bidTime}</div>
+                        <div className={styles.arrivedTimeWrapper}>
+                            <div className={styles.arrivedTime}>
+                                <div>出價時間：{bidTime}</div>
+                            </div>
                         </div>
                         <div className={styles.price}>
-                            <div>NTD {bidPrice}</div>
+                            <div>出價：NTD {bidPrice}</div>
                         </div>
                     </div>
                 </div>

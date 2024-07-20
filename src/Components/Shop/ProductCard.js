@@ -23,6 +23,7 @@ const ProductCard = ({cards}) => {
 const Card = ({key, product, imgUrl, productID}) => {
   const { backendUrl } = config;
   const [trackingImage, setTrackingImage] = useState(`/assets/untrack.png`);
+  const [restTimeImage, setrestTimeImage] = useState(`/assets/restTimeIcon.png`);
   const navigate = useNavigate();
 
   const sendStarInfo = async () => {
@@ -69,14 +70,26 @@ const Card = ({key, product, imgUrl, productID}) => {
         <div className={styles.productPic} onClick={() => handleProduct(productID)}>
           <img src={imgUrl} alt={product} className={styles.image}></img>
         </div>
-        {/* <div className={styles.productTime}></div> */}
+        <div className={styles.productTime}>
+          <img className={styles.productTimeIcon} src={restTimeImage} alt="" />
+
+        </div>
         <div>
           <button onClick={handleClick} className={styles.productTracking}>
             <img src={trackingImage} alt="" />
           </button>
         </div>
       </div>
-      <div className={styles.productTitle}>{product}</div>
+      <div className={styles.productTitleWrapper}>
+        <div className={styles.productTitle}>{product}</div>
+      </div>
+      <div className={styles.currentPriceWrapper}>
+        <div className={styles.currentPrice}>目前價格：NT$14,000,000</div>
+      </div>
+      <div className={styles.currentPriceWrapper}>
+        <div className={styles.currentPrice}>出價次數：</div>
+      </div>
+      
     </div>
   )
 }

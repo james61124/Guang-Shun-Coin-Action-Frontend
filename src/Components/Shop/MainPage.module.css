@@ -8,7 +8,6 @@
     padding-top: 2%;
     padding-bottom:10%;
     overflow: hidden;
-    /* min-width: 600px; */
 }
   
 .title {
@@ -80,7 +79,7 @@
     padding-left: 30px;
     padding-right: 30px;
     height: 70%;
-    width: 70%;
+    width: 80%;
     overflow: hidden; 
 }
 .infoContainer {
@@ -93,10 +92,22 @@
 }
 
 /* sidebar setting */
+/* .sidebarContainerWrapper {
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    width: 80px;
+} */
+
 .sidebarContainer{
     display: flex;
     justify-items: flex-start;
-    /* margin-right: 20px; */
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid black; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* border-radius: 15px;    */
 }
 
 .sidebarContainer ul {
@@ -138,7 +149,7 @@
 }
 
 .sortingButton {
-    width: 150px;
+    width: 170px;
     height: 45px;
     background-color: #886830;
     border-radius: 20px;
@@ -177,4 +188,42 @@ label {
     font-size: 14px;
     margin-right: 10px;
     color: white;
+}
+
+.labelContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: flex-start;
+}
+
+.filterTitleWrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+.filterTitle {
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+}
+
+.filterLabel {
+    margin-bottom: 0px; /* 减少选项之间的间距 */
+    display: flex;
+    align-items: center;
+}
+
+.filterLabel input {
+    margin-right: 5px; /* 复选框和文字之间的间距 */
+    width: 30px; /* 增加复选框的宽度 */
+    height: 30px; /* 增加复选框的高度 */
+    border-radius: 5px; /* 添加圆弧 */
+    cursor: pointer;
+}
+
+.filterName {
+    font-family: 'KingHwa-OldSong';
+    color: black;
+    font-size: 18px;
 }

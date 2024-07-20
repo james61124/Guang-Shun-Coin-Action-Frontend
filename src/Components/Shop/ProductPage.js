@@ -179,7 +179,7 @@ const HistorySection = ({ history }) => (
         <div className={styles.historyBidPrice}>出價金額</div>
         <div className={styles.historyBidTime}>出價時間</div>
       </div>
-      {history.map((record, index) => (
+      {history && history.map((record, index) => (
         <div key={index} className={styles.historyInfo}>
           <div className={styles.historyUsername}>{record.username}</div>
           <div className={styles.historyBidPrice}>NTD {record.bidPrice}</div>

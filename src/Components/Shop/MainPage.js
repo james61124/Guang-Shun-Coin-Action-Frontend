@@ -29,9 +29,23 @@ const ContentTitle = () => {
   );
 }
 
+const categories = ['世界錢幣', '台灣錢幣', '全選'];
+const starList = ['追蹤中商品']
+const priceList = ['0-300', '300-500', '500-1000', '1000-5000', '5000-10000', '10000-50000', '超過50000']
+
 
 
 const MainPage = (props) => {
+
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const handleCategoryChange = (category) => {
+        const newSelectedCategories = selectedCategories.includes(category)
+            ? selectedCategories.filter(cat => cat !== category)
+            : [...selectedCategories, category];
+
+        setSelectedCategories(newSelectedCategories);
+    };
+
 
     const [selectedSorting, setSelectedSorting] = useState('Sorting');
     const [selectedCategory, setSelectedCategory] = useState('World');
@@ -123,16 +137,73 @@ const MainPage = (props) => {
               <div className={styles.sortingButton}>
                   <div className={styles.sortingList} >
                       <select id="sorting" value={selectedSorting} onChange={handleSorting}>
-                          <option value="Popular">熱門程度</option>
-                          <option value="NewFirst">由新到舊</option>
-                          <option value="OldFirst">由舊到新</option>
+                          <option value="出價次數遞增">出價次數遞增</option>
+                          <option value="出價次數遞減">出價次數遞減</option>
+                          <option value="目前價格遞增">目前價格遞增</option>
+                          <option value="目前價格遞減">目前價格遞減</option>
+                          <option value="由新到舊">由新到舊</option>
+                          <option value="由舊到新">由舊到新</option>
                       </select>
                   </div>
               </div>
           </div>
+
           <div className={styles.infoContainer}>
             <div className={styles.sidebarContainer}>
-              <ul>
+
+              <div className={styles.filterTitleWrapper}>
+                <div className={styles.filterTitle}>商品類型</div>
+              </div>
+              <div className={styles.labelContainer}>
+                {categories.map((category) => (
+                  <label key={category} className={styles.filterLabel}>
+                    <input
+                      type="checkbox"
+                      value={category}
+                      // checked={selectedCategories.includes(category)}
+                      // onChange={() => handleCategoryChange(category)}
+                    />
+                    <div className={styles.filterName}>{category}</div>
+                  </label>
+                ))}
+              </div>
+
+              <div className={styles.filterTitleWrapper}>
+                <div className={styles.filterTitle}>商品追蹤</div>
+              </div>
+              <div className={styles.labelContainer}>
+                {starList.map((isStar) => (
+                  <label key={isStar} className={styles.filterLabel}>
+                    <input
+                      type="checkbox"
+                      value={isStar}
+                      // checked={selectedCategories.includes(category)}
+                      // onChange={() => handleCategoryChange(category)}
+                    />
+                    <div className={styles.filterName}>{isStar}</div>
+                  </label>
+                ))}
+              </div>
+
+              <div className={styles.filterTitleWrapper}>
+                <div className={styles.filterTitle}>商品價格</div>
+              </div>
+              <div className={styles.labelContainer}>
+                {priceList.map((price) => (
+                  <label key={price} className={styles.filterLabel}>
+                    <input
+                      type="checkbox"
+                      value={price}
+                      // checked={selectedCategories.includes(category)}
+                      // onChange={() => handleCategoryChange(category)}
+                    />
+                    <div className={styles.filterName}>{price}</div>
+                  </label>
+                ))}
+              </div>
+              
+
+              {/* <ul>
               <li>
                     <button
                         className={`${styles.sidebarLabel} ${activeButton === "World" ? styles.selected : ''}`}
@@ -178,8 +249,10 @@ const MainPage = (props) => {
                         非洲錢幣
                     </button>
                 </li>
-              </ul>
+              </ul> */}
+
             </div>
+
             <ProductCard cards={cards}/>
           </div>
           <Pagination

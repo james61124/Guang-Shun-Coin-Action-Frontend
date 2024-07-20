@@ -30,13 +30,25 @@ const Navbar = () => {
                             <Link to="/login">登入</Link>
                         </li>
                         <li>
+                            <Link to="/editMember">修改個人資訊</Link>
+                        </li>
+                        <li>
+                            <Link to="/editPassword">修改密碼</Link>
+                        </li>
+                        <li>
                             <Link to="/product">商品總覽</Link>
                         </li>
                         <li>
-                            <Link to="/newproduct">新增商品</Link>
+                            <Link to="/historyBid">歷史出價</Link>
                         </li>
                         <li>
-                            <Link to="/historyBid">會員專區</Link>
+                            <Link to="/historyBid">聯絡我們</Link>
+                        </li>
+                        <li>
+                            <Link to="/product">編輯商品</Link>
+                        </li>
+                        <li>
+                            <Link to="/newproduct">新增商品</Link>
                         </li>
                     </ul>
                 </div>

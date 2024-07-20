@@ -76,9 +76,9 @@ const EditMember = (props) => {
       <Reminder />
       <div className={styles.contentContainer} >
         <SubmitSuccess show={showModal} onClose={closeModal}></SubmitSuccess>
-        <InputField label="舊密碼" value={originPassword} onChange={setOriginPassword} inputType="4w" />
-        <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="4w" />
-        <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="4w" error={errorMessage} showError={showError}/>
+        <InputField label="舊密碼" value={originPassword} onChange={setOriginPassword} inputType="3w" />
+        <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="3w" />
+        <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="5w" error={errorMessage} showError={showError}/>
       </div>
       <SubmitButton onButtonClick={handleSubmit} />
     </div>
@@ -110,7 +110,7 @@ const InputField = ({ label, value, onChange, inputType, placeholder = '', error
           <input
             value={value}
             onChange={(ev) => onChange(ev.target.value)}
-            className={inputType === '4w' ? styles.input4w : styles.input}
+            className={inputType === '3w' ? styles.input3w : styles.input5w}
             placeholder={placeholder}
           />
         </div>

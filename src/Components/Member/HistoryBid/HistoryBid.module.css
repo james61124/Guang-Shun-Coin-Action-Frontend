@@ -26,6 +26,7 @@
     color: white;
     font-family: 'KingHwa-OldSong';
     letter-spacing: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -89,9 +90,10 @@ label {
 
 .infoBody {
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .indexContainer {
