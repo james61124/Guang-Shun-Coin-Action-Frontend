@@ -68,9 +68,12 @@
   }
   
   .inputContainer > .errorLabel {
-    color: red;
+    /* color: red;
     font-family: 'KingHwa-OldSong';
-    font-size: 12px;
+    font-size: 12px; */
+    color: rgb(255, 159, 34);
+    font-family: 'KingHwa-OldSong';
+    font-size: 17px;
     padding-top: 2%;
     padding-bottom: 3%;
   }
@@ -129,3 +132,15 @@
     font-family: 'KingHwa-OldSong';
     color: white;
   }
+
+  .forgetPasswdContainer {
+    display: flex;
+    flex-direction: column;
+    padding-left: 340px;    
+  }
+  .forgetPasswdContainer a{
+    font-size: 16px;
+    font-family: 'KingHwa-OldSong'; 
+    text-decoration: underline;
+    color: white;
+}

@@ -9,6 +9,7 @@ import HistoryBid from './Member/HistoryBid/HistoryBid';
 import NewProduct from './Member/NewProduct';
 import EditMember from './Member/EditMember/EditMember';
 import EditPassword from './Member/EditPassword/EditPassword';
+import ForgetPassword from './Member/ForgetPassword/ForgetPassword';
 
 const Navbar = () => {
     // Example state usage with useState hook
@@ -61,6 +62,7 @@ const Navbar = () => {
                     <Route path="/newproduct" element={<NewProduct/>} />
                     <Route path="/editMember" element={<EditMember/>} />
                     <Route path="/editPassword" element={<EditPassword/>} />
+                    <Route path="/forgetPasswd" element={<ForgetPassword/>} />
                 </Routes>
                 
             </div>
