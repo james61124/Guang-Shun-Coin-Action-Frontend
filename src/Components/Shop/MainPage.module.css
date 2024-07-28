@@ -37,37 +37,35 @@
     padding-bottom: 10%;
 }
 
-
 .sortingContainer {
     height: 50px;
-    /* width: 773.4px; */
-    /* padding: 10px; */
     display: flex; 
     align-items: center;
     justify-content: flex-end;
     flex:1;
     padding-right: 20px;
+    
 }
 
 .sortingButton {
     display: flex; 
-    width: 1px;
-    height: 45px;
     align-items: center;
     justify-content: center;
-    background-color: #7992A0;
     border-radius: 20px;
-
     margin-bottom: 20px;
-}
+    width: 220px;
+    height: 45px;
+    background-color: #886830;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+} 
 
 
 .contentTitle h1{
     display: flex;
     flex-direction: column;
     font-family: 'KingHwa-OldSong';
-    font-size: 36px;
-    letter-spacing: 30px;
+    font-size: 42px;
+    letter-spacing: 18px;
     margin-left:30px;
 }
 
@@ -75,6 +73,7 @@
 .contentContainer {
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
     background-color: rgba(224, 236, 242, 0.75);
     padding-left: 30px;
     padding-right: 30px;
@@ -104,9 +103,9 @@
     justify-items: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 200px;
-    border: 1px solid black; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 120px;
+    /* border: 1px solid #7e7060;  */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     /* border-radius: 15px;    */
 }
 
@@ -141,53 +140,44 @@
 }
 
 /* sorting setting */
-.sortingContainer {
-    height: 50px;
-    margin-bottom: 10px;
-    display: flex; 
-    justify-items: flex-end;
-}
-
-.sortingButton {
-    width: 170px;
-    height: 45px;
-    background-color: #886830;
-    border-radius: 20px;
-}
-
 .sortingList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'KingHwa-OldSong';
     font-size: 20px;
     color: white;
-    gap: 10px;
+    gap: 7px;
 }
 
-select {
-    padding: 5px;
+.selectList {
+    /* padding: 5px; */
     font-size: 16px;
     border: none;
     background: transparent;
     color: white;
     outline: none;
     appearance: none;
-    background: url('../../../public/assets/down-select.png') no-repeat right center; 
-    padding-right: 30px;
+    /* background: url('/assets/down-select.png') no-repeat right center;  */
+    /* padding-right: 0px; */
     font-family: 'KingHwa-OldSong';
     font-size: 20px;
-    color: white;
     cursor: pointer;
 }
 
-select option {
-    background: #886830;
+.selectOption {
+    background: #7992A0;
     color: white;
     cursor: pointer;
+    font-size: 20px;
+    /* margin-right: 10px; */
 }
 
-label {
-    font-size: 14px;
-    margin-right: 10px;
-    color: white;
+.selectIcon {
+    /* margin-left: 5px; */
+    width: 17px;
+    height: 13px;
+    /* pointer-events: none;  */
 }
 
 .labelContainer {
@@ -216,8 +206,8 @@ label {
 
 .filterLabel input {
     margin-right: 5px; /* 复选框和文字之间的间距 */
-    width: 30px; /* 增加复选框的宽度 */
-    height: 30px; /* 增加复选框的高度 */
+    width: 25px; /* 增加复选框的宽度 */
+    height: 25px; /* 增加复选框的高度 */
     border-radius: 5px; /* 添加圆弧 */
     cursor: pointer;
 }

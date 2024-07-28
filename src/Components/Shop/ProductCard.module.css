@@ -5,8 +5,10 @@
 .productContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
     padding-top: 10px;
+    padding-left: 25px;
     /* padding-left: 5px;
     padding-right: 5px; */
     padding-bottom: 100px;
@@ -22,10 +24,12 @@
     /* color: red; */
 }
 .productCard {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 0px;
     margin-bottom: 30px;
-    border: 2px solid rgb(158, 150, 150); 
+    /* border: 2px solid rgb(158, 150, 150);  */
+    /* border-radius: 15px; */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     
     
 }
@@ -33,32 +37,36 @@
 .productCard:hover {
     border: 2px solid brown; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* border-radius: 15px; */
 }
 
 .productInfo {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     position: relative;
+    /* border-radius: 15px; */
     
 }
 
 .productPic {
     cursor: pointer;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
+    /* border-radius: 15px; */
 }
 
 .image {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     object-fit: cover; 
+    /* border-radius: 15px; */
 }
 
 .productTitleWrapper {
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,14 +81,14 @@
 }
 
 .currentPriceWrapper {
-    height: 30px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .currentPrice {
-    color: brown;
+    color: #6a6056;
     font-family: 'KingHwa-OldSong'; 
     margin-top: 0px; 
     font-size: 15px;
@@ -91,9 +99,12 @@
 
 
 .productTime {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     position: absolute;
     height: 30px;
-    width: 140px;
+    width: 180px;
     top: 12px;
     left: 0px;
     background-color: white;
@@ -101,7 +112,14 @@
     border-bottom-left-radius: 0;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+}
 
+.productRemainTime {
+    margin-left: 0px;
+    margin-top: 5px;
+    font-size: 15px;
+    font-family: 'KingHwa-OldSong'; 
+    font-weight: 700;
 }
 
 .productTimeIcon {

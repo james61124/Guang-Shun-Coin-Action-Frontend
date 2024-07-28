@@ -13,6 +13,10 @@ const ProductCard = ({cards}) => {
             product={productCard.product}
             imgUrl={productCard.imgUrl}
             productID={productCard.productID}
+            price={productCard.price}
+            bidCount={productCard.bidCount}
+            endedAt={productCard.endedAt}
+            isStar={productCard.isStar}
           />
         ))}
       </div>
@@ -20,11 +24,44 @@ const ProductCard = ({cards}) => {
   );
 }
 
-const Card = ({key, product, imgUrl, productID}) => {
+const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt, isStar }) => {
   const { backendUrl } = config;
   const [trackingImage, setTrackingImage] = useState(`/assets/untrack.png`);
-  const [restTimeImage, setrestTimeImage] = useState(`/assets/restTimeIcon.png`);
+  const [restTimeImage, setRestTimeImage] = useState(`/assets/restTimeIcon.png`);
+  const [timeRemaining, setTimeRemaining] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isStar === true) {
+      setTrackingImage(`/assets/track.png`);
+    } else {
+      setTrackingImage(`/assets/untrack.png`);
+    }
+
+    const calculateTimeRemaining = () => {
+      const endTime = new Date(endedAt).getTime();
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance < 0) {
+        setTimeRemaining("已結束");
+        return;
+      }
+
+      // Calculate time components
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeRemaining(`${days}日${hours}時${minutes}分${seconds}秒`);
+    };
+
+    calculateTimeRemaining(); // Calculate initially
+    const intervalId = setInterval(calculateTimeRemaining, 1000); // Update every second
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, [endedAt]);
 
   const sendStarInfo = async () => {
     const token = localStorage.getItem('token');
@@ -33,23 +70,14 @@ const Card = ({key, product, imgUrl, productID}) => {
         'Authorization': `Bearer ${token}`
       }
     };
-    var data;
-
-    if (trackingImage === `/assets/untrack.png`) {
-      data = {
-        "productID": productID,
-        "isStar": true
-      };
-    } else {
-      data = {
-        "productID": productID,
-        "isStar": false
-      };
-    }
+    const data = {
+      productID: productID,
+      isStar: trackingImage === `/assets/untrack.png`
+    };
 
     try {
-      console.log(data)
-      const response = await axios.post(`${backendUrl}/shop/star`, data, config);
+      console.log(data);
+      await axios.post(`${backendUrl}/shop/star`, data, config);
     } catch (error) {
       console.error('Failed to give star info:', error);
     }
@@ -63,16 +91,16 @@ const Card = ({key, product, imgUrl, productID}) => {
   const handleProduct = (id) => {
     navigate(`/detail/${id}`);
   };
-  
+
   return (
     <div key={key} className={styles.productCard}>
-      <div className={styles.productInfo} >
+      <div className={styles.productInfo}>
         <div className={styles.productPic} onClick={() => handleProduct(productID)}>
-          <img src={imgUrl} alt={product} className={styles.image}></img>
+          <img src={imgUrl} alt={product} className={styles.image} />
         </div>
         <div className={styles.productTime}>
           <img className={styles.productTimeIcon} src={restTimeImage} alt="" />
-
+          <div className={styles.productRemainTime}>{timeRemaining}</div>
         </div>
         <div>
           <button onClick={handleClick} className={styles.productTracking}>
@@ -84,14 +112,14 @@ const Card = ({key, product, imgUrl, productID}) => {
         <div className={styles.productTitle}>{product}</div>
       </div>
       <div className={styles.currentPriceWrapper}>
-        <div className={styles.currentPrice}>目前價格：NT$14,000,000</div>
+        <div className={styles.currentPrice}>目前價格：NT${price}</div>
       </div>
       <div className={styles.currentPriceWrapper}>
-        <div className={styles.currentPrice}>出價次數：</div>
+        <div className={styles.currentPrice}>出價次數：{bidCount}</div>
       </div>
-      
     </div>
-  )
-}
+  );
+};
+
 
 export default ProductCard

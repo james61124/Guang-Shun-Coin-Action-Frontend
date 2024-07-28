@@ -60,7 +60,7 @@
     gap: 10px;
 }
 
-select {
+/* select {
     padding: 5px;
     font-size: 16px;
     border: none;
@@ -86,7 +86,7 @@ label {
     font-size: 16px;
     margin-right: 10px;
     color: white;
-}
+} */
 
 .infoBody {
     width: 100%;
