@@ -1,14 +1,11 @@
-// import React, { useState, useEffect } from 'react'
 import React, { useState, useEffect, useRef } from 'react'
-import styles from './MainPage.module.css';
+import styles from './EditProduct.module.css';
 import ProductCard from './ProductCard';
-import config from '../../config/config';
+import config from '../../../config/config';
 import axios from 'axios';
 import Pagination from './Pagination';
 import PriceFilter from './PriceFilter'
 import Select from 'react-select';
-// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// import axios from 'axios';
 
 const MainTitle = () => {
   return (
@@ -39,7 +36,7 @@ const options = [
 ];
 
 
-const MainPage = (props) => {
+const EditProduct = (props) => {
 
     const [selectedSorting, setSelectedSorting] = useState('目前價格由大至小');
     const [selectedCategory, setSelectedCategory] = useState('World');
@@ -86,7 +83,7 @@ const MainPage = (props) => {
       };
   
       try {
-        const response = await axios.post(`${backendUrl}/shop/product`, data, config);
+        const response = await axios.post(`${backendUrl}/admin/updateProductPage`, data, config);
         if (response && response.data && response.data.Data.products) {
           console.log(response)
           const productData = response.data.Data.products.map(product => ({
@@ -95,7 +92,6 @@ const MainPage = (props) => {
             price: product.price,
             bidCount: product.bidCount,
             endedAt: product.endedAt,
-            isStar: product.isStar,
             imgUrl: `${backendUrl}${product.imgUrl}`
           }));
           setCards(productData);
@@ -252,4 +248,4 @@ const MainPage = (props) => {
     );
   }
   
-  export default MainPage
+  export default EditProduct

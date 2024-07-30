@@ -1,7 +1,7 @@
 import styles from './ProductCard.module.css';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import config from '../../config/config';
+import config from '../../../config/config';
 import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({cards}) => {
@@ -16,7 +16,6 @@ const ProductCard = ({cards}) => {
             price={productCard.price}
             bidCount={productCard.bidCount}
             endedAt={productCard.endedAt}
-            isStar={productCard.isStar}
           />
         ))}
       </div>
@@ -24,19 +23,13 @@ const ProductCard = ({cards}) => {
   );
 }
 
-const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt, isStar }) => {
+const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt }) => {
   const { backendUrl } = config;
-  const [trackingImage, setTrackingImage] = useState(`/assets/untrack.png`);
   const [restTimeImage, setRestTimeImage] = useState(`/assets/restTimeIcon.png`);
   const [timeRemaining, setTimeRemaining] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isStar === true) {
-      setTrackingImage(`/assets/track.png`);
-    } else {
-      setTrackingImage(`/assets/untrack.png`);
-    }
 
     const calculateTimeRemaining = () => {
       const endTime = new Date(endedAt).getTime();
@@ -44,7 +37,7 @@ const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt, isSta
       const distance = endTime - now;
 
       if (distance < 0) {
-        setTimeRemaining("已結束");
+        setTimeRemaining("已截止");
         return;
       }
 
@@ -63,31 +56,6 @@ const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt, isSta
     return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, [endedAt]);
 
-  const sendStarInfo = async () => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    };
-    const data = {
-      productID: productID,
-      isStar: trackingImage === `/assets/untrack.png`
-    };
-
-    try {
-      console.log(data);
-      await axios.post(`${backendUrl}/shop/star`, data, config);
-    } catch (error) {
-      console.error('Failed to give star info:', error);
-    }
-  };
-
-  const handleClick = () => {
-    sendStarInfo();
-    setTrackingImage(trackingImage === `/assets/untrack.png` ? `/assets/track.png` : `/assets/untrack.png`);
-  };
-
   const handleProduct = (id) => {
     navigate(`/detail/${id}`);
   };
@@ -101,17 +69,6 @@ const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt, isSta
         <div className={styles.productTime}>
           <img className={styles.productTimeIcon} src={restTimeImage} alt="" />
           <div className={styles.productRemainTime}>{timeRemaining}</div>
-        </div>
-        <div>
-          <button
-              onClick={(e) => {
-                  e.stopPropagation(); // Prevent handleProduct from being triggered
-                  handleClick(); // Call handleClick
-              }}
-              className={styles.productTracking}
-          >
-              <img src={trackingImage} alt="" />
-          </button>
         </div>
       </div>
       <div className={styles.productTitleWrapper}>
