@@ -3,7 +3,8 @@ import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import './CropImageModal.module.css';
+import { FaImage } from 'react-icons/fa'; // 使用 react-icons 来显示图像图标
+import styles from './CropImageModal.module.css';
 
 // 拖拽项的类型
 const ItemType = {
@@ -54,12 +55,13 @@ const DraggableImage = ({ index, image, moveImage, handleEdit, handleDelete }) =
   );
 };
 
-const CropImageModal = ( {onClose, images} ) => {
+const CropImageModal = ({ onClose, images }) => {
   const [image, setImage] = useState(null);  // 当前上传的图片
   const [originalImage, setOriginalImage] = useState(null);  // 原图
   const [originalImages, setOriginalImages] = useState(images); 
   const [croppedImages, setCroppedImages] = useState(images);  // 存储裁剪后的图片
   const [currentIndex, setCurrentIndex] = useState(null);  // 当前要修改的图片索引
+  const [isFileInputHidden, setIsFileInputHidden] = useState(false); // 控制文件输入区域的显示
   const cropperRef = useRef(null);  // Cropper 实例引用
   const fileInputRef = useRef(null);  // 文件输入框的引用
 
@@ -71,9 +73,29 @@ const CropImageModal = ( {onClose, images} ) => {
       reader.onload = () => {
         setOriginalImage(reader.result);
         setImage(reader.result);  // 将原图设置为当前图像
+        setIsFileInputHidden(true); // 隐藏文件输入区域
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  // 处理拖曳上传
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setOriginalImage(reader.result);
+        setImage(reader.result);  // 将原图设置为当前图像
+        setIsFileInputHidden(true); // 隐藏文件输入区域
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
   };
 
   // 裁剪图片并更新图片列表
@@ -105,7 +127,7 @@ const CropImageModal = ( {onClose, images} ) => {
       });
       setImage(null);  // 清除当前图片
       setCurrentIndex(null);  // 重置当前索引
-      
+      setIsFileInputHidden(false); // 显示文件输入区域
     }
   };
 
@@ -113,6 +135,7 @@ const CropImageModal = ( {onClose, images} ) => {
   const handleClose = () => {
     setImage(null);  // 清除当前图片
     setCurrentIndex(null);  // 重置当前索引
+    setIsFileInputHidden(false); // 显示文件输入区域
   };
 
   // 处理修改操作
@@ -147,15 +170,24 @@ const CropImageModal = ( {onClose, images} ) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div>
-        <h2>Upload and Crop Images</h2>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          ref={fileInputRef}
-          style={{ marginBottom: '20px' }}
-        />
+      <div className={styles.imageContainer}>
+        <div className={styles.uploadTitle}>上傳圖片</div>
+        <div
+          className={`${styles['file-input-wrapper']} ${isFileInputHidden ? styles.hidden : ''}`}
+          onClick={() => fileInputRef.current.click()}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+        >
+          <FaImage className={styles.icon} />
+          <p className={styles.instruction}>選擇圖片或拖曳圖片</p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+            style={{ display: 'none' }} 
+          />
+        </div>
         {image && (
           <div>
             <Cropper
@@ -173,28 +205,43 @@ const CropImageModal = ( {onClose, images} ) => {
               checkOrientation={false}
               dragMode="move"  // 允许拖曳裁剪框
             />
-            <button onClick={handleCrop}>Crop</button>
-            <button onClick={handleClose}>Cancel</button>
+            <div className={styles.buttonRegionContainer}>
+              <div className={styles.buttonCropWrapper} onClick={handleCrop}>
+                <div className={styles.buttonCrop}>確認</div>
+              </div>
+              <div className={styles.buttonCropWrapper} onClick={handleClose}>
+                <div className={styles.buttonCrop}>取消</div>
+              </div>
+            </div>
             
           </div>
         )}
-        <div>
-          <h3>Preview</h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            {croppedImages.map((img, index) => (
-              <DraggableImage
-                key={index}
-                index={index}
-                image={img}
-                moveImage={moveImage}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-            ))}
+        {!image && (
+          <div className={styles.previewWrapper}>
+            <div className={styles.previewTitle}>預覽圖片</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {croppedImages.map((img, index) => (
+                <DraggableImage
+                  key={index}
+                  index={index}
+                  image={img}
+                  moveImage={moveImage}
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              ))}
+            </div>
+            <div className={styles.buttonRegionContainer}>
+              <div className={styles.buttonCropWrapper} onClick={() => handleSaveAndClose(croppedImages)}>
+                <div className={styles.buttonCrop}>儲存</div>
+              </div>
+              <div className={styles.buttonCancelWrapper} onClick={() => handleSaveAndClose([])}>
+                <div className={styles.buttonCancel}>取消</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <button onClick={() => handleSaveAndClose(croppedImages)}>Save</button>
-        <button onClick={() => handleSaveAndClose([])}>Cancel</button>
+        )}
+        
       </div>
     </DndProvider>
   );

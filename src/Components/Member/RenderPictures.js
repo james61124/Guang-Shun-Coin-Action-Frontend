@@ -5,8 +5,25 @@ import Modal from 'react-modal';
 // import uploadImage from '/assets/upload-image.png'; 
 
 const MAX_PICTURES = 5;
-
-// Modal.setAppElement('#root'); // 设置你的应用的根元素，防止屏幕阅读器的内容显示
+const customStyles = {
+  content: {
+    backgroundColor: '#BFCFD9',
+    padding: '20px',
+    borderRadius: '10px',
+    width: '80%',
+    height: '80%',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    border: '1px solid rgba(0, 0, 0, 0.1)'
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.25)' // 设置 overlay 的背景颜色
+  }
+};
 
 const RenderPictures = ({ images, setImages }) => {
   const [pictures, setPictures] = useState([]);
@@ -58,6 +75,7 @@ const RenderPictures = ({ images, setImages }) => {
         <Modal
           isOpen={showCropModal}
           shouldCloseOnOverlayClick={false} 
+          style={customStyles} 
         >
           <CropImageModal
             images={pictures}
