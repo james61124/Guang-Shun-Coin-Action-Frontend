@@ -235,7 +235,7 @@ const CropImageModal = ({ onClose, images }) => {
               <div className={styles.buttonCropWrapper} onClick={() => handleSaveAndClose(croppedImages)}>
                 <div className={styles.buttonCrop}>儲存</div>
               </div>
-              <div className={styles.buttonCancelWrapper} onClick={() => handleSaveAndClose([])}>
+              <div className={styles.buttonCancelWrapper} onClick={() => handleSaveAndClose(originalImages)}>
                 <div className={styles.buttonCancel}>取消</div>
               </div>
             </div>

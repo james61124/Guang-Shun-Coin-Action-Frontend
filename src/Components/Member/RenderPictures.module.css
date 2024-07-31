@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 450px;
   width: 450px;
 }
@@ -17,13 +17,15 @@
 .primaryPic {
   height: 300px;
   width: 300px;
+  margin-bottom: 15px;
   background-color: #7992A0;
   cursor: pointer;
 }
 
 .uploadPlaceholder {
-  width: 100%;
-  height: 100%;
+  height: 300px;
+  width: 300px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +42,8 @@
 .uploadedPrimaryPic {
   height: 300px;
   width: 300px;
-
+  margin-bottom: 15px;
+  
   position: relative;
   display: flex;
   align-items: center;
