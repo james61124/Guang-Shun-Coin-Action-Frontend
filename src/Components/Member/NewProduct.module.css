@@ -92,6 +92,7 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     font-size: 20px;
     letter-spacing: 6px;
     color: black;
+    
 }
 .inputWrapper {
     position: relative;
@@ -107,7 +108,9 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     padding-left: 8px;
     background-color: white;
     margin-bottom: 1.5%;
+    font-family: 'KingHwa-OldSong';
 }
+
 .input4w {
     position: absolute;
     top: 25px;
@@ -120,14 +123,32 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     border: none;
     outline: 1px solid transparent; 
     color: black;
+    font-family: 'KingHwa-OldSong';
+}
+
+.input4wCursor {
+    position: absolute;
+    top: 25px;
+    left: 250px;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    width: 250px;
+    font-size: large;
+    background: transparent;
+    border: none;
+    outline: 1px solid transparent; 
+    color: black;
+    font-family: 'KingHwa-OldSong';
+    cursor: pointer;
 }
 
 /* subtitle */
 .subTitleContainer {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     background-color: white;
-    width: 140px;
+    width: 150px;
     height: 40px;
     border-radius: 20px;
     position: relative;
@@ -136,13 +157,11 @@ src: url('../../Font/KingHwa-OldSong.ttf') format('truetype');
     margin-left: 275px;
 }
 .subTitle {
-    position: absolute;
     font-size: 20px;
     font-family: 'KingHwa-OldSong';
     color: black;
-    top: 8px;
-    left: 5px;
 }
+
 /* description */
 .descriptionContainer {
     display: flex;

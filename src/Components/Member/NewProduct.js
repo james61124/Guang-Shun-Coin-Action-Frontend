@@ -182,7 +182,7 @@ const DateField = ({ label, value, onChange }) => {
             onChange={(date) => onChange(date.toISOString())}
             dateFormat="YYYY-MM-DD"
             timeFormat="HH:mm:ss"
-            inputProps={{ className: styles.input4w }}
+            inputProps={{ className: styles.input4wCursor }}
           />
         </div>
       </div>
@@ -196,7 +196,7 @@ const CategoryField = ({ label, value, onChange }) => {
       <div className={styles.inputWrapper}>
         <div className={styles.inputLabel}>{label}</div>
         <div className={styles.inputBox}>
-          <select id="category" value={value} onChange={onChange} className={styles.input4w}>
+          <select id="category" value={value} onChange={onChange} className={styles.input4wCursor}>
             <option value="World">世界錢幣</option>
             <option value="America">美國錢幣</option>
             <option value="Europe">歐洲錢幣</option>
