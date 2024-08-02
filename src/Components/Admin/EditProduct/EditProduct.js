@@ -85,7 +85,6 @@ const EditProduct = (props) => {
       try {
         const response = await axios.post(`${backendUrl}/admin/updateProductPage`, data, config);
         if (response && response.data && response.data.Data.products) {
-          console.log(response)
           const productData = response.data.Data.products.map(product => ({
             productID: product.productId,
             product: product.productName,

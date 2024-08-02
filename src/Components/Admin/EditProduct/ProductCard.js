@@ -57,7 +57,7 @@ const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt }) => 
   }, [endedAt]);
 
   const handleProduct = (id) => {
-    navigate(`/detail/${id}`);
+    navigate(`/updateDetail/${id}`);
   };
 
   return (

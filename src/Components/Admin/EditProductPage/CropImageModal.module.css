@@ -1,0 +1,135 @@
+@font-face {
+  font-family: 'KingHwa-OldSong'; 
+  src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
+.file-input-wrapper {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed #888888;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+.file-input-wrapper.hidden {
+  display: none;
+}
+
+.file-input-wrapper:hover {
+  border-color: #aaaaaa;
+}
+
+.file-input-wrapper .instruction {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #666666;
+}
+
+.file-input-wrapper input[type="file"] {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+}
+
+.file-input-wrapper .icon {
+  font-size: 50px;
+  color: #a0a0a0;
+  margin-top: 20px;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background: rgb(166, 253, 248); */
+}
+
+.uploadTitle {
+  height: 80px;
+  font-size: 40px;
+  font-weight: 500;
+  font-family: 'KingHwa-OldSong';
+  margin-top: 40px;
+}
+
+.previewWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.previewTitle {
+  height: 40px;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: 'KingHwa-OldSong';
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.buttonRegionContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.buttonCropWrapper {
+  height: 50px;
+  width: 90px;
+  font-size: large;
+  border-radius: 8px;
+  border-color: transparent;
+  background: #38515F;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.buttonCropWrapper:hover {
+  background: #5f8aa3;
+}
+
+.buttonCrop {
+  color: white;
+  font-family: 'KingHwa-OldSong';
+  font-size: 20px;
+}
+
+.buttonCancelWrapper {
+  height: 50px;
+  width: 90px;
+  font-size: large;
+  border-radius: 8px;
+  border-color: transparent;
+  background: #38515F;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.buttonCancelWrapper:hover {
+  background: #5f8aa3;
+}
+
+.buttonCancel {
+  color: white;
+  font-family: 'KingHwa-OldSong';
+  font-size: 20px;
+}

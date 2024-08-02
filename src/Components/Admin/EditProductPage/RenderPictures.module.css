@@ -1,0 +1,72 @@
+.uploadedImage {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  object-fit: cover;
+}
+
+.picContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 450px;
+  width: 450px;
+}
+
+.primaryPic {
+  height: 300px;
+  width: 300px;
+  margin-bottom: 15px;
+  background-color: #7992A0;
+  cursor: pointer;
+}
+
+.uploadPlaceholder {
+  height: 300px;
+  width: 300px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.uploadIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.uploadedPrimaryPic {
+  height: 300px;
+  width: 300px;
+  margin-bottom: 15px;
+  
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.secondaryPics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  cursor: pointer;
+}
+
+.secondaryPic {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  background-color: #7992A0;
+}
