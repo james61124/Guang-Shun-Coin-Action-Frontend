@@ -48,33 +48,6 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
     width: 100%;
 }
 
-
-/* picture */
-/* .picContainter {
-    display: flex;
-    flex-direction: column;
-    height: 450px;
-    width: 450px;
-}
-.primaryPic {
-    height: 300px;
-    width: 300px;
-    background-color: #3E6F8A;
-    margin-bottom: 2px;
-}
-.secondaryPics {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 300px;
-}
-.secondaryPic {
-    display: flex;
-    height: 60px;
-    width: 60px;
-    background-color: #7992A0;
-} */
-
 /* input */
 .inputContainer {
     display: flex;
@@ -198,23 +171,23 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
 
 .loginBox {
     height: 48px;
-    width: 100px;
+    width: 80px;
     font-size: large;
     border-radius: 8px;
     border: 1px solid grey;
     background: #AB8849;
     margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
+.loginBox:hover {
+    background: #e3b661;
+}
+
 .inputButton {
-    position: relative;
-    top: 50%;
-    left: 46px;
-    transform: translate(-50%, -50%);
     background: transparent;
     border: none;
     font-family: 'KingHwa-OldSong';
@@ -232,7 +205,6 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
   }
 
 /* DateField.module.css */
-
 .dateFieldContainer {
     display: flex;
     align-items: center; /* Vertically centers the label and input */
@@ -250,4 +222,12 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
   .dateFieldInput {
     width: 300px; /* Sets the width of the input box */
     padding: 8px; /* Adds padding inside the input box */
+  }
+
+  .buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; 
   }

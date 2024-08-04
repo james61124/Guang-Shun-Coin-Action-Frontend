@@ -9,6 +9,7 @@ import moment from 'moment';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import config from '../../../config/config';
+import SaveConfirmationModal from './SaveConfirmationModal'
 
 
 const EditProductPage = () => {
@@ -23,12 +24,17 @@ const EditProductPage = () => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [pictures, setPictures] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const { backendUrl } = config;
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchProduct();
   }, [productID, description]);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const fetchProduct = async () => {
     const token = localStorage.getItem('token');
@@ -119,7 +125,7 @@ const EditProductPage = () => {
       });
 
       if (uploadResponse.data.Status === true) {
-        navigate('/editProduct');
+        // navigate('/editProduct');
       } else if (uploadResponse.data.Message === "File exceeds 10MB") {
         setShowError(true);
         setErrorMessage('檔案大小超過10M');
@@ -185,9 +191,15 @@ const EditProductPage = () => {
     }
   }
 
-  const onButtonClick = async (e) => {
+  const updateInfo = async (e) => {
+    setShowModal(true);
     e.preventDefault();
     uploadProductInfo();
+  };
+
+  const cancelInfo = async (e) => {
+    e.preventDefault();
+    navigate('/editProduct');
   };
 
   return (
@@ -207,14 +219,18 @@ const EditProductPage = () => {
         </div>
       </div>
       <DescriptionSection label="商品細節" description={description} setDescription={setDescription}/>
-      <SubmitButton onButtonClick={onButtonClick} />
+      <SaveConfirmationModal show={showModal} productID={productID} onClose={closeModal}></SaveConfirmationModal>
+      <div className={styles.buttonWrapper}>
+        <SubmitButton onButtonClick={updateInfo} value={'儲存'}/>
+        <SubmitButton onButtonClick={cancelInfo} value={'取消'}/>
+      </div>
     </div>
   )
 }
 
 const BackLink = () => (
   <div className={styles.TextContainer}>
-    <Link to="/member">回上頁</Link>
+    <Link to="/editProduct">回上頁</Link>
   </div>
 );
 
@@ -302,10 +318,10 @@ const DescriptionSection = ({ description, setDescription }) => (
   </div>
 );
 
-const SubmitButton = ({ onButtonClick }) => {
+const SubmitButton = ({ onButtonClick, value }) => {
   return (
-    <div className={styles.loginBox}>
-      <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'儲存資訊'} />
+    <div className={styles.loginBox} onClick={onButtonClick} >
+      <input className={styles.inputButton} type="button" value={value} />
     </div>
 
   )
