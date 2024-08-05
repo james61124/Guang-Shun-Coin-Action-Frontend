@@ -135,14 +135,15 @@ const EditProductPage = () => {
       });
 
       if (uploadResponse.data.Status === true) {
-        console.log('haha');
         setShowConfirmModal(false);
         setShowSuccessModal(true);
       } else if (uploadResponse.data.Message === "File exceeds 10MB") {
+        showUpdateFailModal();
         setShowError(true);
         setErrorMessage('檔案大小超過10M');
       }
     } catch (uploadError) {
+      showUpdateFailModal();
       setShowError(true);
       setErrorMessage('資料庫連線錯誤');
     }
@@ -177,28 +178,30 @@ const EditProductPage = () => {
           formData.append('files', blob, `image${index}.png`);
         });
         uploadImage(formData);
-
       } else if (response.data.Message === "Authorization header is missing") {
+        showUpdateFailModal();
         navigate('/login');
       } else if (response.data.Message === "productName is empty") {
+        showUpdateFailModal();
         setShowError(true);
         setErrorMessage('請輸入商品名稱');
       } else if (response.data.Message === "endDate earlier than startDate") {
-        setShowError(true);
+        showUpdateFailModal();
         setErrorMessage('結標時間不能早於起標時間');
+        setShowError(true);
       } else {
+        showUpdateFailModal();
         setShowError(true);
         setErrorMessage('資料庫連線錯誤');
       }
     } catch (error) {
-      console.log(error);
+      showUpdateFailModal();
       setShowError(true);
       setErrorMessage('資料庫連線錯誤');
     }
   }
 
   const deleteProductInfo = async () => {
-
     const data = {
       "productId": productID
     };
@@ -215,15 +218,28 @@ const EditProductPage = () => {
         setShowConfirmModal(false);
         setShowSuccessModal(true);
       } else {
+        showDeleteFailModal();
         setShowError(true);
         setErrorMessage('資料庫連線錯誤');
       }
-
     } catch (error) {
+      showDeleteFailModal();
       setShowError(true);
       setErrorMessage('資料庫連線錯誤');
     }
   }
+
+  const showUpdateFailModal = async (e) => {
+    setSuccessModalText('儲存失敗！');
+    setShowConfirmModal(false);
+    setShowSuccessModal(true);
+  };
+
+  const showDeleteFailModal = async (e) => {
+    setSuccessModalText('刪除失敗！');
+    setShowConfirmModal(false);
+    setShowSuccessModal(true);
+  };
 
   const updateInfo = async (e) => {
     e.preventDefault();
