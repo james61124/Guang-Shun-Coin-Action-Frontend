@@ -9,7 +9,8 @@ import moment from 'moment';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import config from '../../../config/config';
-import SaveConfirmationModal from './SaveConfirmationModal'
+import SuccessModal from './SuccessModal'
+import ConfirmModal from './ConfirmModal'
 
 
 const EditProductPage = () => {
@@ -24,16 +25,28 @@ const EditProductPage = () => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [pictures, setPictures] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [modalFunction, setModalFunction] = useState(() => null);
+  const [successModalText, setSuccessModalText] = useState('');
+  const [confirmModalText, setConfirmModalText] = useState('');
+  const [isReturnToProductPage, setIsReturnToProductPage] = useState(false);
   const { backendUrl } = config;
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchProduct();
-  }, [productID, description]);
+  }, [productID]);
 
-  const closeModal = () => {
-    setShowModal(false);
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    if ( isReturnToProductPage === true ) {
+      navigate('/editProduct');
+    }
+  };
+
+  const closeConfirmModal = () => {
+    setShowConfirmModal(false);
   };
 
   const fetchProduct = async () => {
@@ -50,9 +63,6 @@ const EditProductPage = () => {
     try {
       const response = await axios.post(`${backendUrl}/shop/detail`, data, config);
       if (response.data.Status === true) {
-
-        // const updatedImageUrls = response.data.Data.imageUrl.map(url => backendUrl + url);
-
         const imageUrls = response.data.Data.imageUrl.map(url => backendUrl + url);
         const convertImageToBase64 = async (url) => {
           const response = await fetch(url);
@@ -125,7 +135,9 @@ const EditProductPage = () => {
       });
 
       if (uploadResponse.data.Status === true) {
-        // navigate('/editProduct');
+        console.log('haha');
+        setShowConfirmModal(false);
+        setShowSuccessModal(true);
       } else if (uploadResponse.data.Message === "File exceeds 10MB") {
         setShowError(true);
         setErrorMessage('檔案大小超過10M');
@@ -137,7 +149,6 @@ const EditProductPage = () => {
   }
 
   const uploadProductInfo = async () => {
-    
     const data = {
       "productId": productID,
       "productName": productName,
@@ -158,17 +169,13 @@ const EditProductPage = () => {
       };
       const response = await axios.post(`${backendUrl}/admin/updateProductDetail`, data, config);
       if (response.data.Status === true) {
-        console.log(response);
-        const productID = response.data.Data.productId;
         const formData = new FormData();
         formData.append('productID', productID);
-
         pictures.forEach((file, index) => {
-          const base64Data = file.split(',')[1]; // get base64 data
+          const base64Data = file.split(',')[1];
           const blob = base64ToBlob(base64Data, 'image/png');
           formData.append('files', blob, `image${index}.png`);
         });
-
         uploadImage(formData);
 
       } else if (response.data.Message === "Authorization header is missing") {
@@ -183,18 +190,48 @@ const EditProductPage = () => {
         setShowError(true);
         setErrorMessage('資料庫連線錯誤');
       }
+    } catch (error) {
+      console.log(error);
+      setShowError(true);
+      setErrorMessage('資料庫連線錯誤');
+    }
+  }
+
+  const deleteProductInfo = async () => {
+
+    const data = {
+      "productId": productID
+    };
+    
+    try {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      const response = await axios.post(`${backendUrl}/admin/deleteProduct`, data, config);
+      if (response.data.Status === true) {
+        setShowConfirmModal(false);
+        setShowSuccessModal(true);
+      } else {
+        setShowError(true);
+        setErrorMessage('資料庫連線錯誤');
+      }
 
     } catch (error) {
-      console.log('An error occurred during addProduct: ', error);
       setShowError(true);
       setErrorMessage('資料庫連線錯誤');
     }
   }
 
   const updateInfo = async (e) => {
-    setShowModal(true);
     e.preventDefault();
-    uploadProductInfo();
+    setModalFunction(() => uploadProductInfo);
+    setConfirmModalText('確認修改？');
+    setSuccessModalText('修改成功！');
+    setShowConfirmModal(true);
+    setIsReturnToProductPage(false);
   };
 
   const cancelInfo = async (e) => {
@@ -202,27 +239,41 @@ const EditProductPage = () => {
     navigate('/editProduct');
   };
 
+  const deleteInfo = async (e) => {
+    e.preventDefault();
+    setModalFunction(() => deleteProductInfo);
+    setConfirmModalText('確認刪除？');
+    setSuccessModalText('刪除成功！');
+    setShowConfirmModal(true);
+    setIsReturnToProductPage(true);
+  };
+
   return (
     <div className={styles.mainContainer}>
-      <BackLink />
-      <Title />
-      <div className={styles.rowContainer}>
-        <RenderPictures images={pictures} setImages={setPictures} />
-        <div className={styles.basicInfoContainer}>
-          <InputField label="商品名稱" value={productName} onChange={setProductName} />
-          <CategoryField label="商品類型" value={category} onChange={handleCategory} />
-          <InputField label="商品底價" value={reservePrice} onChange={handleReservePriceChange} />
-          <InputField label="出價增額" value={bidIncrement} onChange={handleBidIncrementPriceChange} />
-          <DateField label="起標時間" value={startTime} onChange={setStartTime} />
-          <DateField label="截標時間" value={endTime} onChange={setEndTime} />
-          <label className={styles.errorLabel} style={{ visibility: showError ? 'visible' : 'hidden' }}>{errorMessage}</label>
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <BackLink />
+        <Title />
+        <div className={styles.rowContainer}>
+          <RenderPictures images={pictures} setImages={setPictures} />
+          <div className={styles.basicInfoContainer}>
+            <InputField label="商品名稱" value={productName} onChange={setProductName} />
+            <CategoryField label="商品類型" value={category} onChange={handleCategory} />
+            <InputField label="商品底價" value={reservePrice} onChange={handleReservePriceChange} />
+            <InputField label="出價增額" value={bidIncrement} onChange={handleBidIncrementPriceChange} />
+            <DateField label="起標時間" value={startTime} onChange={setStartTime} />
+            <DateField label="截標時間" value={endTime} onChange={setEndTime} />
+            <label className={styles.errorLabel} style={{ visibility: showError ? 'visible' : 'hidden' }}>{errorMessage}</label>
+            <DeleteButton onButtonClick={deleteInfo} value={'刪除商品'}/>
+          </div>
         </div>
-      </div>
-      <DescriptionSection label="商品細節" description={description} setDescription={setDescription}/>
-      <SaveConfirmationModal show={showModal} productID={productID} onClose={closeModal}></SaveConfirmationModal>
-      <div className={styles.buttonWrapper}>
-        <SubmitButton onButtonClick={updateInfo} value={'儲存'}/>
-        <SubmitButton onButtonClick={cancelInfo} value={'取消'}/>
+        <DescriptionSection label="商品細節" description={description} setDescription={setDescription}/>
+        <SuccessModal show={showSuccessModal} onClose={closeSuccessModal} text={successModalText}></SuccessModal>
+        <ConfirmModal show={showConfirmModal} onButtonClick={modalFunction} onClose={closeConfirmModal} text={confirmModalText}></ConfirmModal>
+        <div className={styles.buttonWrapper}>
+          <SubmitButton onButtonClick={updateInfo} value={'儲存'}/>
+          <SubmitButton onButtonClick={cancelInfo} value={'取消'}/>
+        </div>
       </div>
     </div>
   )
@@ -313,7 +364,6 @@ const DescriptionSection = ({ description, setDescription }) => (
         onChange={(ev) => setDescription(ev.target.value)}
         rows={5}
       />
-
     </div>
   </div>
 );
@@ -322,6 +372,15 @@ const SubmitButton = ({ onButtonClick, value }) => {
   return (
     <div className={styles.loginBox} onClick={onButtonClick} >
       <input className={styles.inputButton} type="button" value={value} />
+    </div>
+
+  )
+}
+
+const DeleteButton = ({ onButtonClick, value }) => {
+  return (
+    <div className={styles.deleteButtonBox} onClick={onButtonClick} >
+      <input className={styles.deleteButton} type="button" value={value} />
     </div>
 
   )

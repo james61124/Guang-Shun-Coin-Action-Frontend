@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: #BFCFD9;
+    width: 350px;
+    height: 160px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.closeButton {
+    font-family: 'KingHwa-OldSong';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .closeButton::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%; 
+    background-color: black;
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateX(-50%); 
+  }
+  
+  .closeButton:hover::after {
+    width: 80%;
+  }
+
+.confirmationContent {
+    font-family: 'KingHwa-OldSong';
+    font-size: 26px;
+    margin-top: 18px;
+
+}
+
+.submitBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 100px;
+    font-size: large;
+    border-radius: 8px;
+    border: 1px solid grey;
+    background: #38515F;
+    margin-bottom: 1%;
+    cursor: pointer;
+}
+
+.submitBox:hover {
+    background: #598097;
+}
+
+.submitButton {
+    
+    background: transparent;
+    border: none;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px; 
+    color: white;
+    cursor: pointer;
+}
+
+.ButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

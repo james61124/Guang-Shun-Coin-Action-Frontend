@@ -4,13 +4,38 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
 }
 
 .mainContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     /* align-items: center;
     justify-content: center; */
-    background: #38515F;
+    /* background: transparent; */
+    background: #3E6F8A;
     padding: 50px;
     overflow: hidden;
+    opacity: 1; 
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.body {
+    z-index: 3; 
+}
+
+.basicInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 /* backlink */
@@ -168,7 +193,6 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
 }
 
 /* submit */
-
 .loginBox {
     height: 48px;
     width: 80px;
@@ -188,6 +212,33 @@ src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype');
 }
 
 .inputButton {
+    background: transparent;
+    border: none;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px; 
+    color: white;
+    cursor: pointer;
+}
+
+.deleteButtonBox {
+    height: 48px;
+    width: 110px;
+    font-size: large;
+    border-radius: 8px;
+    border: 1px solid grey;
+    background: #a14444;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.deleteButtonBox:hover {
+    background: #db5d5d;
+}
+
+.deleteButton {
     background: transparent;
     border: none;
     font-family: 'KingHwa-OldSong';
