@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import MainPage from './Shop/MainPage';
-import ProductPage from './Shop/ProductPage';
+import ProductPage from './Shop/ProductDetail/ProductPage';
 import HistoryBid from './Member/HistoryBid/HistoryBid';
 import NewProduct from './Member/NewProduct';
 import EditMember from './Member/EditMember/EditMember';

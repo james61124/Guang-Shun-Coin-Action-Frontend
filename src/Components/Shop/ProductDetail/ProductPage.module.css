@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'KingHwa-OldSong'; 
-    src: url('../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+    src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
 }
 
 .mainContainer {
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     background: #38515F;
-    padding:50px;
+    padding: 50px;
     overflow: hidden;
 }
 
@@ -22,7 +22,7 @@
     padding-right: 130px;
     padding-bottom: 20px;
     height: 70%;
-    width: 80%;
+    width: 70%;
     overflow: hidden; 
     
 }
@@ -31,7 +31,7 @@
     display: flex;
     justify-content: flex-start;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .TextContainer a{
@@ -45,22 +45,20 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* padding-left: 50px;
-    padding-right: 50px; */
-    /* margin-bottom: 20px; */
+    margin-left: 70px;
 }
 
 .picContainter {
     display: flex;
     flex-direction: column;
     height: 450px;
-    width: 450px;
+    width: 380px;
 }
 .primaryPic {
     height: 300px;
     width: 300px;
     background-color: #3E6F8A;
-    margin-bottom: 2px;
+    margin-bottom: 15px;
 }
 .secondaryPics {
     display: flex;
@@ -79,14 +77,12 @@
 .detailContainer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    padding-left: 60px;
-
-    /* padding-left: 20px; */
-
+    padding-left: 40px;
 }
 .productTitle {
-    font-size: 28px;
+    font-size: 45px;
     font-family: 'KingHwa-OldSong';
     line-height: 1px;
 }
@@ -96,29 +92,38 @@
 .priceContainer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 
-}
-.priceContainer p {
-    font-size: 16px;
-    font-family: 'KingHwa-OldSong';
-    text-align: left; 
-    line-height: 0px;
-}
 .currentPrice {
-    font-size: 18px;
+    font-family: 'KingHwa-OldSong';
+    font-size: 26px;
     color: #A82800;
+    margin-top: 15px;
+    
+}
+
+.detail {
+    font-family: 'KingHwa-OldSong';
+    font-size: 18px;
+    margin-top: 15px;
 }
 
 /* bid button */
 .bidBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     height: 48px;
-    width: 100px;
+    width: 135px;
     font-size: large;
     border-radius: 27px;
-    border: 1px solid grey;
-    padding-left: 8px;
+    /* border: 1px solid grey; */
+    /* padding-left: 8px; */
     background: black;
-    margin-top:10px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -127,16 +132,11 @@
 }
 
 .bidButton {
-    position: relative;
-    top: 24px;
-    left: 40px;
-    transform: translate(-50%, -50%);
-    background: transparent;
-    border: none;
     font-family: 'KingHwa-OldSong';
     font-size: 20px; 
     color: white;
     cursor: pointer;
+    letter-spacing: 3px;
   }
 
 
@@ -145,6 +145,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    gap: 10px;
 }
 .tagBox {
     display: inline-flex;
@@ -153,7 +154,7 @@
     padding: 2px 5px; /* 根据需要调整内边距，上下2px，左右5px */
     border: 1px solid grey; 
     background: #EBDCCB;
-    border-radius: 8px; 
+    border-radius: 50px; 
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -169,89 +170,158 @@
     margin: 0; 
 }
 
+.productTimeWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 180px;
+    background-color: white;
+    border-radius: 50px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.productTime {
+    font-size: 15px;
+    font-family: 'KingHwa-OldSong'; 
+    font-weight: 700;
+}
+
+.productTimeIcon {
+    margin-right: 5px;
+}
+
+.categoryWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 80px;
+    background-color: white;
+    border-radius: 50px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category {
+    font-size: 15px;
+    font-family: 'KingHwa-OldSong'; 
+    font-weight: 700;
+}
+
+.trackWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 30px;
+    width: 115px;
+    background-color: white;
+    border-radius: 50px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.trackIcon {
+    height: 20px;
+    width: 20px;
+}
+
 
 /* history */
 .subTitleContainer {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+
     background-color: #886830;
-    width: 140px;
+    width: 150px;
     height: 40px;
     border-radius: 20px;
     position: relative;
     margin-bottom: 10px;
     margin-top: 10px;
+    margin-left: 60px;
 }
 .subTitle {
-    position: absolute;
     font-size: 20px;
     font-family: 'KingHwa-OldSong';
     color: white;
-    top: 8px;
-    left: 5px;
 }
 
 /* History Container */
 .historyContainer {
     display: flex;
     flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+
     border-radius: 10px;
-    background-color: #EBDCCB;
+    background-color: #FFFFFF;
     margin-bottom: 10px;
     font-family: 'KingHwa-OldSong';
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 1000px; /* Set a max-width for better responsiveness */
+    max-width: 850px; /* Set a max-width for better responsiveness */
     margin-left: auto;
     margin-right: auto;
-  }
-  
-  /* Title */
-  .historyTitle {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #d5a77b;
-    margin-bottom: 10px;
-  }
+}
   
   /* History Info */
-  .historyInfo {
+.historyTitleInfo {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
+    align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid #d5a77b;
-  }
-  
-  /* Username */
-  .historyUsername {
-    flex: 1; /* Takes up space in the front */
-    text-align: center;
-  }
-  
-  /* Bid Price */
-  .historyBidPrice {
-    flex: 1; /* Takes up space in the center */
-    text-align: center;
-  }
-  
-  /* Bid Time */
-  .historyBidTime {
-    flex: 1; /* Takes up space in the end */
-    text-align: center;
-  }
+}
 
+.historyTitle {
+    font-family: 'KingHwa-OldSong';
+    font-size: 24px;
+    flex: 1;
+    text-align: center;
+}
+
+.titleBottom {
+    position: absolute;
+    bottom: 0; 
+    left: 5%; 
+    right: 5%; 
+    height: 1px; 
+    background-color: #BFCFD9;
+    /* margin-bottom: 2px; */
+}
+
+.historyInfo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-top: 13px;
+}
+
+.info {
+    font-family: 'KingHwa-OldSong';
+    font-size: 15px;
+    flex: 1;
+    text-align: center;
+}
+  
 
 .descriptionContainer {
     display: flex;
     flex-direction: column;
-    /* width: 1100px; */
-    /* width: 1100px;
-    height: 400px; */
+    /* align-items: center;
+    justify-content: center; */
 
     border-radius: 10px;
-    background-color: #EBDCCB;
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+    font-family: 'KingHwa-OldSong';
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 850px; /* Set a max-width for better responsiveness */
+    margin-left: auto;
+    margin-right: auto;
 }
 .descriptionContainer p{
     font-family: 'KingHwa-OldSong';
@@ -259,6 +329,7 @@
 }
 
 .precautions {
+    margin-left: 62px;
     text-align: left;
     font-family: 'KingHwa-OldSong';
     color: black;

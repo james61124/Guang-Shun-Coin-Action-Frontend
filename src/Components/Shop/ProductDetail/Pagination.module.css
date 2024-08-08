@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'KingHwa-OldSong'; 
+    src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
+}
+
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: content;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.paginationWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.pageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(145, 145, 145); 
+    width: 23px;
+    height: 30px;
+    margin-left: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.page {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pageChangeLeftWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(145, 145, 145); 
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pageChangeLeft {
+    color: black;
+    font-size: 16px;
+}
+
+.pageChangeRightWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(145, 145, 145); 
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.pageChangeRight {
+    color: black;
+    font-size: 16px;
+}
+

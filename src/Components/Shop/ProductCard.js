@@ -76,10 +76,9 @@ const Card = ({ key, product, imgUrl, productID, price, bidCount, endedAt, isSta
     };
 
     try {
-      console.log(data);
       await axios.post(`${backendUrl}/shop/star`, data, config);
     } catch (error) {
-      console.error('Failed to give star info:', error);
+      // do something
     }
   };
 

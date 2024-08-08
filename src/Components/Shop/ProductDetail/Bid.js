@@ -1,14 +1,15 @@
 import styles from './Bid.module.css';
 import React, { useState } from 'react'
-import config from '../../config/config';
+import config from '../../../config/config';
 import axios from 'axios';
 
-const Bid = ({ show, onClose, productID }) => {
+
+const Bid = ({ show, successBid, onClose, productID }) => {
 
     const [ bidPrice, setBidPrice ] = useState(0)
     const { backendUrl } = config;
     const [ errorMessage, setErrorMessage ] = useState('');
-    const [showError, setShowError] = useState(false);
+    const [ showError, setShowError ] = useState(false);
 
     const handleBidPriceChange = (value) => {
         const intValue = parseInt(value, 10);
@@ -30,7 +31,8 @@ const Bid = ({ show, onClose, productID }) => {
         try {
           const response = await axios.post(`${backendUrl}/shop/bid`, data, config);
           if (response.data.Status === true) {
-            // console.log(response)
+            setShowError(false);
+            successBid();
           } else if (response.data.Message === 'bidPrice is smaller or equal than highest bidPrice') {
             setShowError(true);
             setErrorMessage('出價金額須高於目前最高金額');
@@ -56,10 +58,10 @@ const Bid = ({ show, onClose, productID }) => {
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
                 <InputField label="出價金額" value={bidPrice} onChange={handleBidPriceChange} inputType="text" error={errorMessage} showError={showError}/>
-                <div className={styles.submitBox}>
-                    <input className={styles.submitButton} type="submit" onClick={onButtonClick} value={'出價'} />
+                <div className={styles.submitBox} onClick={onButtonClick}>
+                    <div className={styles.submitButton} type="submit">出價</div>
                 </div>
-                <button onClick={onClose} className={styles.closeButton}>Close</button>
+                <button onClick={onClose} className={styles.closeButton}>關閉</button>
             </div>
         </div>
     );

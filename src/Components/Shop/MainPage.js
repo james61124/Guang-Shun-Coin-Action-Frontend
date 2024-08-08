@@ -88,7 +88,6 @@ const MainPage = (props) => {
       try {
         const response = await axios.post(`${backendUrl}/shop/product`, data, config);
         if (response && response.data && response.data.Data.products) {
-          console.log(response)
           const productData = response.data.Data.products.map(product => ({
             productID: product.productId,
             product: product.productName,
