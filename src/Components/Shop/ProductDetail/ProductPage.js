@@ -269,11 +269,14 @@ const HistorySection = ({ history, totalNumberOfPage, handlePageChange }) => (
           <div className={styles.info}>{new Date(record.bidTime).toLocaleString()}</div>
         </div>
       ))}
-      <Pagination
-        totalPages={totalNumberOfPage}
-        pageRangeDisplayed={pageRangeDisplayed}
-        onPageChange={handlePageChange}
-      />
+
+      {history && 
+        <Pagination
+          totalPages={totalNumberOfPage}
+          pageRangeDisplayed={pageRangeDisplayed}
+          onPageChange={handlePageChange}
+        />
+      }
     </div>
   </div>
 );
