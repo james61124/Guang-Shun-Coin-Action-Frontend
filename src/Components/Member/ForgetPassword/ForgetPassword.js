@@ -1,14 +1,15 @@
 import React from 'react';
-import styles from './EditPassword.module.css';
-import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './ForgetPassword.module.css';
+import { useState } from 'react';
 import axios from 'axios';
 import config from '../../../config/config';
 import PopUpMessage from '../../PopUpMessage/PopUpMessage';
-import { useNavigate } from 'react-router-dom';
 
 
-const EditMember = (props) => {
-  const [originPassword, setOriginPassword] = useState('')
+
+const ForgetPassword = (props) => {
+  const [cellphone, setCellphone] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
 
@@ -21,7 +22,6 @@ const EditMember = (props) => {
   const closeModal = () => {
     setShowModal(false);
     navigate('/login');
-    
   };
 
   
@@ -33,30 +33,27 @@ const EditMember = (props) => {
         }
     };
     const data = {
-      "originPassword": originPassword,
+      "cellphone": cellphone,
       "newPassword": newPassword,
       "confirmNewPassword": confirmNewPassword
     };
 
     try {
-        const response = await axios.post(`${backendUrl}/user/updatePassword`, data, config);
+        const response = await axios.post(`${backendUrl}/user/resetPassword`, data, config);
         
         if (response.data.Status === true) {
           setShowError(false);
           setShowModal(true);
         } else {
           const errorMessages = {
-            "original password is empty": '請輸入原有密碼',
+            "cellphone is empty": "請輸入電話",
             "new password is empty": '請輸入新密碼',
             "confirmed password is empty": '請輸入密碼驗證',
             'invalid password format': '密碼須包含大小寫英文及數字',
-            'password is different from PasswordConfirm': '密碼與二次密碼不符',
-            'originalPassword is wrong': '原密碼輸入錯誤'
-
+            'password is different from PasswordConfirm': '密碼驗證失敗',
           };
     
           const message = response.data.Message;
-          // console.log('Message:', message);  
           if (errorMessages[message]) {
             setShowError(true);
             setErrorMessage(errorMessages[message]);
@@ -67,21 +64,19 @@ const EditMember = (props) => {
         }
   
       } catch (error) {
-        console.log('An error occurred during editing password: ', error);
+        console.log('An error occurred during reseting password: ', error);
         setShowError(true);
         setErrorMessage('資料庫連線錯誤');
       }
     };
-        
 
 
   return (
     <div className={styles.mainContainer}>
       <Title />
-      <Reminder />
       <div className={styles.contentContainer} >
         <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
-        <InputField label="舊密碼" value={originPassword} onChange={setOriginPassword} inputType="3w" />
+        <InputField label="電話" value={cellphone} onChange={setCellphone} inputType="3w" />
         <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="3w" />
         <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="5w" error={errorMessage} showError={showError}/>
       </div>
@@ -93,18 +88,11 @@ const EditMember = (props) => {
 const Title = () => {
   return (
     <div className={styles.titleContainer}>
-      <div>修改密碼</div>
+      <div>忘記密碼</div>
     </div>
   )
 }
 
-const Reminder = () => {
-  return (
-    <div className={styles.reminderContainer}>
-      <p>◎ 密碼須包含大小寫英文及數字</p>
-    </div>
-  )
-}
 
 const InputField = ({ label, value, onChange, inputType, placeholder = '', error = '', showError = true }) => {
   return (
@@ -133,4 +121,4 @@ const SubmitButton = ({ onButtonClick }) => {
   )
 }
 
-export default EditMember;
+export default ForgetPassword;

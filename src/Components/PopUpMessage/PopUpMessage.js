@@ -1,7 +1,7 @@
-import styles from './SubmitSuccess.module.css';
-import React from 'react'
+import styles from './PopUpMessage.module.css';
+import React from 'react';
 
-const SubmitSuccess = ({ show, onClose }) => {
+const PopUpMessage = ({ show, message="修改成功", onClose}) => {
 
     if (!show) {
         return null;
@@ -10,7 +10,7 @@ const SubmitSuccess = ({ show, onClose }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
-                <div className={styles.modalTitle}> 修改成功 </div>
+                <div className={styles.modalTitle}> {message} </div>
                 <div className={styles.submitBox}>
                     <input className={styles.submitButton} type="submit" onClick={onClose} value={'確認'} />
                 </div>
@@ -19,4 +19,4 @@ const SubmitSuccess = ({ show, onClose }) => {
     );
 };
 
-export default SubmitSuccess;
+export default PopUpMessage;
