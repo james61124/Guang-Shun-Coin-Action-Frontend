@@ -39,7 +39,7 @@ const options = [
 const EditProduct = (props) => {
 
     const [selectedSorting, setSelectedSorting] = useState('目前價格由大至小');
-    const [selectedCategory, setSelectedCategory] = useState('World');
+    const [selectedCategory, setSelectedCategory] = useState('世界錢幣');
     const [selectedPage, setSelectedPage] = useState(1);
     const [activeButton, setActiveButton] = useState(null);
     const [cards, setCards] = useState([])
@@ -113,7 +113,6 @@ const EditProduct = (props) => {
         <MainTitle />
         <div className={styles.contentContainer}>
           <ContentTitle />
-
           <div className={styles.sortingContainer}>
             <div className={styles.sortingButton}>
               <Select
@@ -181,8 +180,8 @@ const EditProduct = (props) => {
               <ul>
                   <li>
                       <button
-                          className={`${styles.sidebarLabel} ${activeButton === "World" ? styles.selected : ''}`}
-                          value="World"
+                          className={`${styles.sidebarLabel} ${activeButton === "世界錢幣" ? styles.selected : ''}`}
+                          value="世界錢幣"
                           onClick={handleCategory}
                       >
                           世界錢幣
@@ -190,8 +189,8 @@ const EditProduct = (props) => {
                   </li>
                   <li>
                       <button
-                          className={`${styles.sidebarLabel} ${activeButton === "America" ? styles.selected : ''}`}
-                          value="America"
+                          className={`${styles.sidebarLabel} ${activeButton === "美國錢幣" ? styles.selected : ''}`}
+                          value="美國錢幣"
                           onClick={handleCategory}
                       >
                           美國錢幣
@@ -199,8 +198,8 @@ const EditProduct = (props) => {
                   </li>
                   <li>
                       <button
-                          className={`${styles.sidebarLabel} ${activeButton === "Europe" ? styles.selected : ''}`}
-                          value="Europe"
+                          className={`${styles.sidebarLabel} ${activeButton === "歐洲錢幣" ? styles.selected : ''}`}
+                          value="歐洲錢幣"
                           onClick={handleCategory}
                       >
                           歐洲錢幣
@@ -208,8 +207,8 @@ const EditProduct = (props) => {
                   </li>
                   <li>
                       <button
-                          className={`${styles.sidebarLabel} ${activeButton === "Asia" ? styles.selected : ''}`}
-                          value="Asia"
+                          className={`${styles.sidebarLabel} ${activeButton === "亞洲錢幣" ? styles.selected : ''}`}
+                          value="亞洲錢幣"
                           onClick={handleCategory}
                       >
                           亞洲錢幣
@@ -217,8 +216,8 @@ const EditProduct = (props) => {
                   </li>
                   <li>
                       <button
-                          className={`${styles.sidebarLabel} ${activeButton === "Africa" ? styles.selected : ''}`}
-                          value="Africa"
+                          className={`${styles.sidebarLabel} ${activeButton === "非洲錢幣" ? styles.selected : ''}`}
+                          value="非洲錢幣"
                           onClick={handleCategory}
                       >
                           非洲錢幣

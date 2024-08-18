@@ -146,8 +146,8 @@ const InputField = ({ label, value, onChange, inputType, placeholder = '', error
 
 const SubmitButton = ({ onButtonClick }) => {
   return (
-    <div className={styles.loginBox}>
-      <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'儲存資訊'} />
+    <div className={styles.loginBox} onClick={onButtonClick}>
+      <input className={styles.inputButton} type="button" value={'儲存資訊'} />
     </div>
   )
 }

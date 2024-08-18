@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import styles from './MainPage.module.css';
+import styles from './MyProduct.module.css';
 import ProductCard from './ProductCard';
-import config from '../../config/config';
+import config from '../../../config/config';
 import axios from 'axios';
 import Pagination from './Pagination';
 import PriceFilter from './PriceFilter'
@@ -86,7 +86,7 @@ const MainPage = () => {
       };
   
       try {
-        const response = await axios.post(`${backendUrl}/shop/product`, data, config);
+        const response = await axios.post(`${backendUrl}/shop/myProduct`, data, config);
         if (response.data.Message == "user didn't login") {
           navigate('/login');
         } else if (response && response.data && response.data.Data.products) {

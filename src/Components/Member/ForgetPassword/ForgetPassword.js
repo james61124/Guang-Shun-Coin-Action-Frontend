@@ -73,14 +73,17 @@ const ForgetPassword = (props) => {
 
   return (
     <div className={styles.mainContainer}>
-      <Title />
-      <div className={styles.contentContainer} >
-        <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
-        <InputField label="電話" value={cellphone} onChange={setCellphone} inputType="3w" />
-        <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="3w" />
-        <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="5w" error={errorMessage} showError={showError}/>
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <Title />
+        <div className={styles.contentContainer} >
+          <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
+          <InputField label="電話" value={cellphone} onChange={setCellphone} inputType="3w" />
+          <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="3w" />
+          <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="5w" error={errorMessage} showError={showError}/>
+        </div>
+        <SubmitButton onButtonClick={handleSubmit} />
       </div>
-      <SubmitButton onButtonClick={handleSubmit} />
     </div>
   )
 }

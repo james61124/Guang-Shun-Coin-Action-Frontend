@@ -7,7 +7,7 @@ import PopUpMessage from './PopUpMessage/PopUpMessage';
 
 
 
-const Login = (props) => {
+const Login = ({setIsLoggedIn, setRole}) => {
 
   const { backendUrl } = config;
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ const Login = (props) => {
 
   const closeModal = () => {
     setShowModal(false);
+    setIsLoggedIn(true);
     navigate('/product');
   };
 
@@ -37,7 +38,9 @@ const Login = (props) => {
       if (response.data.Status === true) {
         setShowError(false);
         localStorage.setItem('token', response.data.Data.Token);
+        setRole(response.data.Data.Role);
         setShowModal(true);
+        
       } else {
         const errorMessages = {
           'cellphone is empty': "請輸入電話",
@@ -61,13 +64,16 @@ const Login = (props) => {
 
   return (
     <div className={styles.mainContainer}>
-      <Title />
-      <PopUpMessage show={showModal} message={"登入成功"} onClose ={closeModal}></PopUpMessage>
-      <InputField label="電話" value={cellphone} onChange={setcellphone} inputType="text" />
-      <InputField label="密碼" value={password} onChange={setPassword} error={errorMessage} showError={showError} inputType="text" />
-      <ForgetPasswd />
-      <Submit onButtonClick={onButtonClick} />
-      <Link className={styles.textWrapper} to="/register">還不是會員? 註冊新帳號</Link>
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <Title />
+        <PopUpMessage show={showModal} message={"登入成功"} onClose ={closeModal}></PopUpMessage>
+        <InputField label="電話" value={cellphone} onChange={setcellphone} inputType="text" />
+        <InputField label="密碼" value={password} onChange={setPassword} error={errorMessage} showError={showError} inputType="text" />
+        <ForgetPasswd />
+        <Submit onButtonClick={onButtonClick} />
+        <Link className={styles.textWrapper} to="/register">還不是會員? 註冊新帳號</Link>
+      </div>
     </div>
   )
 }
@@ -109,8 +115,8 @@ const InputField = ({ label, value, onChange, inputType, placeholder = '', error
 
 const Submit = ({ onButtonClick }) => {
   return (
-    <div className={styles.loginBox}>
-      <input className={styles.inputButton} type="submit" onClick={onButtonClick} value={'登入'} />
+    <div className={styles.loginBox} onClick={onButtonClick}>
+      <input className={styles.inputButton} type="submit" value={'登入'} />
     </div>
   )
 }

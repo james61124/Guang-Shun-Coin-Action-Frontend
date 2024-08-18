@@ -36,6 +36,9 @@ const Bid = ({ show, successBid, onClose, productID }) => {
           } else if (response.data.Message === 'bidPrice is smaller or equal than highest bidPrice') {
             setShowError(true);
             setErrorMessage('出價金額須高於目前最高金額');
+          } else if (response.data.Message === 'bidPrice is smaller than midBidPrice') {
+            setShowError(true);
+            setErrorMessage('出價增額須高於最小出價增額'); 
           } else {
             setShowError(true);
             setErrorMessage('資料庫連線錯誤');

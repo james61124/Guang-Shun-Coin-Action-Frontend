@@ -12,7 +12,7 @@ import config from '../../config/config';
 
 const NewProduct = (props) => {
   const [productName, setProductName] = useState('')
-  const [category, setCategory] = useState('World')
+  const [category, setCategory] = useState('世界錢幣')
   const [reservePrice, setReservePrice] = useState(0)
   const [bidIncrement, setBidIncrement] = useState(0)
   const [startTime, setStartTime] = useState(dayjs().toISOString())
@@ -197,11 +197,11 @@ const CategoryField = ({ label, value, onChange }) => {
         <div className={styles.inputLabel}>{label}</div>
         <div className={styles.inputBox}>
           <select id="category" value={value} onChange={onChange} className={styles.input4wCursor}>
-            <option value="World">世界錢幣</option>
-            <option value="America">美國錢幣</option>
-            <option value="Europe">歐洲錢幣</option>
-            <option value="Asia">亞洲錢幣</option>
-            <option value="Africa">非洲錢幣</option>
+            <option value="世界錢幣">世界錢幣</option>
+            <option value="美國錢幣">美國錢幣</option>
+            <option value="歐洲錢幣">歐洲錢幣</option>
+            <option value="亞洲錢幣">亞洲錢幣</option>
+            <option value="非洲錢幣">非洲錢幣</option>
           </select>
         </div>
       </div>

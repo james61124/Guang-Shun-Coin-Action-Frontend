@@ -3,17 +3,63 @@
     src: url('../Font/KingHwa-OldSong.ttf') format('truetype'); 
 }
 
-.navList ul {
+.navList {
+    background-color: #7992A0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    height: 60px;
+    /* margin-right: 10px; */
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    /* margin-right: 5px; */
+}
+
+.navItem:hover {
+    height: 30px;
+    border-radius: 50px; 
+    background-color: #6a818f;
+}
+
+.navcontent {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: 'KingHwa-OldSong';
+    font-size: 16px;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.selectList {
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+    appearance: none;
+    font-family: 'KingHwa-OldSong';
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* .navList ul {
     display: block;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #7992A0;
 }
   
 .navList li {
-    float: right; /* put the attribute to the right */
+    float: right; 
 }
 
 .navList li a {
@@ -27,7 +73,7 @@
 
 .navList a:hover {
     background-color: #111;
-}
+} */
 
 .dropdownContent {
     display: none;

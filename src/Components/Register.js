@@ -46,6 +46,8 @@ const Register = (props) => {
         const errorMessages = {
           'cellphone is empty': "請輸入電話",
           "password is empty": '請輸入密碼',
+          "realname is empty": '請輸入姓名',
+          "nickname is empty": '請輸入暱稱',
           "confirmed password is empty": '請輸入密碼驗證',
           'invalid password format': '密碼須包含大小寫英文及數字',
           'invalid phone number format': '手機號碼格式錯誤',
@@ -74,17 +76,20 @@ const Register = (props) => {
 
   return (
     <div className={styles.mainContainer}>
-      <Title />
-      <Reminder />
-      <PopUpMessage show={showModal} message={"註冊成功"} onClose ={closeModal}></PopUpMessage>
-      <div className={styles.contentContainer} >
-        <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
-        <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" />
-        <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" necessary={true}/>
-        <InputField label="密碼" value={password} onChange={setPassword} inputType="text" placeholder="需含大小寫字母與數字" necessary={true}/>
-        <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} error={errorMessage} showError={showError} inputType="4w" necessary={true}/>
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <Title />
+        <Reminder />
+        <PopUpMessage show={showModal} message={"註冊成功"} onClose ={closeModal}></PopUpMessage>
+        <div className={styles.contentContainer} >
+          <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" necessary={true}/>
+          <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" necessary={true}/>
+          <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" necessary={true}/>
+          <InputField label="密碼" value={password} onChange={setPassword} inputType="text" placeholder="需含大小寫字母與數字" necessary={true}/>
+          <InputField label="確認密碼" value={confirmPasswd} onChange={setconfirmPasswd} error={errorMessage} showError={showError} inputType="4w" necessary={true}/>
+        </div>
+        <SubmitButton onButtonClick={onButtonClick} />
       </div>
-      <SubmitButton onButtonClick={onButtonClick} />
     </div>
   )
 }

@@ -134,9 +134,10 @@ label {
 
 .infoContainer {
     width: 830px;
-    height: 500px;
+    min-height: 500px;
     background-color: white;
     border-radius: 20px;
+    flex-grow: 1;
 }
 
 .infoContainerWrapper {

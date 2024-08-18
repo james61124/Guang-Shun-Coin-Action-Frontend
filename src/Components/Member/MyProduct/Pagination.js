@@ -4,6 +4,7 @@ import Select from 'react-select';
 
 const Pagination = ({ totalPages, onPageChange }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  // totalPages = 10;
 
   const options = Array.from({ length: totalPages }, (_, i) => ({
     value: i + 1,
@@ -30,7 +31,6 @@ const Pagination = ({ totalPages, onPageChange }) => {
     const page = Number(event.value);
     setCurrentPage(page);
     onPageChange(page);
-    
   };
 
   const getPageNumbers = () => {

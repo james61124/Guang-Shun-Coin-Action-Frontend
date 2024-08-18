@@ -11,8 +11,8 @@ const PopUpMessage = ({ show, message="修改成功", onClose}) => {
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>
                 <div className={styles.modalTitle}> {message} </div>
-                <div className={styles.submitBox}>
-                    <input className={styles.submitButton} type="submit" onClick={onClose} value={'確認'} />
+                <div className={styles.submitBox} onClick={onClose}>
+                    <input className={styles.submitButton} type="submit" value={'確認'} />
                 </div>
             </div>
         </div>

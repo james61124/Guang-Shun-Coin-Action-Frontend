@@ -8,7 +8,6 @@
     align-items: center;
     justify-content: content;
     flex-direction: column;
-    margin-bottom: 10px;
 }
 
 .paginationWrapper {
@@ -16,7 +15,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .pageWrapper {

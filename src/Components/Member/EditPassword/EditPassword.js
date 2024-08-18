@@ -56,7 +56,6 @@ const EditMember = (props) => {
           };
     
           const message = response.data.Message;
-          // console.log('Message:', message);  
           if (errorMessages[message]) {
             setShowError(true);
             setErrorMessage(errorMessages[message]);
@@ -67,7 +66,7 @@ const EditMember = (props) => {
         }
   
       } catch (error) {
-        console.log('An error occurred during editing password: ', error);
+        // console.log('An error occurred during editing password: ', error);
         setShowError(true);
         setErrorMessage('資料庫連線錯誤');
       }
@@ -127,8 +126,8 @@ const InputField = ({ label, value, onChange, inputType, placeholder = '', error
 
 const SubmitButton = ({ onButtonClick }) => {
   return (
-    <div className={styles.loginBox}>
-      <input className={styles.inputButton} type="button" onClick={onButtonClick} value={'儲存資訊'} />
+    <div className={styles.loginBox} onClick={onButtonClick}>
+      <input className={styles.inputButton} type="button" value={'儲存資訊'} />
     </div>
   )
 }

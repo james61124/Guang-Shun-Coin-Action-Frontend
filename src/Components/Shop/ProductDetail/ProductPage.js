@@ -76,6 +76,7 @@ const ProductPage = () => {
     try {
       const response = await axios.post(`${backendUrl}/shop/detail`, data, config);
       if (response.data.Status === true) {
+        console.log(response);
         const updatedImageUrls = response.data.Data.imageUrl.map(url => backendUrl + url);
         setName(response.data.Data.name);
         setCategory(response.data.Data.category);
@@ -262,13 +263,23 @@ const HistorySection = ({ history, totalNumberOfPage, handlePageChange }) => (
         <div className={styles.historyTitle}>出價時間</div>
         <div className={styles.titleBottom}></div>
       </div>
-      {history && history.map((record, index) => (
-        <div key={index} className={styles.historyInfo}>
-          <div className={styles.info}>{record.username}</div>
-          <div className={styles.info}>NTD {record.bidPrice}</div>
-          <div className={styles.info}>{new Date(record.bidTime).toLocaleString()}</div>
-        </div>
-      ))}
+      {history && history.map((record, index) => {
+        const isStatusPresent = record.status.Valid == true; 
+        const infoClass = isStatusPresent ? styles.firstInfo : styles.info;
+
+        return (
+          <div key={index} className={styles.historyInfo}>
+            <div className={infoClass}>{record.username}</div>
+            {isStatusPresent && 
+              <div className={styles.statusTagContainer}>
+                <div className={styles.statusTag}>{record.status.String}</div>
+              </div>
+            }
+            <div className={infoClass}>NTD {record.bidPrice}</div>
+            <div className={infoClass}>{new Date(record.bidTime).toLocaleString()}</div>
+          </div>
+        );
+      })}
 
       {history && 
         <Pagination
