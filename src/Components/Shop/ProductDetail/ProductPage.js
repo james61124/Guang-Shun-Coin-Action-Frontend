@@ -135,19 +135,22 @@ const ProductPage = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.contentContainer}>
-        <BackLink />
-        <div className={styles.productInfoContainer}>
-          <RenderPictures pictures={imageUrl}/>
-          <div className={styles.detailContainer}>
-            <ProductTitle productName={name} />
-            <RenderTags time={timeRemaining} category={category} trackImage={trackImage} trackMessage={trackMessage} sendStarInfo={sendStarInfo}/>
-            <RenderPriceDetails productID={productID} currentPrice={currentPrice} price={price} minBid={minBid} startAt={startAt} endAt={endAt} fetchProduct={fetchProduct}/>
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <div className={styles.contentContainer}>
+          <BackLink />
+          <div className={styles.productInfoContainer}>
+            <RenderPictures pictures={imageUrl}/>
+            <div className={styles.detailContainer}>
+              <ProductTitle productName={name} />
+              <RenderTags time={timeRemaining} category={category} trackImage={trackImage} trackMessage={trackMessage} sendStarInfo={sendStarInfo}/>
+              <RenderPriceDetails productID={productID} currentPrice={currentPrice} price={price} minBid={minBid} startAt={startAt} endAt={endAt} fetchProduct={fetchProduct}/>
+            </div>
           </div>
+          <HistorySection history={history} totalNumberOfPage={totalNumberOfPage} handlePageChange={handlePageChange}/>
+          <DescriptionSection productDescription={description} />
+          <RenderPrecautions />
         </div>
-        <HistorySection history={history} totalNumberOfPage={totalNumberOfPage} handlePageChange={handlePageChange}/>
-        <DescriptionSection productDescription={description} />
-        <RenderPrecautions />
       </div>
     </div>
   );

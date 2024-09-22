@@ -91,20 +91,24 @@ const EditMember = (props) => {
 
   return (
     <div className={styles.mainContainer}>
-      <Title />
-      <Reminder />
-      <div className={styles.contentContainer} >
-        <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
-        <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
-        <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" />
-        <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" />
-        {/* <InputField label="臉書帳號" value={fbAccount} onChange={setfbAccount} inputType="4w" /> */}
-        {/* <InputField label="電子郵件" value={email} onChange={setEmail} inputType="4w" /> */}
-        {/* <InputField label="收貨地址" value={shippingAddr} onChange={setShippingAddr} inputType="4w" /> */}
-        {/* <InputField label="郵遞區號" value={postcode} onChange={setPostcode} inputType="4w" /> */}
-        {/* <InputField label="帳號" value={account} onChange={setAccount} inputType="text" error={errorMessage} showError={showError}/> */}
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <Title />
+        <Reminder />
+        <div className={styles.contentContainer} >
+          <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
+          <InputField label="姓名" value={realName} onChange={setRealName} inputType="text" />
+          <InputField label="暱稱" value={nickName} onChange={setNickName} inputType="text" />
+          <InputField label="手機" value={phoneNumber} onChange={setPhoneNumber} inputType="text" />
+          {/* <InputField label="臉書帳號" value={fbAccount} onChange={setfbAccount} inputType="4w" /> */}
+          {/* <InputField label="電子郵件" value={email} onChange={setEmail} inputType="4w" /> */}
+          {/* <InputField label="收貨地址" value={shippingAddr} onChange={setShippingAddr} inputType="4w" /> */}
+          {/* <InputField label="郵遞區號" value={postcode} onChange={setPostcode} inputType="4w" /> */}
+          {/* <InputField label="帳號" value={account} onChange={setAccount} inputType="text" error={errorMessage} showError={showError}/> */}
+        </div>
+        <SubmitButton onButtonClick={handleSubmit} />
       </div>
-      <SubmitButton onButtonClick={handleSubmit} />
+      
     </div>
   )
 }

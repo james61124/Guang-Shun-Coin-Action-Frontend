@@ -3,14 +3,36 @@
     src: url('../../../Font/KingHwa-OldSong.ttf') format('truetype'); 
   }
 
-.mainContainer {
+  .mainContainer {
+    position: relative;
     flex-direction: column;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    padding: 50px;
-    background: #38515F;
-}
+    justify-content: center;
+    height: 100vh;
+    background: #3E6F8A;
+    overflow: hidden;
+    opacity: 1; 
+  }
+  
+  .backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .body {
+    z-index: 3; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
 /* .background-container::before {
     background: url('../../assets/background.png') center center / cover no-repeat;

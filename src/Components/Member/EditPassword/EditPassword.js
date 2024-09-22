@@ -7,7 +7,7 @@ import PopUpMessage from '../../PopUpMessage/PopUpMessage';
 import { useNavigate } from 'react-router-dom';
 
 
-const EditMember = (props) => {
+const EditMember = () => {
   const [originPassword, setOriginPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
@@ -66,7 +66,6 @@ const EditMember = (props) => {
         }
   
       } catch (error) {
-        // console.log('An error occurred during editing password: ', error);
         setShowError(true);
         setErrorMessage('資料庫連線錯誤');
       }
@@ -76,15 +75,18 @@ const EditMember = (props) => {
 
   return (
     <div className={styles.mainContainer}>
-      <Title />
-      <Reminder />
-      <div className={styles.contentContainer} >
-        <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
-        <InputField label="舊密碼" value={originPassword} onChange={setOriginPassword} inputType="3w" />
-        <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="3w" />
-        <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="5w" error={errorMessage} showError={showError}/>
+      <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+      <div className={styles.body}>
+        <Title />
+        <Reminder />
+        <div className={styles.contentContainer} >
+          <PopUpMessage show={showModal} onClose={closeModal}></PopUpMessage>
+          <InputField label="舊密碼" value={originPassword} onChange={setOriginPassword} inputType="3w" />
+          <InputField label="新密碼" value={newPassword} onChange={setNewPassword} inputType="3w" />
+          <InputField label="確認新密碼" value={confirmNewPassword} onChange={setConfirmNewPassword} inputType="5w" error={errorMessage} showError={showError}/>
+        </div>
+        <SubmitButton onButtonClick={handleSubmit} />
       </div>
-      <SubmitButton onButtonClick={handleSubmit} />
     </div>
   )
 }

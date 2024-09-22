@@ -8,7 +8,7 @@ import PopUpMessage from './PopUpMessage/PopUpMessage';
 
 
 
-const Register = (props) => {
+const Register = () => {
   const [realName, setRealName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [nickName, setNickName] = useState('')
@@ -56,7 +56,6 @@ const Register = (props) => {
         };
   
         const message = response.data.Message;
-        // console.log('Message:', message);  
         if (errorMessages[message]) {
           setShowError(true);
           setErrorMessage(errorMessages[message]);

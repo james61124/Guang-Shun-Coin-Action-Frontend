@@ -106,7 +106,6 @@ const Navbar = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         setIsLoggedIn(!!token);
-        console.log('isLoggedIn change');
     }, [isLoggedIn]);
 
     const handleLogout = () => {
@@ -171,6 +170,7 @@ const Navbar = () => {
                 <Routes>
                     <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setRole={setRole}/>} />
                     <Route path="/register" element={<Register/>} />
+                    <Route path="/" element={<MainPage/>} />
                     <Route path="/product" element={<MainPage/>} />
                     <Route path="/detail/:productID" element={<ProductPage />} />
                     <Route path="/updateDetail/:productID" element={<EditProductPage />} />

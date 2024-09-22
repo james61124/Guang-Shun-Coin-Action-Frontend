@@ -24,7 +24,7 @@ const MainTitle = () => {
 const ContentTitle = () => {
   return (
     <div className={styles.contentTitle}>
-      <h1>全站商品</h1>
+      <h1>我的商品</h1>
     </div>
   );
 }

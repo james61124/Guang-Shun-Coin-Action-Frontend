@@ -64,32 +64,35 @@ const HistoryBid = (props) => {
 
     return (
         <div class={styles.mainContainer}>
-            <div className={styles.titleContainer}>
-                <div>歷史出價</div>
-            </div>
-            <div class={styles.infoBody}>              
-                <div class={styles.infoContainer}>
-                    <div class={styles.infoContainerWrapper}>
-                        {history.map((product, i) => (
-                            <div key={i}>
-                                <Product 
-                                    id={product.productID}
-                                    name={product.productName} 
-                                    status={product.status}
-                                    bidTime={product.bidTime} 
-                                    bidPrice={product.bidPrice} 
-                                    imageUrl={product.imageUrl} 
-                                />
-                                <div className={styles.productGap}></div>
-                            </div>
-                        ))}
-                        <Pagination
-                            totalPages={totalPages}
-                            onPageChange={handlePageChange}
-                        />
-                    </div>
+            <img src={`/assets/background.png`} alt="Background" className={styles.backgroundImage} />
+            <div className={styles.body}>
+                <div className={styles.titleContainer}>
+                    <div>歷史出價</div>
                 </div>
-                <div className={styles.indexContainer}></div>
+                <div class={styles.infoBody}>              
+                    <div class={styles.infoContainer}>
+                        <div class={styles.infoContainerWrapper}>
+                            {history.map((product, i) => (
+                                <div key={i}>
+                                    <Product 
+                                        id={product.productID}
+                                        name={product.productName} 
+                                        status={product.status}
+                                        bidTime={product.bidTime} 
+                                        bidPrice={product.bidPrice} 
+                                        imageUrl={product.imageUrl} 
+                                    />
+                                    <div className={styles.productGap}></div>
+                                </div>
+                            ))}
+                            <Pagination
+                                totalPages={totalPages}
+                                onPageChange={handlePageChange}
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.indexContainer}></div>
+                </div>
             </div>
         </div>
     )

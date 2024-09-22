@@ -6,11 +6,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    /* align-items: flex-start; */
     padding-top: 10px;
     padding-left: 25px;
-    /* padding-left: 5px;
-    padding-right: 5px; */
     padding-bottom: 100px;
     align-items: center;
     flex: 1;
@@ -20,8 +17,6 @@
 .productCard p {
     font-size: 20px;
     font-family: 'KingHwa-OldSong'; 
-    /* align-items: ; */
-    /* color: red; */
 }
 .productCard {
     margin-left: 5px;
@@ -45,7 +40,6 @@
     height: 250px;
     width: 250px;
     position: relative;
-    /* border-radius: 15px; */
     
 }
 
@@ -53,21 +47,22 @@
     cursor: pointer;
     width: 250px;
     height: 250px;
-    /* border-radius: 15px; */
 }
 
 .image {
     width: 250px;
     height: 250px;
     object-fit: cover; 
-    /* border-radius: 15px; */
 }
 
 .productTitleWrapper {
-    height: 40px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 210px;
 }
 
 .productTitle {
@@ -76,7 +71,13 @@
     margin-top: 0px; 
     font-size: 20px;
     text-align: center;
-    font-weight: 600;
+    max-width: 250px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .currentPriceWrapper {
@@ -84,6 +85,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .currentPrice {

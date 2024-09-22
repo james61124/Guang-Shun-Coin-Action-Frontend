@@ -5,8 +5,6 @@ import axios from 'axios';
 import config from '../config/config';
 import PopUpMessage from './PopUpMessage/PopUpMessage';
 
-
-
 const Login = ({setIsLoggedIn, setRole}) => {
 
   const { backendUrl } = config;
